@@ -180,6 +180,10 @@
   (setq css-indent-offset 2)) ; css-mode has it's own tab settings
 
 
+(use-package descr-text
+  :bind (("C-h T" . describe-char)))
+
+
 (use-package dev-helper       ; Custom elisp
   :load-path "~/.emacs.d/elisp"
   :commands (dev-open-pr)
