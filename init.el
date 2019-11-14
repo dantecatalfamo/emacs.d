@@ -533,6 +533,11 @@ Host *
   (projectile-mode t))
 
 
+(use-package rainbow-delimiters
+  :ensure t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+
 (use-package restclient
   :ensure t
   :commands (restclient-mode))
