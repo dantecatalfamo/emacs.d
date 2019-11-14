@@ -317,6 +317,10 @@
   :commands (flymd-flyit))
 
 
+(use-package flyspell
+  :hook (text-mode . flyspell-mode))
+
+
 (use-package forge
   :ensure t
   :after magit)
@@ -862,8 +866,6 @@ Consecutive calls to this command append each line to the
 ;;; Old Hooks
 
 (add-hook 'prog-mode-hook (lambda() (setq display-line-numbers t)))
-
-(add-hook 'text-mode-hook 'flyspell-mode) ; no typos in text mode :^)
 
 (add-hook 'go-mode-hook (lambda() (setq-local tab-width 4)))
 (add-hook 'go-mode-hook (lambda() (add-hook 'before-save-hook 'gofmt-before-save)) t) ; lint go before saving
