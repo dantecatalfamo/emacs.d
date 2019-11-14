@@ -684,6 +684,12 @@ Host *
   :hook (after-init . windmove-default-keybindings))
 
 
+(use-package xclip
+  :ensure t
+  :config
+  (xclip-mode 1))
+
+
 (use-package yaml-mode
   :ensure t
   :mode "\\.yml\\'")
