@@ -245,6 +245,10 @@
   (setq elfeed-goodies/entry-pane-position 'bottom))
 
 
+(use-package elisp-mode
+  :hook (emacs-lisp-mode . prettify-symbols-mode))
+
+
 (use-package elpy
   :ensure t)
 
@@ -879,8 +883,6 @@ Consecutive calls to this command append each line to the
 (add-hook 'prog-mode-hook (lambda() (add-hook 'write-contents-functions
                                          'delete-trailing-whitespace
                                          nil t)))	 ; Strip trailing whitespace for all code
-
-(add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
 ;; Removes *Completions* from buffer after you've opened a file.
 (add-hook 'minibuffer-exit-hook 'my-delete-completion-buffer)
