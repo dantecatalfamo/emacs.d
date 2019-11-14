@@ -284,6 +284,13 @@
   (setq erc-hl-nicks-mode t))
 
 
+(use-package eshell
+  :init
+  (setq eshell-destroy-buffer-when-process-dies t)
+  (setq eshell-hist-ignoredups t)
+  (setq eshell-history-size 1048576))
+
+
 (use-package expand-region
   :ensure t
   :bind (("C-=" . er/expand-region)))
