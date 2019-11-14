@@ -323,6 +323,10 @@
   (blink-cursor-mode t)) ; For emacsclient
 
 
+(use-package git-timemachine
+  :ensure t)
+
+
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'")
