@@ -468,6 +468,10 @@
          ("C-c C-<" . mc/mark-all-like-this)))
 
 
+(use-package nginx-mode
+  :ensure t)
+
+
 (use-package org
   :defer nil
   ;; :ensure org-plus-contrib
