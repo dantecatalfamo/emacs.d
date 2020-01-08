@@ -425,6 +425,11 @@
   (add-to-list 'company-backends 'company-jedi))
 
 
+(use-package js
+  :config
+  (setq js-indent-level 2))
+
+
 (use-package js2-mode
   :ensure t
   :mode "\\.js\\'")
@@ -743,7 +748,7 @@ Host *
 (setq eval-expression-print-length nil) ; print entire expression in scratch
 (setq-default indent-tabs-mode nil)
 (setq inhibit-splash-screen t)
-(setq tab-width 4)
+(setq-default tab-width 4)
 (setq save-interprogram-paste-before-kill t)
 (setq require-final-newline t)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
@@ -885,11 +890,10 @@ Consecutive calls to this command append each line to the
 (add-hook 'go-mode-hook (lambda() (setq-local tab-width 4)))
 (add-hook 'go-mode-hook (lambda() (add-hook 'before-save-hook 'gofmt-before-save)) t) ; lint go before saving
 
-(add-hook 'web-mode-hook (lambda() (setq-local tab-width 2))) ; 2 space tabs for js and web
+(add-hook 'web-mode-hook (lambda() (setq tab-width 2))) ; 2 space tabs for js and web
+(add-hook 'css-mode-hook (lambda() (setq tab-width 2))) ; 2 space tabs for css and scss
 
-(add-hook 'css-mode-hook (lambda() (setq-local tab-width 2))) ; 2 space tabs for css and scss
-
-(add-hook 'eshell-mode-hook (lambda() (company-mode -1)))  ; disable company mode in eshell
+(add-hook 'eshell-mode-hook (lambda() (company-mode -1)))  ; disable company mode in eshell because of TRAMP performance
 
 (add-hook 'prog-mode-hook (lambda() (add-hook 'write-contents-functions
                                          'delete-trailing-whitespace
