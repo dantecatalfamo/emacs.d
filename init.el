@@ -253,6 +253,10 @@
   :ensure t)
 
 
+(use-package htmlize
+  :ensure t)
+
+
 (use-package enh-ruby-mode
   :ensure t
   :mode "\\.rb\\'"
