@@ -119,6 +119,14 @@
   :commands (bytes-constant byteconst))
 
 
+(use-package calfw
+  :ensure t)
+
+
+(use-package calfw-org
+  :ensure t)
+
+
 (use-package chess
   :ensure t
   :commands chess
