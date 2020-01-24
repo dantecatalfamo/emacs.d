@@ -141,6 +141,10 @@
 ;;   :hook (enh-ruby-mode . chruby-use-corresponding))
 
 
+;; (use-package constant-theme
+;;   :ensure t)
+
+
 (use-package com-css-sort
   :ensure t
   :after css-mode
