@@ -551,6 +551,11 @@ Host *
   (show-paren-mode t))
 
 
+(use-package pdf-tools
+  :ensure t
+  :hook ((after-init . pdf-tools-install)))
+
+
 (use-package perl6-mode
   :ensure t)
 
