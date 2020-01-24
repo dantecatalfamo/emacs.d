@@ -582,7 +582,7 @@ Host *
 
 (use-package rjsx-mode
   :ensure t
-  :mode "components\\/.*\\.js\\'")
+  :mode "[cC]omponents\\/.*\\.js\\'")
 
 
 (use-package robe
