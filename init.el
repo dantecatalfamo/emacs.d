@@ -192,6 +192,10 @@
   (setq css-indent-offset 2)) ; css-mode has it's own tab settings
 
 
+(use-package csv-mode
+  :ensure t)
+
+
 (use-package descr-text
   :bind (("C-h T" . describe-char)))
 
