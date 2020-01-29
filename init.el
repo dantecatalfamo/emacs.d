@@ -288,10 +288,11 @@
   :ensure t
   :if (not (eq system-type 'windows-nt))
   :config
-  (setq exec-path-from-shell-variables '("PATH"
-                                         "MAN_PATH"
-                                         "NIX_PATH"
-                                         "NIX_SSL_CERT_FILE"))
+  (when-darwin
+   (setq exec-path-from-shell-variables '("PATH"
+                                          "MAN_PATH"
+                                          "NIX_PATH"
+                                          "NIX_SSL_CERT_FILE")))
   (exec-path-from-shell-initialize))
 
 
