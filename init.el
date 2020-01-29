@@ -671,6 +671,12 @@ Host *
   :commands (sysctl))
 
 
+(use-package tide
+  :ensure t
+  :hook ((rjsx-mode . tide-setup)
+         (rjsx-mode . tide-hl-identifier-mode)))
+
+
 (use-package treemacs
   :ensure t
   :after imenu
