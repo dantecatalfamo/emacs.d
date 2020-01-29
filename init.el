@@ -170,7 +170,6 @@
 (use-package company-go
   :ensure t
   :after company
-  :hook go-mode
   :init
   (add-to-list 'company-backends 'company-go))
 
