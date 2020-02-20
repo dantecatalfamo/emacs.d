@@ -134,12 +134,6 @@
   (setq chess-default-display '(chess-ics1 chess-plain chess-images)))
 
 
-;; Replaced by shadowenv
-;; (use-package chruby
-;;   :ensure t
-;;   :hook (enh-ruby-mode . chruby-use-corresponding))
-
-
 ;; (use-package constant-theme
 ;;   :ensure t)
 
