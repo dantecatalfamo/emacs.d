@@ -134,10 +134,6 @@
   (setq chess-default-display '(chess-ics1 chess-plain chess-images)))
 
 
-;; (use-package constant-theme
-;;   :ensure t)
-
-
 (use-package com-css-sort
   :ensure t
   :after css-mode
