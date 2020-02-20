@@ -503,7 +503,7 @@
   :init
   (setq org-log-done 'time)  ; Can be 'time or 'note
   (setq org-directory "~/Org")
-  (setq org-special-ctrl-a/e t)
+  ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
   :config
   (add-hook 'org-mode-hook 'auto-fill-mode))
