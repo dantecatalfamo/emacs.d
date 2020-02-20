@@ -110,8 +110,7 @@
 
 
 (use-package all-the-icons
-  :ensure t
-  :after treemacs)
+  :ensure t)
 
 
 (use-package bytes-constant             ; Custom elisp
