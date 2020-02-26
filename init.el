@@ -163,6 +163,12 @@
   (add-to-list 'company-backends 'company-go))
 
 
+(use-package company-nginx
+  :ensure t
+  :after nginx-mode
+  :hook (nginx-mode #'company-nginx-keywords))
+
+
 ;; (use-package company-quickhelp
 ;;   :ensure t
 ;;   :after company
