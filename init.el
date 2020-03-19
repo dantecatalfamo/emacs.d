@@ -385,6 +385,7 @@
   :bind (("C-x c" . helm-command-prefix-key)
          ("C-c i" . helm-imenu)
          ("C-c o" . helm-occur)
+         ("C-c m" . helm-all-mark-rings)
          ("C-x b" . helm-mini)
          ("C-c r" . helm-regexp)
          ("C-x C-f" . helm-find-files)
