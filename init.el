@@ -586,6 +586,11 @@ Host *
   (projectile-mode t))
 
 
+(use-package python
+  :config
+  (setq python-indent-offset 4))
+
+
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
