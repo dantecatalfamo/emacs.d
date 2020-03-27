@@ -554,6 +554,10 @@ Host *
   :after org)
 
 
+(use-package ox-gfm
+  :ensure t)
+
+
 (use-package paren
   :config
   (show-paren-mode t))
