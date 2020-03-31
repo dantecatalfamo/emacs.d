@@ -539,6 +539,7 @@ Host *
 
 (use-package org-journal
   :ensure t
+  :bind (("C-c j" . my-org-journal-covid))
   :init
   (setq org-journal-dir "~/Org/Journal/")
   (setq org-journal-file-type 'monthly))
@@ -874,6 +875,14 @@ Host *
 
 
 ;;; Functions
+
+(defun my-org-journal-covid ()
+  "Open org-journal with covid directory."
+  (interactive)
+  (let ((org-journal-dir "~/Org/COVID/"))
+    (org-journal-new-entry nil)
+    (org-journal-mode)
+    (org-cycle)))
 
 (defun my-diff-this-buffer-with-file ()
   "Diffs the current buffer with the saved file."
