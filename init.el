@@ -471,6 +471,10 @@
          ("C-x )" . #'kmacro-end-or-call-macro)))
 
 
+(use-package lua-mode
+  :ensure t)
+
+
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status))
