@@ -118,6 +118,10 @@
   :commands (bytes-constant byteconst))
 
 
+(use-package browse-at-remote
+  :ensure t)
+
+
 (use-package calfw
   :ensure t)
 
