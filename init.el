@@ -70,7 +70,6 @@
 
 
 ;; Get my elisp
-(my-install-elisp "https://github.com/dantecatalfamo/elisp" "elisp")
 (my-install-elisp "https://github.com/dantecatalfamo/ejson-mode" "ejson-mode")
 (my-install-elisp "https://github.com/dantecatalfamo/sysctl.el" "sysctl")
 (my-install-elisp "https://github.com/Shopify/shadowenv.el" "shadowenv")
