@@ -388,7 +388,6 @@
   :diminish helm-mode
   :bind (("C-x c" . helm-command-prefix-key)
          ("C-c i" . helm-imenu)
-         ("C-c o" . helm-occur)
          ("C-c m" . helm-all-mark-rings)
          ("C-x b" . helm-mini)
          ("C-c r" . helm-regexp)
@@ -678,6 +677,11 @@ Host *
 (use-package sudo-edit
   :ensure t
   :commands (sudo-edit))
+
+
+(use-package swiper-helm
+  :ensure t
+  :bind (("C-c o" . swiper-helm)))
 
 
 ;; (use-package symon
