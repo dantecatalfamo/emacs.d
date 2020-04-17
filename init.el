@@ -545,7 +545,10 @@ Host *
 
 (use-package org-journal
   :ensure t
-  :bind (("C-c j" . my-org-journal-covid))
+  :bind (:prefix "C-c j"
+         :prefix-map my-org-journal-map
+         ("j" . org-journal-new-entry)
+         ("c" . my-org-journal-covid))
   :init
   (setq org-journal-dir "~/Org/Journal/")
   (setq org-journal-file-type 'monthly))
