@@ -346,6 +346,11 @@
   (setq flycheck-mode-line-prefix "FC"))
 
 
+(use-package flycheck-perl6
+  :ensure t
+  :defer t)
+
+
 (use-package flymd
   :ensure t
   :commands (flymd-flyit))
