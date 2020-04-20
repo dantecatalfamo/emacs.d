@@ -659,16 +659,22 @@ Host *
   :hook (after-init . shadowenv-global-mode))
 
 
-(use-package slime
+;; (use-package slime
+;;   :ensure t
+;;   :commands (slime)
+;;   :config
+;;   (setq inferior-lisp-program "sbcl")
+;;   (slime-setup '(slime-fancy slime-quicklisp slime-asdf slime-company)))
+
+
+;; (use-package slime-company
+;;   :ensure t)
+
+
+(use-package sly
   :ensure t
-  :commands (slime)
-  :config
-  (setq inferior-lisp-program "sbcl")
-  (slime-setup '(slime-fancy slime-quicklisp slime-asdf slime-company)))
-
-
-(use-package slime-company
-  :ensure t)
+  :init
+  (setq inferior-lisp-program "sbcl"))
 
 
 (use-package smartparens
