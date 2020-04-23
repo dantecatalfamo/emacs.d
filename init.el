@@ -580,7 +580,7 @@ Host *
 
 (use-package pdf-tools
   :ensure t
-  :hook ((after-init . pdf-tools-install)))
+  :hook ((after-init . pdf-loader-install)))
 
 
 (use-package perl6-mode
