@@ -583,9 +583,6 @@ Host *
   :hook ((after-init . pdf-loader-install)))
 
 
-(use-package perl6-mode
-  :ensure t)
-
 ;; (use-package persp-mode
 ;;   :ensure t
 ;;   :hook ((after-init . persp-mode))
@@ -614,6 +611,10 @@ Host *
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
+
+
+(use-package raku-mode
+  :ensure t)
 
 
 (use-package restclient
