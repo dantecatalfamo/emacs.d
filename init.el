@@ -412,6 +412,10 @@
   :ensure t)
 
 
+(use-package helm-system-packages
+  :ensure t)
+
+
 (use-package helm-tramp
   :ensure t
   :commands (helm-tramp))
