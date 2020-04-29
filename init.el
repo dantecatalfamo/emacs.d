@@ -407,6 +407,10 @@
   :bind ("C-c g" . helm-projectile-ag))
 
 
+(use-package helm-descbinds
+  :ensure t)
+
+
 (use-package helm-projectile
   :after (helm projectile)
   :ensure t)
