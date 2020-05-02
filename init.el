@@ -767,9 +767,9 @@ Host *
 ;;   :ensure t)
 
 
-(use-package vterm-toggle
-  :ensure t
-  :bind (("<f5>" . #'vterm-toggle-cd)))
+;; (use-package vterm-toggle
+;;   :ensure t
+;;   :bind (("<f5>" . #'vterm-toggle-cd)))
 
 
 (use-package web-mode
