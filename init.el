@@ -270,6 +270,10 @@
   :hook (emacs-lisp-mode . prettify-symbols-mode))
 
 
+(use-package elpher
+  :ensure t)
+
+
 (use-package elpy
   :ensure t)
 
