@@ -763,8 +763,8 @@ Host *
          ("C-c v m" . vr/mc-mark)))
 
 
-(use-package vterm
-  :ensure t)
+;; (use-package vterm
+;;   :ensure t)
 
 
 (use-package vterm-toggle
