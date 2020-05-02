@@ -690,6 +690,14 @@ Host *
   (setq inferior-lisp-program "sbcl"))
 
 
+(use-package sly-macrostep
+  :ensure t)
+
+
+(use-package sly-quicklisp
+  :ensure t)
+
+
 (use-package smartparens
   :ensure t
   :diminish
