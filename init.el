@@ -378,6 +378,10 @@
   :ensure t)
 
 
+(use-package go
+  :ensure t)
+
+
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'")
