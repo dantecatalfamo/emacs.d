@@ -698,10 +698,6 @@ Host *
   :ensure t)
 
 
-(use-package sly-quicklisp
-  :ensure t)
-
-
 (use-package smartparens
   :ensure t
   :diminish
