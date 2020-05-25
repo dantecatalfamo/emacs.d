@@ -546,6 +546,10 @@
   :init
   (setq org-log-done 'time)  ; Can be 'time or 'note
   (setq org-directory "~/Org")
+  (setq org-refile-targets '((nil :maxlevel . 9)))
+  (setq org-refile-use-outline-path t)
+  (setq org-outline-path-complete-in-steps t)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
 
