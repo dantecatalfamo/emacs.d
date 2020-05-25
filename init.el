@@ -538,6 +538,7 @@
 (use-package org
   :defer nil
   ;; :ensure org-plus-contrib
+  :hook ((org-mode-hook . auto-fill-mode))
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
@@ -547,8 +548,6 @@
   (setq org-directory "~/Org")
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
-  :config
-  (add-hook 'org-mode-hook 'auto-fill-mode))
 
 
 (use-package org-export-config     ; Custom elisp
