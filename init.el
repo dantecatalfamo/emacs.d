@@ -538,7 +538,7 @@
 (use-package org
   :defer nil
   ;; :ensure org-plus-contrib
-  :hook ((org-mode-hook . auto-fill-mode))
+  :hook ((org-mode . auto-fill-mode))
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
