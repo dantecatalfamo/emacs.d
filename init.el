@@ -538,7 +538,8 @@
 (use-package org
   :defer nil
   ;; :ensure org-plus-contrib
-  :hook ((org-mode . auto-fill-mode))
+  :hook ((org-mode . auto-fill-mode)
+         (org-mode . my-add-whitespace-hook))
   :bind (("C-c a" . org-agenda)
          ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
