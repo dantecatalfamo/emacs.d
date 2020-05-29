@@ -611,7 +611,8 @@ Host *
 
 
 (use-package prog-mode
-  :hook ((prog-mode . display-line-numbers-mode)))
+  :hook ((prog-mode . display-line-numbers-mode)
+         (prog-mode . my-add-whitespace-hook)))
 
 
 (use-package projectile
@@ -936,6 +937,13 @@ Host *
 
 ;;; Functions
 
+(defun my-add-whitespace-hook ()
+  "Add a hook to cleanup whitespace on save."
+  ; previously used write-contents-functions, interesting hook.
+  (add-hook 'before-save-hook
+            'delete-trailing-whitespace
+            nil t))
+
 (defun my-org-journal-covid ()
   "Open org-journal with covid directory."
   (interactive)
@@ -1009,10 +1017,6 @@ Consecutive calls to this command append each line to the
 (add-hook 'css-mode-hook (lambda() (setq tab-width 2))) ; 2 space tabs for css and scss
 
 (add-hook 'eshell-mode-hook (lambda() (company-mode -1)))  ; disable company mode in eshell because of TRAMP performance
-
-(add-hook 'prog-mode-hook (lambda() (add-hook 'write-contents-functions
-                                         'delete-trailing-whitespace
-                                         nil t)))	 ; Strip trailing whitespace for all code
 
 ;; Removes *Completions* from buffer after you've opened a file.
 (add-hook 'minibuffer-exit-hook 'my-delete-completion-buffer)
