@@ -609,6 +609,11 @@ Host *
 ;;   (persp-def-auto-persp "erc" :mode 'erc-mode :hooks '(after-switch-to-buffer-functions)))
 
 
+
+(use-package prog-mode
+  :hook ((prog-mode . display-line-numbers-mode)))
+
+
 (use-package projectile
   :ensure t
   :after helm
@@ -996,8 +1001,6 @@ Consecutive calls to this command append each line to the
 (bind-key "#" #'endless/sharp lisp-mode-map)
 
 ;;; Old Hooks
-
-(add-hook 'prog-mode-hook (lambda() (setq display-line-numbers t)))
 
 (add-hook 'go-mode-hook (lambda() (setq-local tab-width 4)))
 (add-hook 'go-mode-hook (lambda() (add-hook 'before-save-hook 'gofmt-before-save)) t) ; lint go before saving
