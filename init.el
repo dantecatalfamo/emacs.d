@@ -178,6 +178,7 @@
 
 (use-package css-mode
   :mode "\\.css\\'"
+  :hook (css-mode-hook . (lambda() (setq-local tab-width 2)))
   :init
   (setq css-indent-offset 2)) ; css-mode has it's own tab settings
 
@@ -800,6 +801,7 @@ Host *
          "\\.mustache\\'"
          "\\.djhtml\\'"
          "\\.html?\\'")
+  :hook (web-mode-hook . (lambda() (setq-local tab-width 2)))
   :init
   (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-code-indent-offset 2)
@@ -1014,9 +1016,6 @@ Consecutive calls to this command append each line to the
 (bind-key "#" #'endless/sharp lisp-mode-map)
 
 ;;; Old Hooks
-
-(add-hook 'web-mode-hook (lambda() (setq-local tab-width 2))) ; 2 space tabs for js and web
-(add-hook 'css-mode-hook (lambda() (setq-local tab-width 2))) ; 2 space tabs for css and scss
 
 (add-hook 'eshell-mode-hook (lambda() (company-mode -1)))  ; disable company mode in eshell because of TRAMP performance
 
