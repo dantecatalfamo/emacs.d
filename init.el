@@ -159,13 +159,6 @@
   (global-company-mode))
 
 
-(use-package company-go
-  :ensure t
-  :after company
-  :init
-  (add-to-list 'company-backends 'company-go))
-
-
 (use-package company-nginx
   :ensure t
   :after nginx-mode
@@ -384,7 +377,8 @@
 
 (use-package go-mode
   :ensure t
-  :mode "\\.go\\'")
+  :mode "\\.go\\'"
+  :hook (go-mode-hook . (lambda() (setq-local tab-width 4))))
 
 
 (use-package grip-mode
@@ -496,6 +490,12 @@
 
 (use-package lua-mode
   :ensure t)
+
+
+(use-package lsp-mode
+  :ensure t
+  :hook ((go-mode . lsp-deferred)
+         (go-mode . my-lsp-install-save-hooks)))
 
 
 (use-package magit
@@ -938,12 +938,16 @@ Host *
 
 ;;; Functions
 
+
+(defun my-lsp-install-save-hooks ()
+  "Add hooks for lsp-mode."
+  (add-hook 'before-save-hook #'lsp-format-buffer nil t)
+  (add-hook 'before-save-hook #'lsp-organize-imports nil t))
+
 (defun my-add-whitespace-hook ()
   "Add a hook to cleanup whitespace on save."
   ; previously used write-contents-functions, interesting hook.
-  (add-hook 'before-save-hook
-            'delete-trailing-whitespace
-            nil t))
+  (add-hook 'before-save-hook #'delete-trailing-whitespace nil t))
 
 (defun my-org-journal-covid ()
   "Open org-journal with covid directory."
@@ -1011,11 +1015,8 @@ Consecutive calls to this command append each line to the
 
 ;;; Old Hooks
 
-(add-hook 'go-mode-hook (lambda() (setq-local tab-width 4)))
-(add-hook 'go-mode-hook (lambda() (add-hook 'before-save-hook 'gofmt-before-save)) t) ; lint go before saving
-
-(add-hook 'web-mode-hook (lambda() (setq tab-width 2))) ; 2 space tabs for js and web
-(add-hook 'css-mode-hook (lambda() (setq tab-width 2))) ; 2 space tabs for css and scss
+(add-hook 'web-mode-hook (lambda() (setq-local tab-width 2))) ; 2 space tabs for js and web
+(add-hook 'css-mode-hook (lambda() (setq-local tab-width 2))) ; 2 space tabs for css and scss
 
 (add-hook 'eshell-mode-hook (lambda() (company-mode -1)))  ; disable company mode in eshell because of TRAMP performance
 
