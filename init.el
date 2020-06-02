@@ -321,6 +321,7 @@
 
 
 (use-package eshell
+  :hook (eshell-mode . my-disable-tramp-company)
   :init
   (setq eshell-destroy-buffer-when-process-dies t)
   (setq eshell-hist-ignoredups t)
@@ -940,6 +941,10 @@ Host *
 
 ;;; Functions
 
+(defun my-disable-tramp-company ()
+  "Disable `company-mode' on TRAMP connections for performance reasons."
+  (when (file-remote-p default-directory)
+    (company-mode -1)))
 
 (defun my-lsp-install-save-hooks ()
   "Add hooks for lsp-mode."
@@ -1016,8 +1021,6 @@ Consecutive calls to this command append each line to the
 (bind-key "#" #'endless/sharp lisp-mode-map)
 
 ;;; Old Hooks
-
-(add-hook 'eshell-mode-hook (lambda() (company-mode -1)))  ; disable company mode in eshell because of TRAMP performance
 
 ;; Removes *Completions* from buffer after you've opened a file.
 (add-hook 'minibuffer-exit-hook 'my-delete-completion-buffer)
