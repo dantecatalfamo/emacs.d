@@ -415,6 +415,10 @@
   :ensure t)
 
 
+(use-package helm-lsp
+  :ensure t)
+
+
 (use-package helm-projectile
   :after (helm projectile)
   :ensure t)
@@ -496,8 +500,19 @@
 
 (use-package lsp-mode
   :ensure t
-  :hook ((go-mode . lsp-deferred)
-         (go-mode . my-lsp-install-save-hooks)))
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
+         (go-mode . lsp-deferred)
+         (go-mode . my-lsp-install-save-hooks)
+         (c-mode . lsp-deferred)
+         (c-mode . my-lsp-install-save-hooks))
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c s"))
+
+
+(use-package lsp-ui
+  :hook (lsp-mode . lsp-ui-mode)
+  :ensure t)
 
 
 (use-package magit
