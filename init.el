@@ -369,6 +369,14 @@
   (blink-cursor-mode t)) ; For emacsclient
 
 
+(use-package gcmh
+  :ensure t
+  :init
+  (setq gcmh-high-cons-threshold (* 16 1024 1024)) ; 16mb
+  (setq gcmh-idle-delay 5)
+  (gcmh-mode))
+
+
 (use-package git-timemachine
   :ensure t)
 
