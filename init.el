@@ -377,6 +377,11 @@
   (gcmh-mode))
 
 
+(use-package gdb-mi
+  :init
+  (setq gdb-many-windows t))
+
+
 (use-package git-timemachine
   :ensure t)
 
