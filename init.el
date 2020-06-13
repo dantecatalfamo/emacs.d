@@ -514,10 +514,10 @@
 (use-package lsp-mode
   :ensure t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
+         ;; (c-mode . lsp-deferred)
+         ;; (c-mode . my-lsp-install-save-hooks))
          (go-mode . lsp-deferred)
-         (go-mode . my-lsp-install-save-hooks)
-         (c-mode . lsp-deferred)
-         (c-mode . my-lsp-install-save-hooks))
+         (go-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c s"))
