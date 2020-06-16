@@ -478,6 +478,11 @@
   :load-path "~/.emacs.d/elisp")
 
 
+(use-package cc-mode
+  :init
+  (setq-default c-basic-offset 4))
+
+
 (use-package company-jedi
   :ensure t
   :after python-mode
