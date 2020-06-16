@@ -974,6 +974,15 @@ Host *
 
 ;;; Functions
 
+(defun my-insert-iso-date ()
+  "Insert ISO 8601 formatted date.
+Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
+  (interactive)
+  (insert (concat
+           (format-time-string "%Y-%m-%dT%T")
+           ((lambda (x) (concat (substring x 0 3) ":" (substring x 3 5)))
+            (format-time-string "%z")))))
+
 (defun my-disable-tramp-company ()
   "Disable `company-mode' on TRAMP connections for performance reasons."
   (when (file-remote-p default-directory)
