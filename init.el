@@ -588,9 +588,10 @@
   (setq org-directory "~/Org")
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
-  (setq org-refile-targets '((nil :maxlevel . 9)))
-  (setq org-refile-use-outline-path t)
-  (setq org-outline-path-complete-in-steps t)
+  (setq org-refile-targets '((nil :maxlevel . 9)
+                             (org-agenda-files :maxlevel . 3)))
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm))
 
 
