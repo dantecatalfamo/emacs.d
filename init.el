@@ -403,6 +403,10 @@
               ("g" . grip-mode)))
 
 
+(use-package graphviz-dot-mode
+  :ensure t)
+
+
 (use-package helm
   :ensure t
   :defer nil
