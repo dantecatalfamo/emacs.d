@@ -112,6 +112,10 @@
   :ensure t)
 
 
+(use-package tex
+  :ensure auctex)
+
+
 (use-package bytes-constant             ; Custom elisp
   :load-path "~/.emacs.d/elisp/bytes-constant.el"
   :commands (bytes-constant byteconst))
