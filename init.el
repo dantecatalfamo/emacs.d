@@ -1064,7 +1064,7 @@ Consecutive calls to this command append each line to the
 (bind-key "C-r" #'isearch-backward-regexp)
 (bind-key "C-M-s" #'isearch-forward)
 (bind-key "C-M-r" #'isearch-backward)
-(bind-key "C-x p" #'other-window)
+(bind-key "M-o" #'other-window)
 (bind-key "C->" #'indent-rigidly-right-to-tab-stop)
 (bind-key "C-<" #'indent-rigidly-left-to-tab-stop)
 (bind-key "C-c x" #'quick-copy-line)
