@@ -227,6 +227,11 @@
   :ensure t)
 
 
+(use-package dired
+  :config
+  (setq dired-dwim-target t))
+
+
 (use-package dired-subtree
   :ensure t
   :after dired
@@ -916,7 +921,6 @@ Host *
       kept-new-versions 10    ; How many new versions to keep
       kept-old-versions 5)    ; How many old
 (setq prettify-symbols-unprettify-at-point 'right-edge)
-(setq dired-dwim-target t)
 (setq frame-resize-pixelwise t)
 (setq inhibit-x-resources t)  ; Fix emacsclient issues
 
