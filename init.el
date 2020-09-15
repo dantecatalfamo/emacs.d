@@ -115,7 +115,7 @@
 
 (use-package autorevert
   :custom
-  (auto-revert-mode-text " ↻"))
+  (auto-revert-mode-text " ⟲"))
 
 
 (use-package tex
