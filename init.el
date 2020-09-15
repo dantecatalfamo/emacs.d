@@ -741,7 +741,9 @@ Host *
 (use-package shadowenv  ; Custom elisp
   :load-path "~/.emacs.d/shadowenv"
   :if my-darwin-p
-  :hook (after-init . shadowenv-global-mode))
+  :hook (after-init . shadowenv-global-mode)
+  :custom
+  (shadowenv-lighter "Senv"))
 
 
 ;; (use-package slime
