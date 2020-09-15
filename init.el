@@ -283,6 +283,12 @@
   :ensure t)
 
 
+(use-package hl-todo
+  :ensure t
+  :config
+  (hl-todo-mode))
+
+
 (use-package htmlize
   :ensure t)
 
