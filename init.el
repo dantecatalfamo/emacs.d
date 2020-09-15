@@ -113,6 +113,11 @@
   :ensure t)
 
 
+(use-package autorevert
+  :custom
+  (auto-revert-mode-text " ↻"))
+
+
 (use-package tex
   :defer t
   :ensure auctex)
