@@ -680,7 +680,7 @@ Host *
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
-  (setq-default projectile-mode-line-prefix " Proj") ; Shorten Projectile line mode prefix
+  (setq-default projectile-mode-line-prefix " P") ; Shorten Projectile line mode prefix
   (setq projectile-completion-system 'helm)
   :config
   (projectile-mode t))
