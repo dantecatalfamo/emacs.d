@@ -743,7 +743,7 @@ Host *
   :if my-darwin-p
   :hook (after-init . shadowenv-global-mode)
   :custom
-  (shadowenv-lighter "Senv"))
+  (shadowenv-lighter "S"))
 
 
 ;; (use-package slime
