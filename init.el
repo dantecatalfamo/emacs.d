@@ -656,6 +656,10 @@ Host *
   :ensure t)
 
 
+(use-package package-lint
+  :ensure t)
+
+
 (use-package paren
   :config
   (show-paren-mode t))
