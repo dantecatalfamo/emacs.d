@@ -164,7 +164,8 @@
   (setq company-idle-delay .15)
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command))
-  (setq company-lighter-base "Co")
+  (setq company-show-numbers t)
+  ; (setq company-lighter-base "")
   (setq company-minimum-prefix-length 2)
   :config
   (global-company-mode))
