@@ -953,6 +953,7 @@ Host *
 (setq prettify-symbols-unprettify-at-point 'right-edge)
 (setq frame-resize-pixelwise t)
 (setq inhibit-x-resources t)  ; Fix emacsclient issues
+(setq initial-scratch-message nil) ; Start scratch buffer empty
 
 ;; HACK: Fix ELPA https refresh issue
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
