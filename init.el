@@ -160,6 +160,7 @@
 (use-package company
   :ensure t
   :diminish
+  :bind (("C-<tab>" . company-complete))
   :init
   (setq company-idle-delay .15)
   (setq company-echo-delay 0)
