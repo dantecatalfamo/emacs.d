@@ -752,6 +752,11 @@ Host *
   :hook (after-init . savehist-mode))
 
 
+(use-package saveplace
+  :config
+  (save-place-mode))
+
+
 (use-package shadowenv  ; Custom elisp
   :load-path "~/.emacs.d/shadowenv"
   :if my-darwin-p
