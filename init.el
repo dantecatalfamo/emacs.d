@@ -129,15 +129,18 @@
 
 
 (use-package browse-at-remote
-  :ensure t)
+  :ensure t
+  :commands browse-at-remote)
 
 
 (use-package calfw
+  :defer t
   :ensure t)
 
 
 (use-package calfw-org
-  :ensure t)
+  :ensure t
+  :commands cfw:open-org-calendar)
 
 
 (use-package chess
@@ -186,7 +189,8 @@
 
 
 (use-package cperl-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package css-mode
@@ -197,7 +201,8 @@
 
 
 (use-package csv-mode
-  :ensure t)
+  :ensure t
+  :mode "\\.[Cc][Ss][Vv]\\'")
 
 
 (use-package descr-text
@@ -223,7 +228,8 @@
 
 
 (use-package dockerfile-mode
-  :ensure t)
+  :ensure t
+  :mode "Dockerfile\\'")
 
 
 (use-package docker-tramp
@@ -283,10 +289,12 @@
 
 
 (use-package elpher
-  :ensure t)
+  :ensure t
+  :commands (elpher elpher-go))
 
 
 (use-package elpy
+  :hook (python-mode . elpy-start)
   :ensure t)
 
 
@@ -297,7 +305,8 @@
 
 
 (use-package htmlize
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package enh-ruby-mode
@@ -370,7 +379,8 @@
 
 
 (use-package flycheck-package
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package flycheck-perl6
@@ -412,11 +422,13 @@
 
 
 (use-package git-timemachine
-  :ensure t)
+  :ensure t
+  :commands git-timemachine)
 
 
 (use-package go
-  :ensure t)
+  :ensure t
+  :commands go-play)
 
 
 (use-package go-mode
@@ -433,7 +445,8 @@
 
 
 (use-package graphviz-dot-mode
-  :ensure t)
+  :ensure t
+  :mode ("\\.dot\\'" "\\.gv\\'"))
 
 
 (use-package helm
@@ -462,7 +475,8 @@
 
 
 (use-package helm-lsp
-  :ensure t)
+  :ensure t
+  :after (helm lsp-mode))
 
 
 (use-package helm-projectile
@@ -471,7 +485,8 @@
 
 
 (use-package helm-system-packages
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package helm-tramp
@@ -546,7 +561,8 @@
 
 
 (use-package lua-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package lsp-mode
@@ -600,7 +616,8 @@
 
 
 (use-package nginx-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package org
@@ -659,11 +676,13 @@ Host *
 
 
 (use-package ox-gfm
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package package-lint
-  :ensure t)
+  :ensure t
+  :commands package-lint-current-buffer)
 
 
 (use-package paren
@@ -714,7 +733,8 @@ Host *
 
 
 (use-package raku-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package restclient
@@ -781,12 +801,14 @@ Host *
 
 (use-package sly
   :ensure t
+  :defer t
   :init
   (setq inferior-lisp-program "sbcl"))
 
 
 (use-package sly-macrostep
-  :ensure t)
+  :ensure t
+  :after sly)
 
 
 (use-package smartparens
@@ -835,7 +857,6 @@ Host *
 
 (use-package treemacs
   :ensure t
-  :after imenu
   :bind (("C-c n" . treemacs)))
 
 
@@ -915,8 +936,7 @@ Host *
 (use-package yasnippet
   :ensure t
   :diminish (yas-minor-mode . "")
-  :config
-  (yas-global-mode))
+  :hook (after-init . yas-global-mode))
 
 
 (use-package yasnippet-snippets
