@@ -162,6 +162,7 @@
 
 (use-package company
   :ensure t
+  :defer nil
   :diminish
   :bind (("C-<tab>" . company-complete))
   :init
