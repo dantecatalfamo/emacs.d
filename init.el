@@ -178,11 +178,11 @@
   :hook (nginx-mode #'company-nginx-keywords))
 
 
-;; (use-package company-quickhelp
-;;   :ensure t
-;;   :after company
-;;   :config
-;;   (company-quickhelp-mode))
+(use-package company-quickhelp
+  :ensure t
+  :after company
+  :config
+  (company-quickhelp-mode))
 
 
 (use-package cperl-mode
@@ -249,13 +249,6 @@
 (use-package discover-my-major
   :ensure t
   :bind ("C-h C-m" . discover-my-major))
-
-
-(use-package easy-hugo
-  :ensure t
-  :init
-  (setq easy-hugo-basedir "~/src/lambda.cx/blog/blog")
-  (setq easy-hugo-default-ext ".org"))
 
 
 (use-package ejson-mode           ; Custom elisp
