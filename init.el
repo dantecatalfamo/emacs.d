@@ -166,7 +166,7 @@
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command))
   (setq company-show-numbers t)
-  ; (setq company-lighter-base "")
+  (setq company-selection-wrap-around t)
   (setq company-minimum-prefix-length 2)
   :config
   (global-company-mode))
@@ -249,6 +249,13 @@
 (use-package discover-my-major
   :ensure t
   :bind ("C-h C-m" . discover-my-major))
+
+
+(use-package easy-hugo
+  :ensure t
+  :init
+  (setq easy-hugo-basedir "~/src/lambda.cx/blog/blog")
+  (setq easy-hugo-default-ext ".org"))
 
 
 (use-package ejson-mode           ; Custom elisp
