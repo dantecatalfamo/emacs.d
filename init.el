@@ -890,7 +890,7 @@ Host *
 
 ;; (use-package vterm-toggle
 ;;   :ensure t
-;;   :bind (("<f5>" . #'vterm-toggle-cd)))
+;;   :bind (("<f5>" . vterm-toggle-cd)))
 
 
 (use-package web-mode
@@ -975,6 +975,7 @@ Host *
 (setq frame-resize-pixelwise t)
 (setq inhibit-x-resources t)  ; Fix emacsclient issues
 (setq initial-scratch-message nil) ; Start scratch buffer empty
+(setq sentence-end-double-space nil) ; Only one space between senteces for auto-fill.
 
 ;; HACK: Fix ELPA https refresh issue
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
