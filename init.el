@@ -680,7 +680,7 @@ Host *
 
 (use-package ox-gfm
   :ensure t
-  :defer t)
+  :after org)
 
 
 (use-package package-lint
