@@ -234,7 +234,8 @@
 
 
 (use-package docker-tramp
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package doom-themes
@@ -644,6 +645,7 @@
 
 (use-package org-export-config     ; Custom elisp
   :load-path "~/.emacs.d/elisp"
+  :commands (my/org-export-hosts my/org-export-ssh)
   :config
   (setq my/org-export-config-ssh-header
         "IgnoreUnknown AddKeysToAgent,UseKeychain
