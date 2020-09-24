@@ -631,11 +631,12 @@
          ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
-  :init
+  :config
   (setq org-log-done 'time)  ; Can be 'time or 'note
   (setq org-directory "~/Org")
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
+  ;; (setq org-hide-emphasis-markers t)
   (setq org-refile-targets '((nil :maxlevel . 9)
                              (org-agenda-files :maxlevel . 3)))
   (setq org-refile-use-outline-path 'file)
