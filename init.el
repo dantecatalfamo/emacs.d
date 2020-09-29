@@ -309,7 +309,7 @@
 (use-package hl-todo
   :ensure t
   :config
-  (hl-todo-mode))
+  (global-hl-todo-mode))
 
 
 (use-package htmlize
