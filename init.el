@@ -598,6 +598,13 @@
         magit-diff-refine-ignore-whitespace t))
 
 
+(use-package magit-todos
+  :ensure t
+  :after magit
+  :config
+  (magit-todos-mode))
+
+
 (use-package markdown-mode
   :ensure t
   :mode "\\.md\\'")
