@@ -602,6 +602,7 @@
   :ensure t
   :after magit
   :config
+  (setq magit-todos-exclude-globs '("*.js.map"))
   (magit-todos-mode))
 
 
