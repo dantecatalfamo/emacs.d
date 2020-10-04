@@ -506,7 +506,8 @@
   :ensure t
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
-         ("C-h k" . helpful-key)))
+         ("C-h k" . helpful-key)
+         ("C-c C-d" . helpful-at-point)))
 
 
 (use-package holy-buffers    ; Custom elisp
