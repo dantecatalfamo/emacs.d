@@ -263,7 +263,10 @@
 
 (use-package dired-ranger
   :ensure t
-  :defer t)
+  :bind (:map dired-mode-map
+              ("C-c C-c" . dired-ranger-copy)
+              ("C-c C-p" . dired-ranger-paste)
+              ("C-c C-m" . dired-ranger-move)))
 
 
 (use-package dired-subtree
