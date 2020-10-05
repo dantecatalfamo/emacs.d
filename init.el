@@ -326,7 +326,7 @@
 (use-package epa
   :config
   (when-darwin
-   (setq epa-pinentry-mode 'loopback)))
+   (setq epg-pinentry-mode 'loopback)))
 
 
 (use-package exec-path-from-shell
