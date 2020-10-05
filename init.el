@@ -1129,18 +1129,6 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
   (setq erc-modified-channels-alist '())
   (setq erc-modified-channels-object nil))
 
-(defun quick-copy-line ()
-  "Copy the whole line that point is on and move to beginning of the next line.
-Consecutive calls to this command append each line to the
-`kill-ring'."
-  (interactive)
-  (let ((beg (line-beginning-position 1))
-        (end (line-beginning-position 2)))
-    (if (eq last-command 'quick-copy-line)
-        (kill-append (buffer-substring beg end) (< end beg))
-      (kill-new (buffer-substring beg end))))
-  (beginning-of-line 2))
-
 ; Taken from https://endlessparentheses.com/get-in-the-habit-of-using-sharp-quote.html
 (defun endless/sharp ()
   "Insert #' unless in a string or comment."
@@ -1159,7 +1147,6 @@ Consecutive calls to this command append each line to the
 (bind-key "C-M-r" #'isearch-backward)
 (bind-key "C->" #'indent-rigidly-right-to-tab-stop)
 (bind-key "C-<" #'indent-rigidly-left-to-tab-stop)
-(bind-key "C-c x" #'quick-copy-line)
 (bind-key "C-c k" #'bury-buffer)
 (bind-key "#" #'endless/sharp emacs-lisp-mode-map)
 (bind-key "#" #'endless/sharp lisp-mode-map)
