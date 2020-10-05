@@ -261,6 +261,11 @@
   (define-key dired-mode-map (kbd ",") dired-filter-mark-map))
 
 
+(use-package dired-ranger
+  :ensure t
+  :defer t)
+
+
 (use-package dired-subtree
   :ensure t
   :after dired
