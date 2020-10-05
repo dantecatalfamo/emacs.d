@@ -253,6 +253,14 @@
   (setq dired-dwim-target t))
 
 
+(use-package dired-filter
+  :ensure t
+  :defer t
+  :init ; maps are autoloaded
+  (define-key dired-mode-map (kbd "/") dired-filter-map)
+  (define-key dired-mode-map (kbd ",") dired-filter-mark-map))
+
+
 (use-package dired-subtree
   :ensure t
   :after dired
