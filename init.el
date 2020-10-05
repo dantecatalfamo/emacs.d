@@ -952,6 +952,12 @@ Host *
   :hook (after-init . windmove-default-keybindings))
 
 
+(use-package whole-line-or-region
+  :ensure t
+  :config
+  (whole-line-or-region-global-mode 1))
+
+
 (use-package xclip
   :ensure t
   :config
