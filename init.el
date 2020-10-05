@@ -302,7 +302,7 @@
 
 
 (use-package elpy
-  :hook (python-mode . elpy-start)
+  :hook (python-mode . elpy-enable)
   :ensure t)
 
 
