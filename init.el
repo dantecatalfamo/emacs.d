@@ -828,6 +828,11 @@ Host *
   (shadowenv-lighter "S"))
 
 
+(use-package string-inflection
+  :ensure t
+  :defer t)
+
+
 ;; (use-package slime
 ;;   :ensure t
 ;;   :commands (slime)
