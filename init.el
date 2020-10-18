@@ -721,6 +721,11 @@ Host *
   :after org)
 
 
+(use-package ox-ssh
+  :ensure t
+  :defer t)
+
+
 (use-package package-lint
   :ensure t
   :commands package-lint-current-buffer)
