@@ -361,13 +361,8 @@
   :commands (erc erc-tls)
   :bind (:map erc-mode-map
               ("C-c C-b" . my-erc-switch-to-buffer-all))
-  :init
-  (setq erc-hide-list '("JOIN" "PART" "QUIT"))
-  (defun my-erc-switch-to-buffer-all ()
-    "Lke erc-switch-to-buffer but show all buffers by default."
-    (interactive)
-    (erc-switch-to-buffer t))
   :custom
+  (erc-hide-list '("JOIN" "PART" "QUIT"))
   (erc-modules
    '(autojoin button completion fill irccontrols keep-place list match
               menu move-to-prompt netsplit networks noncommands notifications
@@ -1152,6 +1147,11 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
   (let ((buffer "*Completions*"))
     (and (get-buffer buffer)
          (kill-buffer buffer))))
+
+(defun my-erc-switch-to-buffer-all ()
+    "Lke erc-switch-to-buffer but show all buffers by default."
+    (interactive)
+    (erc-switch-to-buffer t))
 
 (defun my-erc-clear-modified-buffers ()
   "Clears the modified buffersd notifications from the modeline."
