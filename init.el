@@ -723,7 +723,7 @@ Host *
 
 (use-package ox-ssh
   :ensure t
-  :defer t)
+  :after org)
 
 
 (use-package package-lint
