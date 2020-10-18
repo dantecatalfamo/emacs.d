@@ -358,23 +358,27 @@
 
 
 (use-package erc
-  :commands (erc)
+  :commands (erc erc-tls)
+  :bind (:map erc-mode-map
+              ("C-c C-b" . my-erc-switch-to-buffer-all))
   :init
   (setq erc-hide-list '("JOIN" "PART" "QUIT"))
   (defun my-erc-switch-to-buffer-all ()
     "Lke erc-switch-to-buffer but show all buffers by default."
     (interactive)
     (erc-switch-to-buffer t))
-
-  :bind (:map erc-mode-map
-              ("C-c C-b" . my-erc-switch-to-buffer-all)))
+  :custom
+  (erc-modules
+   '(autojoin button completion fill irccontrols keep-place list match
+              menu move-to-prompt netsplit networks noncommands notifications
+              readonly ring stamp spelling track hl-nicks)))
 
 
 (use-package erc-hl-nicks
   :ensure t
   :after erc
   :init
-  (setq erc-hl-nicks-mode t))
+  (erc-hl-nicks-mode +1))
 
 
 (use-package eshell
