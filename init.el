@@ -560,6 +560,11 @@
   :commands (imenu-list))
 
 
+(use-package indent
+  :bind (("C->" . indent-rigidly-right-to-tab-stop)
+         ("C-<" . indent-rigidly-left-to-tab-stop)))
+
+
 (use-package init-file     ; Custom elisp
   :load-path "~/.emacs.d/elisp")
 
@@ -1201,8 +1206,6 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
                 (eq (char-after) ?'))
       (insert "'"))))
 
-(bind-key "C->" #'indent-rigidly-right-to-tab-stop)
-(bind-key "C-<" #'indent-rigidly-left-to-tab-stop)
 (bind-key "C-c k" #'bury-buffer)
 (bind-key "#" #'endless/sharp emacs-lisp-mode-map)
 (bind-key "#" #'endless/sharp lisp-mode-map)
