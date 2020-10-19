@@ -576,6 +576,12 @@
   (add-to-list 'company-backends 'company-jedi))
 
 
+(use-package ctrlf
+  :ensure t
+  :config
+  (ctrlf-mode +1))
+
+
 (use-package js
   :config
   (setq js-indent-level 2))
@@ -1195,10 +1201,6 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
                 (eq (char-after) ?'))
       (insert "'"))))
 
-(bind-key "C-s" #'isearch-forward-regexp)
-(bind-key "C-r" #'isearch-backward-regexp)
-(bind-key "C-M-s" #'isearch-forward)
-(bind-key "C-M-r" #'isearch-backward)
 (bind-key "C->" #'indent-rigidly-right-to-tab-stop)
 (bind-key "C-<" #'indent-rigidly-left-to-tab-stop)
 (bind-key "C-c k" #'bury-buffer)
