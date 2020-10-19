@@ -109,6 +109,11 @@
    'aw-leading-char-face nil :foreground "red" :height 4.0))
 
 
+(use-package ag
+  :ensure t
+  :defer t)
+
+
 (use-package all-the-icons
   :ensure t)
 
@@ -963,6 +968,16 @@ Host *
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2))
+
+
+(use-package wgrep
+  :ensure t
+  :defer t)
+
+
+(use-package wgrep-ag
+  :ensure t
+  :defer t)
 
 
 (use-package which-key
