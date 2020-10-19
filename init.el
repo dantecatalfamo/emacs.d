@@ -539,6 +539,11 @@
   :bind (("C-x C-b" . ibuffer-bs-show)))
 
 
+(use-package iedit
+  :ensure t
+  :bind ("C-;" . iedit-mode))
+
+
 (use-package imenu
   :after treemacs
   :commands imenu
