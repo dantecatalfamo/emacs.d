@@ -227,6 +227,10 @@
   :bind (("C-c e" . dev-change-project)))
 
 
+(use-package diff
+  :bind ("C-c d" . #'my-diff-this-buffer-with-file))
+
+
 (use-package diff-hl
   :ensure t
   :defer nil
@@ -1191,7 +1195,6 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
                 (eq (char-after) ?'))
       (insert "'"))))
 
-(bind-key "C-c d" #'my-diff-this-buffer-with-file)
 (bind-key "C-s" #'isearch-forward-regexp)
 (bind-key "C-r" #'isearch-backward-regexp)
 (bind-key "C-M-s" #'isearch-forward)
