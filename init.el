@@ -46,13 +46,13 @@
      ,@body))
 
 ;; Variables for the same thing
-(defvar my-darwin-p (eq system-type 'darwin)
+(defvar darwin-p (eq system-type 'darwin)
   "Is this machine darwin?")
 
-(defvar my-linux-p (eq system-type 'gnu/linux)
+(defvar linux-p (eq system-type 'gnu/linux)
   "Is this machine linux?")
 
-(defvar my-windows-p (eq system-type 'windows-nt)
+(defvar windows-p (eq system-type 'windows-nt)
   "Is this machine windows?")
 
 ;; Custom and bad elisp getter
@@ -836,7 +836,7 @@ Host *
 
 (use-package shadowenv  ; Custom elisp
   :load-path "~/.emacs.d/shadowenv"
-  :if my-darwin-p
+  :if darwin-p
   :hook (after-init . shadowenv-global-mode)
   :custom
   (shadowenv-lighter "S"))
@@ -1032,8 +1032,8 @@ Host *
 
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
-(menu-bar-mode (if my-darwin-p 1 -1)) ; Only show menu bar on MacOS
-(unless my-darwin-p
+(menu-bar-mode (if darwin-p 1 -1)) ; Only show menu bar on MacOS
+(unless darwin-p
   (display-time-mode t)) ; time in mode line
 (column-number-mode) ; Show column in modeline
 (delete-selection-mode)
@@ -1207,7 +1207,7 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
 ;; Removes *Completions* from buffer after you've opened a file.
 (add-hook 'minibuffer-exit-hook 'my-delete-completion-buffer)
 
-(unless my-darwin-p
+(unless darwin-p
   (set-face-attribute
    'default nil :inherit nil :height 92))
 
