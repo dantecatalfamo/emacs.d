@@ -1018,7 +1018,9 @@ Host *
 (use-package whole-line-or-region
   :ensure t
   :config
-  (whole-line-or-region-global-mode 1))
+  (whole-line-or-region-global-mode 1)
+  ;; Can't diminish using :diminish, symbol is different
+  (diminish 'whole-line-or-region-local-mode ""))
 
 
 (use-package xclip
