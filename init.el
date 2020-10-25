@@ -766,6 +766,14 @@ Host *
   (show-paren-mode t))
 
 
+(use-package paredit
+  :ensure t
+  :hook ((emacs-lisp . paredit-mode)
+         (ielm-mode . paredit-mode)
+         (sly-mode . paredit-mode)
+         (lisp-interaction-mode . paredit-mode)))
+
+
 (use-package pdf-tools
   :ensure t
   :hook ((after-init . pdf-loader-install)))
