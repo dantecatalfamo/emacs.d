@@ -183,6 +183,9 @@
   (setq company-show-numbers t)
   (setq company-selection-wrap-around t)
   (setq company-minimum-prefix-length 2)
+  (setq company-dabbrev-downcase nil)
+  (setq company-transformers '(company-sort-by-occurrence
+                               company-sort-by-backend-importance))
   :config
   (global-company-mode))
 
@@ -1077,6 +1080,8 @@ Host *
 (setq inhibit-x-resources t)  ; Fix emacsclient issues
 (setq initial-scratch-message nil) ; Start scratch buffer empty
 (setq sentence-end-double-space nil) ; Only one space between senteces for auto-fill.
+(setq echo-keystrokes 0.1) ; Don't wait long before showing keystrokes
+
 
 ;; HACK: Fix ELPA https refresh issue
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
