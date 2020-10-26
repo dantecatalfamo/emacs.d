@@ -768,7 +768,7 @@ Host *
 
 (use-package paredit
   :ensure t
-  :hook ((emacs-lisp . paredit-mode)
+  :hook ((emacs-lisp-mode . paredit-mode)
          (ielm-mode . paredit-mode)
          (sly-mode . paredit-mode)
          (lisp-interaction-mode . paredit-mode)))
