@@ -695,20 +695,21 @@
          ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
-  :config
-  (setq org-log-done 'time)  ; Can be 'time or 'note
-  (setq org-directory "~/Org")
+  :custom
+  (org-log-done 'time)  ; Can be 'time or 'note
+  (org-directory "~/Org")
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
   ;; (setq org-hide-emphasis-markers t)
-  (setq org-refile-targets '((nil :maxlevel . 9)
-                             (org-agenda-files :maxlevel . 3)))
-  (setq org-refile-use-outline-path 'file)
-  (setq org-outline-path-complete-in-steps nil)
-  (setq org-refile-allow-creating-parent-nodes 'confirm)
-  (setq org-src-tab-acts-natively t)
-  (setq org-edit-src-content-indentation 0)
-  (setq org-confirm-babel-evaluate nil))
+  (org-refile-targets '((nil :maxlevel . 9)
+                        (org-agenda-files :maxlevel . 3)))
+  (org-refile-use-outline-path 'file)
+  (org-outline-path-complete-in-steps nil)
+  (org-refile-allow-creating-parent-nodes 'confirm)
+  (org-src-tab-acts-natively t)
+  (org-edit-src-content-indentation 0)
+  (org-confirm-babel-evaluate nil)
+  (org-babel-load-languages '((emacs-lisp . t) (shell . t))))
 
 
 
