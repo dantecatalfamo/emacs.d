@@ -707,7 +707,8 @@
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-src-tab-acts-natively t)
-  (setq org-edit-src-content-indentation 0))
+  (setq org-edit-src-content-indentation 0)
+  (setq org-confirm-babel-evaluate nil))
 
 
 
