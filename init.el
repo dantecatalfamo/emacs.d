@@ -1162,6 +1162,14 @@ Host *
 
 ;;; Functions
 
+
+(defun my-hugo-server ()
+  "Run hugo server for current project."
+  (interactive)
+  (let ((default-directory (projectile-project-root)))
+    (display-buffer
+     (make-comint "Hugo Server" "hugo" nil "-D" "server"))))
+
 (defun my-insert-iso-date ()
   "Insert ISO 8601 formatted date.
 Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
