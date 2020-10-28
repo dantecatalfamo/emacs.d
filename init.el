@@ -652,7 +652,7 @@
   :after magit
   :config
   (setq magit-todos-exclude-globs '("*.js.map" "TAGS" "*.lock"))
-  (setq magit-todos-keyword-suffix "\\(?:([^)]+)\\)?:?") ; make colon optional
+  (setq magit-todos-keyword-suffix "\\(?:([^)]+)\\)?[: ]") ; make colon optional
   (magit-todos-mode))
 
 
