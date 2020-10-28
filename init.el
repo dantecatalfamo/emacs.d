@@ -770,6 +770,7 @@ Host *
 
 (use-package paredit
   :ensure t
+  :diminish " Pe"
   :hook ((emacs-lisp-mode . paredit-mode)
          (ielm-mode . paredit-mode)
          (sly-mode . paredit-mode)
