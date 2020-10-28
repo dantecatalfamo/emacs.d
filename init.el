@@ -1168,7 +1168,8 @@ Host *
   (interactive)
   (let ((default-directory (projectile-project-root)))
     (display-buffer
-     (make-comint "Hugo Server" "hugo" nil "-D" "server"))))
+     (make-comint "Hugo Server" "hugo" nil "-D" "server")))
+  (browse-url "http://localhost:1313"))
 
 (defun my-insert-iso-date ()
   "Insert ISO 8601 formatted date.
