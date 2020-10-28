@@ -21,6 +21,9 @@
 (if (file-exists-p custom-file)
     (load custom-file))
 
+(setq user-full-name "Dante Catalfamo"
+      user-mail-address "dante.catalfamo@gmail.com")
+
 (message "Starting Emacs...")
 
 ;; (use-package benchmark-init
