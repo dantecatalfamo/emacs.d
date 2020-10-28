@@ -390,7 +390,7 @@
 
 (use-package eshell
   :hook (eshell-mode . my-disable-tramp-company)
-  :init
+  :config
   (setq eshell-destroy-buffer-when-process-dies t)
   (setq eshell-hist-ignoredups t)
   (setq eshell-history-size 1048576))
