@@ -1124,8 +1124,9 @@ Host *
   "Add space between the mode string and global mode stringg.")
 
 ;; ;; (setf (nthcdr 2 mode-line-format) (cons "%I " (nthcdr 2 mode-line-format))) ; Format default string
-(setf (car global-mode-string) my-global-mode-string-line) ; Add bracket to beginning
-(add-to-list 'global-mode-string "]"  t) ; Add closing bracket
+(unless darwin-p
+  (setf (car global-mode-string) my-global-mode-string-line) ; Add bracket to beginning
+  (add-to-list 'global-mode-string "]"  t)) ; Add closing bracket
 
 (setq-default mode-line-format '("%e"
                                  mode-line-front-space
