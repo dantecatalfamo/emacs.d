@@ -801,6 +801,7 @@ Host *
 (use-package projectile
   :ensure t
   :after helm
+  :commands (projectile-project-root)
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
