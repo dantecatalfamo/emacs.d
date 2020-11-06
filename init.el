@@ -1166,6 +1166,13 @@ Host *
      (make-comint "Hugo Server" "hugo" nil "-D" "server")))
   (browse-url "http://localhost:1313"))
 
+(defun my-hugo-deploy ()
+  "Run `./deploy.sh' in my hugo project."
+  (interactive)
+  (let ((default-directory (projectile-project-root)))
+    (display-buffer
+     (make-comint "Hugo Deploy" "sh" nil "./deploy.sh"))))
+
 (defun my-insert-iso-date ()
   "Insert ISO 8601 formatted date.
 Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
