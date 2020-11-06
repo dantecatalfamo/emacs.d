@@ -698,36 +698,21 @@
          ("C-c b" . org-switchb)
          ("C-c c" . org-capture)
          ("C-c l" . org-store-link))
-  :custom
-  (org-log-done 'time)  ; Can be 'time or 'note
-  (org-directory "~/Org")
+  :config
+  (setq org-log-done 'time)  ; Can be 'time or 'note
+  (setq org-directory "~/Org")
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
   ;; (setq org-hide-emphasis-markers t)
-  (org-refile-targets '((nil :maxlevel . 9)
-                        (org-agenda-files :maxlevel . 3)))
-  (org-refile-use-outline-path 'file)
-  (org-outline-path-complete-in-steps nil)
-  (org-refile-allow-creating-parent-nodes 'confirm)
-  (org-src-tab-acts-natively t)
-  (org-edit-src-content-indentation 0)
-  (org-confirm-babel-evaluate nil)
-  (org-babel-load-languages '((emacs-lisp . t) (shell . t))))
-
-
-
-(use-package org-export-config     ; Custom elisp
-  :load-path "~/.emacs.d/elisp"
-  :commands (my/org-export-hosts my/org-export-ssh)
-  :config
-  (setq my/org-export-config-ssh-header
-        "IgnoreUnknown AddKeysToAgent,UseKeychain
-
-Host *
-  AddKeysToAgent yes
-  UseKeychain yes
-  IdentityFile ~/.ssh/id_rsa
-"))
+  (setq org-refile-targets '((nil :maxlevel . 9)
+                             (org-agenda-files :maxlevel . 3)))
+  (setq org-refile-use-outline-path 'file)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+  (setq org-src-tab-acts-natively nil)
+  (setq org-edit-src-content-indentation 0)
+  (setq org-confirm-babel-evaluate nil)
+  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t))))
 
 
 (use-package org-journal
@@ -758,7 +743,15 @@ Host *
 
 (use-package ox-ssh
   :ensure t
-  :after org)
+  :after org
+  :config
+  (setq org-ssh-header "IgnoreUnknown AddKeysToAgent,UseKeychain
+
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+"))
 
 
 (use-package package-lint
