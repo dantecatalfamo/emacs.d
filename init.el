@@ -137,6 +137,10 @@
   :ensure auctex)
 
 
+(use-package text-mode
+  :hook (text-mode . (lambda () (setq truncate-lines nil))))
+
+
 (use-package bytes-constant             ; Custom elisp
   :load-path "~/.emacs.d/elisp/bytes-constant.el"
   :commands (bytes-constant byteconst))
@@ -1091,6 +1095,7 @@ Host *
 (setq echo-keystrokes 0.1) ; Don't wait long before showing keystrokes
 (setq-default auto-hscroll-mode 'current-line) ; Only horizontally scroll the current line
 (setq-default truncate-lines t) ; Truncate lines instead of wrapping
+(setq word-wrap t) ; Word-wrap instead of wrapping in the middle of words
 
 
 ;; HACK: Fix ELPA https refresh issue
