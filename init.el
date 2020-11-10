@@ -1084,11 +1084,13 @@ Host *
       kept-new-versions 10    ; How many new versions to keep
       kept-old-versions 5)    ; How many old
 (setq prettify-symbols-unprettify-at-point 'right-edge)
-(setq frame-resize-pixelwise t)
+(setq frame-resize-pixelwise t) ; Pixel perfect window resize
 (setq inhibit-x-resources t)  ; Fix emacsclient issues
 (setq initial-scratch-message nil) ; Start scratch buffer empty
 (setq sentence-end-double-space nil) ; Only one space between senteces for auto-fill.
 (setq echo-keystrokes 0.1) ; Don't wait long before showing keystrokes
+(setq-default auto-hscroll-mode 'current-line) ; Only horizontally scroll the current line
+(setq-default truncate-lines t) ; Truncate lines instead of wrapping
 
 
 ;; HACK: Fix ELPA https refresh issue
