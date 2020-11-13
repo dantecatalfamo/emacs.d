@@ -992,13 +992,7 @@ Host *
          :map vterm-mode-map
          ("<f6>" . my-vterm-toggle-or-cd))
   :config
-  (setq vterm-toggle-cd-auto-create-buffer t)
-  (defun my-vterm-toggle-or-cd ()
-    "If vterm was just opened, call `vterm-toggle-insert-cd`, otherwise toggle."
-    (interactive)
-    (if (eq last-command 'vterm-toggle)
-        (vterm-toggle-insert-cd)
-      (vterm-toggle))))
+  (setq vterm-toggle-cd-auto-create-buffer t))
 
 
 (use-package web-mode
@@ -1175,6 +1169,12 @@ Host *
 
 ;;; Functions
 
+(defun my-vterm-toggle-or-cd ()
+  "If vterm was just opened, call `vterm-toggle-insert-cd`, otherwise toggle."
+  (interactive)
+  (if (eq last-command 'vterm-toggle)
+      (vterm-toggle-insert-cd)
+    (vterm-toggle)))
 
 (defun my-hugo-server ()
   "Run hugo server for current project."
