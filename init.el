@@ -953,8 +953,11 @@ Host *
 
 
 (use-package tab-bar
+  :bind (("C-x t >" . tab-bar-history-forward)
+         ("C-x t <" . tab-bar-history-back))
   :init
-  (tab-bar-mode))
+  (tab-bar-mode)
+  (tab-bar-history-mode))
 
 
 (use-package tide
