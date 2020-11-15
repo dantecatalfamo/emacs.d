@@ -228,7 +228,8 @@
 
 
 (use-package decide
-  :ensure t)
+  :ensure t
+  :bind-keymap ("C-c t" . decide-prefix-map))
 
 
 (use-package descr-text
