@@ -346,6 +346,10 @@
   :ensure t)
 
 
+(use-package emoji-cheat-sheet-plus
+  :ensure t)
+
+
 (use-package hl-todo
   :ensure t
   :config
