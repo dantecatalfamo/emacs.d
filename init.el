@@ -227,6 +227,10 @@
   :mode "\\.[Cc][Ss][Vv]\\'")
 
 
+(use-package decide
+  :ensure t)
+
+
 (use-package descr-text
   :bind (("C-h T" . describe-char)))
 
