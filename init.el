@@ -1116,9 +1116,6 @@ Host *
 (setq word-wrap t) ; Word-wrap instead of wrapping in the middle of words
 
 
-;; HACK: Fix ELPA https refresh issue
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
-
 ;; MacOS titlebar
 (when-darwin
  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
