@@ -947,6 +947,11 @@ Host *
   :commands (sysctl))
 
 
+(use-package tab-bar
+  :init
+  (tab-bar-mode))
+
+
 (use-package tide
   :ensure t
   :hook ((rjsx-mode . tide-setup)
