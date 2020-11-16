@@ -725,7 +725,8 @@
   (setq org-src-tab-acts-natively nil)
   (setq org-edit-src-content-indentation 0)
   (setq org-confirm-babel-evaluate nil)
-  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t))))
+  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t)))
+  (org-link-set-parameters "roll" :follow #'my-org-link--open-roll)) ; Roll dice with `roll:1d6' link
 
 
 (use-package org-journal
@@ -1182,6 +1183,11 @@ Host *
 
 
 ;;; Functions
+
+(defun my-org-link--open-roll (spec-string)
+  "Roll dice or pull card using SPEC-STRING in `decide'."
+  (let ((buffer-read-only t))
+    (decide-roll-dice spec-string)))
 
 (defun my-vterm-toggle-or-cd ()
   "If vterm was just opened, call `vterm-toggle-insert-cd`, otherwise toggle."
