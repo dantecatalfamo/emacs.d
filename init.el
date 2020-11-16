@@ -1186,8 +1186,10 @@ Host *
 
 (defun my-org-link--open-roll (spec-string)
   "Roll dice or pull card using SPEC-STRING in `decide'."
-  (let ((buffer-read-only t))
-    (decide-roll-dice spec-string)))
+  (let ((spec (decide-make-dice-spec spec-string)))
+    (message "[%s] -> %s"
+             (decide-describe-dice-spec spec)
+             (apply #'decide-roll-dice-spec spec))))
 
 (defun my-vterm-toggle-or-cd ()
   "If vterm was just opened, call `vterm-toggle-insert-cd`, otherwise toggle."
