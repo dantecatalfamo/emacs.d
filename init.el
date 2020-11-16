@@ -728,7 +728,7 @@
   (setq org-babel-load-languages '((emacs-lisp . t) (shell . t)))
   (org-link-set-parameters "roll"   ; Roll dice with `roll:1d6' link
                            :follow #'my-org-link--open-roll
-                           :complete #'my-org-link--store-roll))
+                           :complete #'my-org-link--complete-roll))
 
 
 (use-package org-journal
@@ -1193,7 +1193,7 @@ Host *
              (decide-describe-dice-spec spec)
              (apply #'decide-roll-dice-spec spec))))
 
-(defun my-org-link--store-roll ()
+(defun my-org-link--complete-roll ()
   "Store roll link."
   (concat "roll:" (replace-regexp-in-string "\s" "" (read-from-minibuffer "Roll: "))))
 
