@@ -1185,7 +1185,7 @@ Host *
 ;;; Functions
 
 (defun my-org-link--open-roll (spec-string)
-  "Roll dice or pull card using SPEC-STRING in `decide'."
+  "Roll dice or with SPEC-STRING using `decide'."
   (let ((spec (decide-make-dice-spec spec-string)))
     (message "[%s] -> %s"
              (decide-describe-dice-spec spec)
