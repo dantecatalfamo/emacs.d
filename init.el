@@ -243,7 +243,7 @@
 
 
 (use-package diff
-  :bind ("C-c d" . #'my-diff-this-buffer-with-file))
+  :bind ("C-c d" . my-diff-this-buffer-with-file))
 
 
 (use-package diff-hl
@@ -624,8 +624,8 @@
 
 
 (use-package kmacro
-  :bind (("C-x (" . #'kmacro-start-macro-or-insert-counter)
-         ("C-x )" . #'kmacro-end-or-call-macro)))
+  :bind (("C-x (" . kmacro-start-macro-or-insert-counter)
+         ("C-x )" . kmacro-end-or-call-macro)))
 
 
 (use-package lua-mode
