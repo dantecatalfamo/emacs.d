@@ -726,7 +726,9 @@
   (setq org-edit-src-content-indentation 0)
   (setq org-confirm-babel-evaluate nil)
   (setq org-babel-load-languages '((emacs-lisp . t) (shell . t)))
-  (org-link-set-parameters "roll" :follow #'my-org-link--open-roll)) ; Roll dice with `roll:1d6' link
+  (org-link-set-parameters "roll"   ; Roll dice with `roll:1d6' link
+                           :follow #'my-org-link--open-roll
+                           :complete #'my-org-link--store-roll))
 
 
 (use-package org-journal
@@ -1190,6 +1192,10 @@ Host *
     (message "[%s] -> %s"
              (decide-describe-dice-spec spec)
              (apply #'decide-roll-dice-spec spec))))
+
+(defun my-org-link--store-roll ()
+  "Store roll link."
+  (concat "roll:" (replace-regexp-in-string "\s" "" (read-from-minibuffer "Roll: "))))
 
 (defun my-vterm-toggle-or-cd ()
   "If vterm was just opened, call `vterm-toggle-insert-cd`, otherwise toggle."
