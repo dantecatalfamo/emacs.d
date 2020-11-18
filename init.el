@@ -134,7 +134,11 @@
 
 (use-package tex
   :defer t
-  :ensure auctex)
+  :ensure auctex
+  :config
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil))
 
 
 (use-package text-mode
@@ -626,6 +630,11 @@
 (use-package kmacro
   :bind (("C-x (" . kmacro-start-macro-or-insert-counter)
          ("C-x )" . kmacro-end-or-call-macro)))
+
+
+(use-package latex-preview-pane
+  :ensure t
+  :commands latex-preview-pane-mode)
 
 
 (use-package lua-mode
