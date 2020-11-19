@@ -1102,8 +1102,8 @@ Host *
 (scroll-bar-mode 0)
 (tool-bar-mode 0)
 (menu-bar-mode (if darwin-p 1 -1)) ; Only show menu bar on MacOS
-(unless darwin-p
-  (display-time-mode t)) ; time in mode line
+;; (unless darwin-p
+;;   (display-time-mode t)) ; time in mode line
 (column-number-mode) ; Show column in modeline
 (delete-selection-mode)
 
