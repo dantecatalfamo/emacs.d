@@ -6,7 +6,7 @@
 (defvar my-org-table-dates-tags ":noexport:")
 (defvar my-org-table-dates-postfix " bill")
 
-(defun my-finance--parse-tables ()
+(defun my-org-table-dates--parse-tables ()
   "Parse all org-tables with dates in buffer to a plist."
   (let (row-data)
     (org-element-map (org-element-parse-buffer) 'table-row
@@ -28,10 +28,10 @@
             (push `(:timestamp ,timestamp :name ,name) row-data)))))
     (nreverse row-data)))
 
-(defun my-finance-table ()
+(defun my-org-table-dates ()
   "Convert first col name and timestamp to reminders."
   (interactive)
-  (let* ((row-data (my-finance--parse-tables))
+  (let* ((row-data (my-org-table-dates--parse-tables))
          (rows (length row-data))
          (inhibit-message t))
     (save-excursion
