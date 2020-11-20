@@ -31,8 +31,9 @@
 (defun my-finance-table ()
   "Convert first col name and timestamp to reminders."
   (interactive)
-  (let ((row-data (my-finance--parse-tables))
-        (inhibit-message t))
+  (let* ((row-data (my-finance--parse-tables))
+         (rows (length row-data))
+         (inhibit-message t))
     (save-excursion
       (goto-char (point-min))
       (search-forward-regexp
@@ -50,7 +51,11 @@
         (insert "** " (plist-get row :name) my-org-table-dates-postfix "\n")
         (insert "   " (plist-get row :timestamp))
         (org-toggle-timestamp-type)
-        (insert "\n")))))
+        (insert "\n"))
+      (org-up-heading-safe)
+      (org-cycle-internal-local))
+    (setq inhibit-message nil)
+    (message "%d reminders created" rows)))
 
 
 
