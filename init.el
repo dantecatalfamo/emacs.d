@@ -492,6 +492,10 @@
   :hook (go-mode-hook . (lambda() (setq-local tab-width 4))))
 
 
+(use-package goto-addr
+  :defer t)
+
+
 (use-package grip-mode
   :ensure t
   :after markdown-mode
@@ -523,6 +527,11 @@
 (use-package helm-ag
   :ensure t
   :bind ("C-c g" . helm-projectile-ag))
+
+
+(use-package helm-atoms
+  :ensure t
+  :defer t)
 
 
 (use-package helm-descbinds
@@ -635,6 +644,10 @@
 (use-package latex-preview-pane
   :ensure t
   :commands latex-preview-pane-mode)
+
+
+(use-package lorem-ipsum
+  :ensure t)
 
 
 (use-package lua-mode
