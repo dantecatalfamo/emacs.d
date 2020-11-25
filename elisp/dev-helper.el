@@ -9,10 +9,10 @@
 (require 'projectile)
 (require 'treemacs)
 
-(defvar dev-projects-root "~/src/github.com"
+(defvar dev-projects-root "~/src"
   "Root directory under which all projects are located.")
 
-(defvar dev-projects-depth 2
+(defvar dev-projects-depth 3
   "Depth under the root that projects' root folders are located.")
 
 
