@@ -190,7 +190,7 @@
   :init
   (setq company-idle-delay .15)
   (setq company-echo-delay 0)
-  (setq company-begin-commands '(self-insert-command))
+  ;; (setq company-begin-commands '(self-insert-command))
   (setq company-show-numbers t)
   (setq company-selection-wrap-around t)
   (setq company-minimum-prefix-length 2)
