@@ -169,8 +169,8 @@
   :ensure t
   :commands chess
   :init
-  (defvar chess-images-default-size 72)
-  (setq chess-default-display '(chess-ics1 chess-plain chess-images)))
+  ;; (setq chess-default-display '(chess-ics1 chess-plain chess-images))
+  (defvar chess-images-default-size 72))
 
 
 (use-package com-css-sort
