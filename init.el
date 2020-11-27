@@ -826,7 +826,8 @@ Host *
 
 (use-package prog-mode
   :hook ((prog-mode . display-line-numbers-mode)
-         (prog-mode . my-add-whitespace-hook)))
+         (prog-mode . my-add-whitespace-hook)
+         (prog-mode . my-prog-auto-fill)))
 
 
 (use-package projectile
@@ -1207,6 +1208,11 @@ Host *
 
 
 ;;; Functions
+
+(defun my-prog-auto-fill ()
+  "Auto fill only comments in prog-mode. Used as a hook."
+  (setq-local comment-auto-fill-only-comments t)
+  (auto-fill-mode))
 
 (defun my-org-link--open-roll (spec-string)
   "Roll dice or with SPEC-STRING using `decide'."
