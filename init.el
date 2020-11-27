@@ -747,7 +747,7 @@
   (setq org-src-tab-acts-natively nil)
   (setq org-edit-src-content-indentation 0)
   (setq org-confirm-babel-evaluate nil)
-  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t)))
+  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t) (python . t)))
   (org-link-set-parameters "roll"   ; Roll dice with `roll:1d6' link
                            :follow #'my-org-link--open-roll
                            :complete #'my-org-link--complete-roll))
