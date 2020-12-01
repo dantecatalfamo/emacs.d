@@ -240,10 +240,10 @@
   :bind (("C-h T" . describe-char)))
 
 
-(use-package dev-helper       ; Custom elisp
+(use-package repo-helper       ; Custom elisp
   :load-path "~/.emacs.d/elisp"
-  :commands (dev-open-pr)
-  :bind (("C-c e" . dev-change-project)))
+  :commands (repo-open-pr)
+  :bind (("C-c e" . repo-change-project)))
 
 
 (use-package diff
