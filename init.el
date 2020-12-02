@@ -182,6 +182,10 @@
   (setq com-css-sort-sort-type 'alphabetic-sort))
 
 
+(use-package comint
+  :hook (comint-mode . (lambda () (company-mode -1))))
+
+
 (use-package company
   :ensure t
   :defer nil
