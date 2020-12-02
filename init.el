@@ -751,10 +751,7 @@
   (setq org-src-tab-acts-natively nil)
   (setq org-edit-src-content-indentation 0)
   (setq org-confirm-babel-evaluate nil)
-  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t) (python . t)))
-  (org-link-set-parameters "roll"   ; Roll dice with `roll:1d6' link
-                           :follow #'my-org-link--open-roll
-                           :complete #'my-org-link--complete-roll))
+  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t) (python . t))))
 
 
 (use-package org-journal
@@ -766,6 +763,11 @@
   :init
   (setq org-journal-dir "~/Org/Journal/")
   (setq org-journal-file-type 'monthly))
+
+
+(use-package org-roll  ; Custom elisp
+  :load-path "~/.emacs/elisp"
+  :after org)
 
 
 (use-package org-tree-slide
@@ -1217,17 +1219,6 @@ Host *
   "Auto fill only comments in prog-mode. Used as a hook."
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode))
-
-(defun my-org-link--open-roll (spec-string)
-  "Roll dice or with SPEC-STRING using `decide'."
-  (let ((spec (decide-make-dice-spec spec-string)))
-    (message "[%s] -> %s"
-             (decide-describe-dice-spec spec)
-             (apply #'decide-roll-dice-spec spec))))
-
-(defun my-org-link--complete-roll ()
-  "Store roll link."
-  (concat "roll:" (replace-regexp-in-string "\s" "" (read-from-minibuffer "Roll: "))))
 
 (defun my-vterm-toggle-or-cd ()
   "If vterm was just opened, call `vterm-toggle-insert-cd`, otherwise toggle."
