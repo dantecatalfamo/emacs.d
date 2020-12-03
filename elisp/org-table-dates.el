@@ -2,6 +2,7 @@
 ;;; Author: Dante Catalfamo
 
 ;;; Commentary:
+
 ;; Generate reminders (headings with active dates) from org tables
 ;; that include inactive dates.
 

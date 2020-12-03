@@ -1,7 +1,9 @@
 ;;; Org-TV --- Easily add TV shows to Org-Mode file
+
 ;;; Commentary:
-;;; Adds a TV show as an org heading, with each season as a
-;;; subheading, and each episode as a checkbox
+
+;; Adds a TV show as an org heading, with each season as a
+;; subheading, and each episode as a checkbox
 
 ;;; Code:
 (require 'org)

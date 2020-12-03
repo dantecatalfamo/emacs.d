@@ -1,5 +1,7 @@
 ;;; bytes-constant.el -- Add byte shorthand to elisp
+
 ;;; Commentary:
+
 ;; Just thought this might be a neat thing to add
 ;; My first macro, created without reference
 

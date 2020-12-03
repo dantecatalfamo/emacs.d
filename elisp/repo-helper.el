@@ -1,6 +1,8 @@
 ;;; repo-helper -- heplers for managing dev project directories -*- lexical-binding: t; -*-
+
 ;;; Commentary:
-;;; A few helpful functions for managing and navigating work projects
+
+;; A few helpful functions for managing and navigating work projects
 
 ;;; Code:
 
