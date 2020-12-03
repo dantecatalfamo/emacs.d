@@ -766,7 +766,12 @@
 
 
 (use-package org-roll  ; Custom elisp
-  :load-path "~/.emacs/elisp"
+  :load-path "~/.emacs.d/elisp"
+  :after org)
+
+
+(use-package org-table-dates  ; Custom elisp
+  :load-path "~/.emacs.d/elisp"
   :after org)
 
 
