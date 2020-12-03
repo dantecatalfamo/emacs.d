@@ -1,12 +1,17 @@
-; -*- lexical-binding: t -*-
+;;; org-table-dates.el --- Generate reminders from inative dates in org tables -*- lexical-binding: t -*-
+;;; Author: Dante Catalfamo
+
+;;; Commentary:
+;; Generate reminders (headings with active dates) from org tables
+;; that include inactive dates.
 
 ;;; Code:
 
-(defvar my-org-table-dates-headline "Reminders")
-(defvar my-org-table-dates-tags ":noexport:")
-(defvar my-org-table-dates-postfix " bill")
+(defvar org-table-dates-headline "Reminders")
+(defvar org-table-dates-tags ":noexport:")
+(defvar org-table-dates-postfix " bill")
 
-(defun my-org-table-dates--parse-tables ()
+(defun org-table-dates--parse-tables ()
   "Parse all org-tables with dates in buffer to a plist."
   (let (row-data)
     (org-element-map (org-element-parse-buffer) 'table-row
@@ -28,27 +33,27 @@
             (push `(:timestamp ,timestamp :name ,name) row-data)))))
     (nreverse row-data)))
 
-(defun my-org-table-dates ()
-  "Convert first col name and timestamp to reminders."
+(defun org-table-dates ()
+  "Convert first col name and timestamp of an org-table to reminders."
   (interactive)
-  (let* ((row-data (my-org-table-dates--parse-tables))
+  (let* ((row-data (org-table-dates--parse-tables))
          (rows (length row-data))
          (inhibit-message t))
     (save-excursion
       (goto-char (point-min))
       (search-forward-regexp
-       (rx bol "* " (eval my-org-table-dates-headline))
+       (rx bol "* " (eval org-table-dates-headline))
        nil t)
-      (when (string= (org-get-heading t) my-org-table-dates-headline)
+      (when (string= (org-get-heading t) org-table-dates-headline)
         (org-mark-element)
         (delete-active-region))
       (goto-char (point-max))
-      (insert "* " my-org-table-dates-headline)
-      (org-set-tags my-org-table-dates-tags)
+      (insert "* " org-table-dates-headline)
+      (org-set-tags org-table-dates-tags)
       (end-of-line)
       (insert "\n")
       (dolist (row row-data)
-        (insert "** " (plist-get row :name) my-org-table-dates-postfix "\n")
+        (insert "** " (plist-get row :name) org-table-dates-postfix "\n")
         (insert "   " (plist-get row :timestamp))
         (org-toggle-timestamp-type)
         (insert "\n"))
@@ -58,5 +63,5 @@
     (message "%d reminders created" rows)))
 
 
-
-;
+(provide 'org-table-dates)
+;;; org-table-dates.el ends here
