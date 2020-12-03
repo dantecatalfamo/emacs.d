@@ -605,6 +605,10 @@
   :load-path "~/.emacs.d/elisp")
 
 
+(use-package insert-shebang
+  :ensure t)
+
+
 (use-package cc-mode
   :init
   (setq-default c-basic-offset 4))
