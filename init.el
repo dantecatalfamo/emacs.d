@@ -340,10 +340,6 @@
   (setq elfeed-goodies/entry-pane-position 'bottom))
 
 
-(use-package elisp-mode
-  :hook (emacs-lisp-mode . prettify-symbols-mode))
-
-
 (use-package elpher
   :ensure t
   :commands (elpher elpher-go))
@@ -842,7 +838,8 @@ Host *
 (use-package prog-mode
   :hook ((prog-mode . display-line-numbers-mode)
          (prog-mode . my-add-whitespace-hook)
-         (prog-mode . my-prog-auto-fill)))
+         (prog-mode . my-prog-auto-fill)
+         (emacs-lisp-mode . prettify-symbols-mode)))
 
 
 (use-package projectile
