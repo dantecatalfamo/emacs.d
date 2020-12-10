@@ -476,6 +476,11 @@
   (setq gdb-many-windows t))
 
 
+(use-package gdscript-mode
+  :ensure t
+  :defer t)
+
+
 (use-package git-timemachine
   :ensure t
   :commands git-timemachine)
