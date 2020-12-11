@@ -1,10 +1,10 @@
-;;; org-table-dates.el --- Generate reminders from inative dates in org tables -*- lexical-binding: t -*-
+;;; org-table-dates.el --- Generate reminders from inactive dates in org tables -*- lexical-binding: t -*-
 ;;; Author: Dante Catalfamo
 
 ;;; Commentary:
 
-;; Generate reminders (headings with active dates) from org tables
-;; that include inactive dates.
+;; Generate reminders (headings with active dates) from the first cell
+;; in org table rows that include inactive dates.
 
 ;;; Code:
 
