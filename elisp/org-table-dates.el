@@ -8,6 +8,9 @@
 
 ;;; Code:
 
+(require 'org-element)
+(require 's)
+
 (defvar org-table-dates-headline "Reminders")
 (defvar org-table-dates-tags ":noexport:")
 (defvar org-table-dates-postfix " bill")
@@ -21,7 +24,9 @@
           (org-element-map row 'table-cell
             (lambda (cell)
               (let* ((contents (car (org-element-contents cell)))
-                     (type (org-element-type contents)))
+                     (type (org-element-type contents))
+                     (begin (org-element-property :begin contents))
+                     (end (org-element-property :end contents)))
                 (cond
                  ((eq type 'timestamp)
                   (setq timestamp (org-element-property :raw-value contents)))
@@ -29,7 +34,7 @@
                   (setq name (org-no-properties contents)))
                  ((eq type 'link)
                   (setq name (org-no-properties
-                              (car (org-element-contents contents)))))))))
+                              (s-trim (buffer-substring begin end)))))))))
           (when (and timestamp name)
             (push `(:timestamp ,timestamp :name ,name) row-data)))))
     (nreverse row-data)))
