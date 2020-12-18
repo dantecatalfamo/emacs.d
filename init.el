@@ -72,19 +72,11 @@
   (shell-command (concat "git -C " (expand-file-name user-emacs-directory) git-dir " pull origin master")))
 
 
-;; Get my elisp
-(my-install-elisp "https://github.com/dantecatalfamo/ejson-mode" "ejson-mode")
-(my-install-elisp "https://github.com/dantecatalfamo/sysctl.el" "sysctl")
-(my-install-elisp "https://github.com/Shopify/shadowenv.el" "shadowenv")
-
-
 ;; Start emacs daemon
 ;; (server-start)
 
 (eval-when-compile
   (add-to-list 'load-path "~/.emacs.d/elisp/")
-  (add-to-list 'load-path "~/.emacs.d/ejson-mode/")
-  (add-to-list 'load-path "~/.emacs.d/sysctl/")
   (require 'use-package))
 
 ;; Package declaration
@@ -313,8 +305,8 @@
   :bind ("C-h C-m" . discover-my-major))
 
 
-(use-package ejson-mode           ; Custom elisp
-  :load-path "~/.emacs.d/ejson-mode"
+(use-package ejson-mode
+  :ensure t
   :mode "\\.ejson\\'")
 
 
@@ -920,8 +912,7 @@ Host *
   (save-place-mode))
 
 
-(use-package shadowenv  ; Custom elisp
-  :load-path "~/.emacs.d/shadowenv"
+(use-package shadowenv
   :if darwin-p
   :hook (after-init . shadowenv-global-mode)
   :custom
@@ -1001,8 +992,8 @@ Host *
 ;;   (symon-mode))
 
 
-(use-package sysctl   ; Custom elisp
-  :load-path "~/.emacs.d/sysctl"
+(use-package sysctl
+  :ensure t
   :commands (sysctl))
 
 
