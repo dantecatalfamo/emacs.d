@@ -409,7 +409,8 @@
 
 
 (use-package eshell
-  :hook (eshell-mode . my-disable-tramp-company)
+  :hook ((eshell-mode . my-disable-tramp-company)
+         (eshell-mode . my-disable-company))
   :config
   (setq eshell-destroy-buffer-when-process-dies t)
   (setq eshell-hist-ignoredups t)
@@ -1272,6 +1273,10 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
   "Disable `company-mode' on TRAMP connections for performance reasons."
   (when (file-remote-p default-directory)
     (company-mode -1)))
+
+(defun my-disable-company ()
+  "Disable company-mode."
+  (company-mode -1))
 
 (defun my-lsp-install-save-hooks ()
   "Add hooks for lsp-mode."
