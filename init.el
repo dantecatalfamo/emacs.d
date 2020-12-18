@@ -1224,6 +1224,13 @@ Host *
 
 ;;; Functions
 
+(defmacro measure-time (&rest body)
+  "Measure the time it takes to evaluate BODY.
+https://lists.gnu.org/archive/html/help-gnu-emacs/2008-06/msg00087.html"
+  `(let ((time (current-time)))
+     ,@body
+     (message "%.06f" (float-time (time-since time)))))
+
 (defun my-prog-auto-fill ()
   "Auto fill only comments in prog-mode. Used as a hook."
   (setq-local comment-auto-fill-only-comments t)
