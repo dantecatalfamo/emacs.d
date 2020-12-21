@@ -6,6 +6,9 @@
 (setq gc-cons-threshold most-positive-fixnum)
 (add-hook 'after-init-hook (lambda() (setq gc-cons-threshold 800000)))
 
+(when (version< emacs-version "27")
+  (package-initialize)) ; Called implicitly in Emacs 27+
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
@@ -997,6 +1000,7 @@ Host *
 
 
 (use-package tab-bar
+  :if (version<= "27" emacs-version)
   :bind (("C-x t >" . tab-bar-history-forward)
          ("C-x t <" . tab-bar-history-back))
   :init
