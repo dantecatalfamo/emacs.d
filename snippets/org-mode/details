@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: details
+# key: details
+# --
+@@html: <details> <summary> @@
+$1
+@@html: </summary> @@
+$2
+@@html: </details> @@
+$0
