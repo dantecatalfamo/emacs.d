@@ -271,7 +271,9 @@
 
 
 (use-package doom-themes
-  :ensure t)
+  :ensure t
+  :config
+  (load-theme 'doom-tomorrow-night t))
 
 
 (use-package dired
