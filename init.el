@@ -212,9 +212,9 @@
   (company-quickhelp-mode))
 
 
-(use-package cperl-mode
-  :ensure t
-  :defer t)
+;; (use-package cperl-mode
+;;   :ensure t
+;;   :defer t)
 
 
 (use-package css-mode
