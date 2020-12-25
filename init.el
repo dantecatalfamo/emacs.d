@@ -418,11 +418,6 @@
   :bind (("C-=" . er/expand-region)))
 
 
-;; (use-package eyebrowse
-;;   :ensure t
-;;   :hook (after-init . eyebrowse-mode))
-
-
 (use-package flycheck
   :ensure t
   :hook (prog-mode . flycheck-mode)
