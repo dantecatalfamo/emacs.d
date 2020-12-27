@@ -212,11 +212,6 @@
   (company-quickhelp-mode))
 
 
-;; (use-package cperl-mode
-;;   :ensure t
-;;   :defer t)
-
-
 (use-package css-mode
   :mode "\\.css\\'"
   :hook (css-mode-hook . (lambda() (setq-local tab-width 2)))
@@ -800,6 +795,11 @@ Host *
 "))
 
 
+(use-package package
+  :init
+  (setq package-quickstart t))
+
+
 (use-package package-lint
   :ensure t
   :commands package-lint-current-buffer)
@@ -912,6 +912,7 @@ Host *
 
 
 (use-package shadowenv
+  :ensure t
   :if darwin-p
   :hook (after-init . shadowenv-global-mode)
   :custom
