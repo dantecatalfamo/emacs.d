@@ -394,7 +394,7 @@
   (erc-modules
    '(autojoin button completion fill irccontrols keep-place list match
               menu move-to-prompt netsplit networks noncommands notifications
-              readonly ring stamp spelling track hl-nicks)))
+              readonly ring scrolltobottom stamp spelling track hl-nicks)))
 
 
 (use-package erc-hl-nicks
