@@ -959,10 +959,10 @@ Host *
   (sp-local-pair '(lisp-mode) "`" "`" :actions nil))
 
 
-(use-package smartscan
-  :ensure t
-  :config
-  (global-smartscan-mode))
+;; (use-package smartscan
+;;   :ensure t
+;;   :config
+;;   (global-smartscan-mode))
 
 
 (use-package so-long   ; Prevent files with long lines from freezing emacs
