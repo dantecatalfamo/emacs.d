@@ -1033,6 +1033,11 @@ Host *
   (setq undo-tree-mode-lighter " UT"))    ; Shorten Undo-Tree's line mode indicator
 
 
+(use-package unfill
+  :ensure t
+  :defer t)
+
+
 (use-package visual-regexp
   :ensure t
   :bind (("C-c v r" . vr/replace)
