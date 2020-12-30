@@ -1230,6 +1230,16 @@ Host *
 
 ;;; Functions
 
+(defun my-copy-unfilled (start end)
+  "Copy region unfilled."
+  (interactive "r")
+  (let ((old-buffer (current-buffer)))
+    (with-temp-buffer
+      (insert-buffer-substring old-buffer start end)
+      (unfill-region (point-min) (point-max))
+      (kill-region (point-min) (point-max))))
+  (message "Region unfilled and copied"))
+
 (defmacro measure-time (&rest body)
   "Measure the time it takes to evaluate BODY.
 https://lists.gnu.org/archive/html/help-gnu-emacs/2008-06/msg00087.html"
