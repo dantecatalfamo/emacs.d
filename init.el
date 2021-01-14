@@ -1076,8 +1076,8 @@ Host *
          "\\.djhtml\\'"
          "\\.html?\\'"
          "\\.tsx?\\'")
-  :hook ((web-mode-hook . (lambda() (setq-local tab-width 2)))
-         (web-mode-hook . my-web-mode-tide-setup))
+  :hook ((web-mode . (lambda() (setq-local tab-width 2)))
+         (web-mode . my-web-mode-tide-setup))
   :init
   (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-code-indent-offset 2)
