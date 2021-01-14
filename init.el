@@ -1074,8 +1074,10 @@ Host *
          "\\.erb\\'"
          "\\.mustache\\'"
          "\\.djhtml\\'"
-         "\\.html?\\'")
-  :hook (web-mode-hook . (lambda() (setq-local tab-width 2)))
+         "\\.html?\\'"
+         "\\.tsx\\'")
+  :hook ((web-mode-hook . (lambda() (setq-local tab-width 2)))
+         (web-mode-hook . my-web-mode-tide-setup))
   :init
   (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-code-indent-offset 2)
@@ -1235,6 +1237,12 @@ Host *
 
 
 ;;; Functions
+
+(defun my-web-mode-tide-setup ()
+  "Initialize tide-mode in web-mode when required."
+  (when (string= "tsx" (file-name-extension buffer-file-name))
+    (tide-setup)
+    (tide-hl-identifier-mode)))
 
 (defun my-copy-unfilled (start end)
   "Copy region unfilled."
