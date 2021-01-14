@@ -883,7 +883,10 @@ Host *
 
 (use-package rjsx-mode
   :ensure t
-  :mode "[cC]omponents\\/.*\\.js\\'")
+  :mode (rx (or (seq (or ?c ?C) "omponents/" (* nonl) "." (or "js" "tx") (? ?x))
+                ".tsx"
+                ".jsx")
+            eos))
 
 
 (use-package robe
