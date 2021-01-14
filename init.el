@@ -1075,7 +1075,7 @@ Host *
          "\\.mustache\\'"
          "\\.djhtml\\'"
          "\\.html?\\'"
-         "\\.tsx\\'")
+         "\\.tsx?\\'")
   :hook ((web-mode-hook . (lambda() (setq-local tab-width 2)))
          (web-mode-hook . my-web-mode-tide-setup))
   :init
@@ -1240,7 +1240,7 @@ Host *
 
 (defun my-web-mode-tide-setup ()
   "Initialize tide-mode in web-mode when required."
-  (when (string= "tsx" (file-name-extension buffer-file-name))
+  (when (string-match-p "tsx?" (file-name-extension buffer-file-name))
     (tide-setup)
     (tide-hl-identifier-mode)))
 
