@@ -1023,6 +1023,10 @@ Host *
   :after treemacs
   :ensure t)
 
+(use-package typescript-mode
+  :ensure t
+  :defer t)
+
 
 (use-package undo-tree
   :ensure t
