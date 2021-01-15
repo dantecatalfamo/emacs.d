@@ -737,6 +737,8 @@
   ;; (setq org-hide-emphasis-markers t)
   (setq org-agenda-span 'fortnight)
   (setq org-agenda-hide-tags-regexp "noexport")
+  ; (setq org-agenda-start-day nil)
+  ; (setq org-agenda-start-on-weekday nil)
   (setq org-refile-targets '((nil :maxlevel . 9)
                              (org-agenda-files :maxlevel . 3)))
   (setq org-refile-use-outline-path 'file)
