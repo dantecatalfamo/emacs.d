@@ -1173,6 +1173,9 @@ Host *
   :commands (znc-erc))
 
 
+
+;; Variables with no package
+
 ;; (setq visible-bell t) ; disable computer beep
 (setq ring-bell-function 'ignore)
 (setq-default indent-tabs-mode nil)
