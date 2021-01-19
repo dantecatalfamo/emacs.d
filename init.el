@@ -126,19 +126,6 @@
   (auto-revert-mode-text " ⟲"))
 
 
-(use-package tex
-  :defer t
-  :ensure auctex
-  :config
-  (setq TeX-auto-save t)
-  (setq TeX-parse-self t)
-  (setq-default TeX-master nil))
-
-
-(use-package text-mode
-  :hook (text-mode . (lambda () (setq truncate-lines nil))))
-
-
 (use-package bytes-constant             ; Custom elisp
   :load-path "~/.emacs.d/elisp/bytes-constant.el"
   :commands (bytes-constant byteconst))
@@ -915,6 +902,11 @@ Host *
   (save-place-mode))
 
 
+(use-package scroll-bar
+  :config
+  (scroll-bar-mode 0))
+
+
 (use-package shadowenv
   :ensure t
   :if darwin-p
@@ -1008,6 +1000,19 @@ Host *
   :init
   (tab-bar-mode)
   (tab-bar-history-mode))
+
+
+(use-package tex
+  :defer t
+  :ensure auctex
+  :config
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq-default TeX-master nil))
+
+
+(use-package text-mode
+  :hook (text-mode . (lambda () (setq truncate-lines nil))))
 
 
 (use-package tide
@@ -1144,7 +1149,7 @@ Host *
   :commands (znc-erc))
 
 
-(scroll-bar-mode 0)
+
 (tool-bar-mode 0)
 (menu-bar-mode (if darwin-p 1 -1)) ; Only show menu bar on MacOS
 ;; (unless darwin-p
