@@ -573,7 +573,11 @@
 
 (use-package imenu-list
   :ensure t
-  :bind ("<f5>" . imenu-list-smart-toggle))
+  :bind ("<f5>" . imenu-list-smart-toggle)
+  :config
+  (setq imenu-list-focus-after-activation t)
+  (setq imenu-list-auto-resize nil)
+  (setq imenu-list-size 33))
 
 
 (use-package indent
