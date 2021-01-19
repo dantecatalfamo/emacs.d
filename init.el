@@ -216,6 +216,11 @@
   :bind-keymap ("C-c t" . decide-prefix-map))
 
 
+(use-package delsel
+  :config
+  (delete-selection-mode))
+
+
 (use-package descr-text
   :bind (("C-h T" . describe-char)))
 
@@ -682,6 +687,11 @@
   :mode "\\.md\\'")
 
 
+(use-package menu-bar
+  :config
+  (menu-bar-mode (if darwin-p 1 -1))) ; Only show menu bar on MacOS
+
+
 (use-package minitest
   :ensure t
   :diminish "MT"
@@ -827,7 +837,9 @@ Host *
   :hook ((prog-mode . display-line-numbers-mode)
          (prog-mode . my-add-whitespace-hook)
          (prog-mode . my-prog-auto-fill)
-         (emacs-lisp-mode . prettify-symbols-mode)))
+         (emacs-lisp-mode . prettify-symbols-mode))
+  :config
+  (setq prettify-symbols-unprettify-at-point 'right-edge))
 
 
 (use-package projectile
@@ -913,6 +925,13 @@ Host *
   :hook (after-init . shadowenv-global-mode)
   :custom
   (shadowenv-lighter "S"))
+
+
+(use-package simple
+  :config
+  (column-number-mode)  ; Show column in modeline
+  (setq eval-expression-print-length nil)  ; print entire expression in scratch
+  (setq save-interprogram-paste-before-kill t))
 
 
 (use-package string-inflection
@@ -1019,6 +1038,11 @@ Host *
   :ensure t
   :hook ((rjsx-mode . tide-setup)
          (rjsx-mode . tide-hl-identifier-mode)))
+
+
+(use-package tool-bar
+  :config
+  (tool-bar-mode 0))
 
 
 (use-package treemacs
@@ -1149,21 +1173,11 @@ Host *
   :commands (znc-erc))
 
 
-
-(tool-bar-mode 0)
-(menu-bar-mode (if darwin-p 1 -1)) ; Only show menu bar on MacOS
-;; (unless darwin-p
-;;   (display-time-mode t)) ; time in mode line
-(column-number-mode) ; Show column in modeline
-(delete-selection-mode)
-
 ;; (setq visible-bell t) ; disable computer beep
 (setq ring-bell-function 'ignore)
-(setq eval-expression-print-length nil) ; print entire expression in scratch
 (setq-default indent-tabs-mode nil)
 (setq inhibit-splash-screen t)
 (setq-default tab-width 4)
-(setq save-interprogram-paste-before-kill t)
 (setq require-final-newline t)
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
       backup-by-copying t     ; Don't mess up hard links
@@ -1171,7 +1185,6 @@ Host *
       delete-old-versions t   ; Don't keep everything for all time
       kept-new-versions 10    ; How many new versions to keep
       kept-old-versions 5)    ; How many old
-(setq prettify-symbols-unprettify-at-point 'right-edge)
 (setq frame-resize-pixelwise t) ; Pixel perfect window resize
 (setq inhibit-x-resources t)  ; Fix emacsclient issues
 (setq initial-scratch-message nil) ; Start scratch buffer empty
