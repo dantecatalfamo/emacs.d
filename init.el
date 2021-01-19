@@ -747,6 +747,11 @@
   (setq org-babel-load-languages '((emacs-lisp . t) (shell . t) (python . t))))
 
 
+(use-package org-compat
+  :config
+  (setq org-imenu-depth 4))
+
+
 (use-package org-journal
   :ensure t
   :bind (:prefix "C-c j"
