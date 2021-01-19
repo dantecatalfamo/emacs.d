@@ -573,7 +573,7 @@
 
 (use-package imenu-list
   :ensure t
-  :commands (imenu-list))
+  :bind ("<f5>" . imenu-list-smart-toggle))
 
 
 (use-package indent
