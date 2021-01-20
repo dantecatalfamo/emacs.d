@@ -487,6 +487,11 @@
               ("g" . grip-mode)))
 
 
+(use-package graphql-mode
+  :ensure t
+  :defer t)
+
+
 (use-package graphviz-dot-mode
   :ensure t
   :mode ("\\.dot\\'" "\\.gv\\'"))
