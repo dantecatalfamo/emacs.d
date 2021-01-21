@@ -738,6 +738,7 @@
   :config
   (setq org-log-done 'time)  ; Can be 'time or 'note
   (setq org-directory "~/Org")
+  (setq org-default-notes-file "~/Org/Notes.org")
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
   ;; (setq org-hide-emphasis-markers t)
