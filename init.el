@@ -847,6 +847,10 @@ Host *
 ;;   (persp-def-auto-persp "erc" :mode 'erc-mode :hooks '(after-switch-to-buffer-functions)))
 
 
+(use-package prettier-js
+  :ensure t
+  :hook (web-mode . prettier-js-mode))
+
 
 (use-package prog-mode
   :hook ((prog-mode . display-line-numbers-mode)
