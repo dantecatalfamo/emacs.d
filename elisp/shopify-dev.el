@@ -28,6 +28,7 @@
 
 (require 'f)
 (require 'projectile)
+(require 'vterm)
 
 (defvar shopify-dev-dir "/opt/dev/" "Location of the `dev' directory.")
 
