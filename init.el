@@ -946,6 +946,13 @@ Host *
   (shadowenv-lighter "S"))
 
 
+(use-package shopify-dev  ; custom elisp
+  :load-path "~/.emacs.d/elisp"
+  :commands (shopify-dev-up
+             shopify-dev-down
+             shopify-dev-server))
+
+
 (use-package simple
   :config
   (column-number-mode)  ; Show column in modeline
@@ -1101,8 +1108,10 @@ Host *
          ("C-c v m" . vr/mc-mark)))
 
 
-;; (use-package vterm
-;;   :ensure t)
+(use-package vterm
+  :ensure t
+  :config
+  (setq vterm-max-scrollback 5000))
 
 
 (use-package vterm-toggle
