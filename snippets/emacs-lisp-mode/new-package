@@ -3,7 +3,7 @@
 # key: new
 # --
 
-;;; ${1:`(file-name-base (buffer-file-name))`}.el --- $2  -*- lexical-binding: t -*-
+;;; ${1:`(file-name-base (buffer-file-name))`}.el --- ${2:Summary}  -*- lexical-binding: t -*-
 
 ;; Copyright (C) `(format-time-string "%Y")` `user-full-name`
 
