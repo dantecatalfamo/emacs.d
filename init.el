@@ -1111,7 +1111,10 @@ Host *
 (use-package vterm
   :ensure t
   :config
-  (setq vterm-max-scrollback 5000))
+  (setq vterm-max-scrollback 5000)
+  (setq vterm-kill-buffer-on-exit t)
+  (setq vterm-exit-functions
+            (lambda (_buffer _signal) (delete-window))))
 
 
 (use-package vterm-toggle
