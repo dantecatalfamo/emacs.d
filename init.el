@@ -1114,7 +1114,9 @@ Host *
   (setq vterm-max-scrollback 5000)
   (setq vterm-kill-buffer-on-exit t)
   (setq vterm-exit-functions
-            (lambda (_buffer _signal) (delete-window))))
+        (lambda (_buffer _signal)
+          (when (cdr (window-list))
+            (delete-window)))))
 
 
 (use-package vterm-toggle
