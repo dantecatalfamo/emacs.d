@@ -146,6 +146,11 @@
   :commands cfw:open-org-calendar)
 
 
+(use-package cc-mode
+  :init
+  (setq-default c-basic-offset 4))
+
+
 (use-package chess
   :ensure t
   :commands chess
@@ -186,10 +191,24 @@
   (global-company-mode))
 
 
+(use-package company-irony
+  :ensure t
+  :after (irony company)
+  :config
+  (add-to-list 'company-backends 'company-irony))
+
+
+(use-package company-jedi
+  :ensure t
+  :after python-mode
+  :config
+  (add-to-list 'company-backends 'company-jedi))
+
+
 (use-package company-nginx
   :ensure t
   :after nginx-mode
-  :hook (nginx-mode #'company-nginx-keywords))
+  :hook (nginx-mode 'company-nginx-keywords))
 
 
 (use-package company-quickhelp
@@ -209,6 +228,12 @@
 (use-package csv-mode
   :ensure t
   :mode "\\.[Cc][Ss][Vv]\\'")
+
+
+(use-package ctrlf
+  :ensure t
+  :config
+  (ctrlf-mode +1))
 
 
 (use-package decide
@@ -412,6 +437,13 @@
   (setq flycheck-mode-line-prefix "FC"))
 
 
+(use-package flycheck-irony
+  :ensure t
+  :after (flycheck irony)
+  :config
+  (add-to-list 'flycheck-checkers 'irony))
+
+
 (use-package flycheck-package
   :ensure t
   :defer t)
@@ -594,26 +626,19 @@
   :load-path "~/.emacs.d/elisp")
 
 
-(use-package insert-shebang
-  :ensure t)
+;; (use-package insert-shebang
+;;   :ensure t)
 
 
-(use-package cc-mode
-  :init
-  (setq-default c-basic-offset 4))
-
-
-(use-package company-jedi
+(use-package irony
   :ensure t
-  :after python-mode
-  :config
-  (add-to-list 'company-backends 'company-jedi))
+  :hook ((c-mode . irony-mode)
+         (c++-mode . irony-mode)))
 
 
-(use-package ctrlf
+(use-package irony-eldoc
   :ensure t
-  :config
-  (ctrlf-mode +1))
+  :hook (irony-mode . irony-eldoc))
 
 
 (use-package js
