@@ -198,6 +198,13 @@
   (add-to-list 'company-backends 'company-irony))
 
 
+(use-package company-irony-c-headers
+  :ensure t
+  :after (irony company)
+  :config
+  (add-to-list 'company-backends 'company-irony-c-headers))
+
+
 (use-package company-jedi
   :ensure t
   :after python-mode
