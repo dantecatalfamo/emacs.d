@@ -10,12 +10,12 @@
 
 (defun ruby-frozen-string-literal ()
   "Check the current buffer for the magic comment # frozen_string_literal: true.
-If the comment doesn't exist, offer to insert it."
+If the comment doesn't exist, insert it."
   (interactive)
   (save-excursion
     (goto-char (point-min))
-    (unless (string= (thing-at-point 'line)
-                     "# frozen_string_literal: true\n")
+    (unless (save-excursion
+              (re-search-forward (rx bol "# frozen_string_literal: true" eol) nil 'noerror))
       (insert "# frozen_string_literal: true\n\n")
       (message "Inserted '# frozen_string_literal: true'"))))
 
