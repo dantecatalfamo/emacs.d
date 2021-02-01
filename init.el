@@ -938,6 +938,10 @@ Host *
   :mode (rx (or ?c ?C) "omponents/" (* nonl) ".js" (? ?x) eos))
 
 
+(use-package rmsbolt
+  :ensure t)
+
+
 (use-package robe
   :ensure t
   :after company
