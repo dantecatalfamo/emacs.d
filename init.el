@@ -118,6 +118,7 @@
 (use-package async
   :ensure t
   :config
+  (dired-async-mode t)
   (async-bytecomp-package-mode 1))
 
 
