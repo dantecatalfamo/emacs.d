@@ -16,8 +16,11 @@ If the comment doesn't exist, insert it."
     (goto-char (point-min))
     (unless (save-excursion
               (re-search-forward (rx bol "# frozen_string_literal: true" eol) nil 'noerror))
-      (insert "# frozen_string_literal: true\n\n")
-      (message "Inserted '# frozen_string_literal: true'"))))
+      (insert "# frozen_string_literal: true\n\n"))
+    (goto-char (point-min))
+    (unless (save-excursion
+              (re-search-forward (rx bol "# typed: false" eol) nil 'noerror))
+      (insert "# typed: false\n"))))
 
 (provide 'ruby-frozen-string-literal)
 ;;; ruby-frozen-string-literal.el ends here
