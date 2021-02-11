@@ -1108,6 +1108,11 @@ Host *
   (tool-bar-mode 0))
 
 
+(use-package transient-z   ; custom elisp
+  :load-path "~/.emacs.d/elisp"
+  :bind ("C-z" . transient-z))
+
+
 (use-package treemacs
   :ensure t
   :bind (("C-c n" . treemacs)))
