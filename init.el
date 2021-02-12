@@ -854,6 +854,12 @@ Host *
   :commands package-lint-current-buffer)
 
 
+(use-package page-break-lines
+  :ensure t
+  :config
+  (global-page-break-lines-mode))
+
+
 (use-package paren
   :config
   (show-paren-mode t))
