@@ -32,7 +32,8 @@
   "Personal Hugo transient map."
   ["Hugo"
    [("s" "Server" my-hugo-server)
-    ("d" "Deploy" my-hugo-deploy)]])
+    ("d" "Deploy" my-hugo-deploy)
+    ("i" "Insert ISO date" my-insert-iso-date)]])
 
 (transient-define-prefix transient-z-shopify ()
   "Personal Shopify transient map."
