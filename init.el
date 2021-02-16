@@ -1250,6 +1250,10 @@ Host *
   :ensure t)
 
 
+(use-package zig-mode
+  :ensure t)
+
+
 (use-package znc   ; Custom elisp, patched fork
   :load-path "~/.emacs.d/elisp"
   :commands (znc-erc))
