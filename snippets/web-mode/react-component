@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: react-component
-# key: react
+# key: rc
 # --
 import React, {useState} from 'react';
 
