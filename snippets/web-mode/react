@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: react-component
+# key: react
+# --
+import React, {useState} from 'react';
+
+interface ${1:`(file-name-base (buffer-file-name))`}Props {
+
+}
+
+export default function $1 (props: $1Props) {
+  $0
+  return "$1"
+}
