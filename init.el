@@ -1234,6 +1234,10 @@ Host *
   (xclip-mode 1))
 
 
+(use-package xr
+  :ensure t)
+
+
 (use-package yaml-mode
   :ensure t
   :mode "\\.yml\\'")
@@ -1486,5 +1490,5 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
 (put 'upcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
 (put 'list-timers 'disabled nil)
-
+(put 'dired-find-alternate-file 'disabled nil)
 ;;; init.el ends here
