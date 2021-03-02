@@ -959,7 +959,9 @@ Host *
 
 (use-package rubocop
   :ensure t
-  :hook (enh-ruby-mode . rubocop-mode))
+  :hook (enh-ruby-mode . rubocop-mode)
+  :config
+  (setq rubocop-autocorrect-on-save t))
 
 
 (use-package ruby-frozen-string-literal ; custom elisp
