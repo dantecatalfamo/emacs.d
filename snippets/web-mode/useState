@@ -2,4 +2,5 @@
 # name: useState
 # key: st
 # --
-const [${1:var}, set${1:$(format "%s%s" (capitalize (substring yas-text nil 1)) (substring yas-text 1))}] = useState($0);
+const [${1:var}, set${1:$(ignore-errors (format "%s%s" (capitalize (substring yas-text nil 1)) (substring yas-text 1)))}] = useState($2);
+$0
