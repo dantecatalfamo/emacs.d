@@ -1005,6 +1005,12 @@ Host *
   (setq save-interprogram-paste-before-kill t))
 
 
+
+(use-package spin
+  :load-path "~/src/github.com/Shopify/spin.el"
+  :if darwin-p)
+
+
 (use-package string-inflection
   :ensure t
   :defer t)

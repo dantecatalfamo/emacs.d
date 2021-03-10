@@ -40,7 +40,8 @@
   ["Shopify"
    [("u" "Dev up" shopify-dev-up)
     ("d" "Dev down" shopify-dev-down)
-    ("s" "Dev server" shopify-dev-server)]])
+    ("s" "Dev server" shopify-dev-server)
+    ("p" "Spin status" spin-status)]])
 
 (transient-define-prefix transient-z-org ()
   "Personal org transient map."
