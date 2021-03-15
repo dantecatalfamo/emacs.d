@@ -759,6 +759,14 @@
   :defer t)
 
 
+(use-package ns-win ;; Only available on MacOS builds
+  :if darwin-p
+  :config
+  ;; Use command key as meta in macos
+  (setq mac-option-modifier 'super
+        mac-command-modifier 'meta))
+
+
 (use-package org
   :defer nil
   ;; :ensure org-plus-contrib
@@ -1301,11 +1309,6 @@ Host *
  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
  (setq ns-use-proxy-icon  nil))
 ;; (setq frame-title-format nil)
-
-;; Use command key as meta in macos
-(when-darwin
- (setq mac-option-modifier 'super
-       mac-command-modifier 'meta))
 
 
 ;; Set the initial frame size
