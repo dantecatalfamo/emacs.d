@@ -1024,18 +1024,6 @@ Host *
   :defer t)
 
 
-;; (use-package slime
-;;   :ensure t
-;;   :commands (slime)
-;;   :config
-;;   (setq inferior-lisp-program "sbcl")
-;;   (slime-setup '(slime-fancy slime-quicklisp slime-asdf slime-company)))
-
-
-;; (use-package slime-company
-;;   :ensure t)
-
-
 (use-package sly
   :ensure t
   :defer t
