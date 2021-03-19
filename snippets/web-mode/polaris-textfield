@@ -5,5 +5,5 @@
 <TextField
   value={${1:var}}
   onChange={set${1:$(ignore-errors (format "%s%s" (capitalize (substring yas-text nil 1)) (substring yas-text 1)))}}
-  label="$1"
+  label="$2"
 />$0
