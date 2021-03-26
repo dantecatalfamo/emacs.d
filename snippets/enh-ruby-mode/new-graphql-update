@@ -1,0 +1,36 @@
+# -*- mode: snippet -*-
+# name: new graphql update
+# key: ngu
+# --
+
+module Mutations
+  class Update${1:Model}Mutation < BaseMutation
+    argument :id, ID, required: true
+    $0
+
+    field :${2:model_name}, Types::$1Type, null: true
+    field :user_error, [Types::ErrorType], null: true
+
+    def resolve(id:, **kwargs)
+      if kwargs.empty?
+        return {
+          user_error: [{ message: "No arguments" }],
+          $2: nil,
+        }
+      end
+
+      $2 = $1.find(id)
+      $2.update!(kwargs)
+
+      {
+        $2: $2,
+        user_error: nil,
+      }
+    rescue ActiveRecord::RecordNotFound => err
+      {
+        user_error: [{ message: err.message }],
+        $2: nil,
+      }
+    end
+  end
+end
