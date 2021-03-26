@@ -49,9 +49,15 @@
    [("t" "Table Dates" org-table-dates)
     ("r" "Recalculate Buffer Tables" org-table-recalculate-buffer-tables)]])
 
+(transient-define-prefix transient-z-generic ()
+  "Personal generic non-mode specific command map."
+  ["Generic"
+   [("a" "Align non-space" align-non-space)]])
+
 (transient-define-prefix transient-z ()
   "Personal transient keymap for `C-z'."
   ["Helpers"
+   ("g" "Generic" transient-z-generic)
    ("h" "Hugo" transient-z-hugo)
    ("s" "Shopify" transient-z-shopify)
    ("o" "Org" transient-z-org)])
