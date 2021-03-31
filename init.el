@@ -1361,7 +1361,10 @@ Host *
   "Align non-space columns in region BEG END."
   (interactive "r")
   (align-regexp BEG END "\\(\\s-*\\)\\S-+" 1 1 t)
-  (indent-region BEG END))
+  (save-excursion
+    (goto-char END)
+    (next-line)
+    (indent-region BEG (point))))
 
 (defun my-web-mode-tide-setup ()
   "Initialize tide-mode in web-mode when required."
