@@ -1362,7 +1362,7 @@ Host *
   (align-regexp BEG END "\\(\\s-*\\)\\S-+" 1 1 t)
   (save-excursion
     (goto-char END)
-    (next-line)
+    (forward-line)
     (indent-region BEG (point))))
 
 (defun my-web-mode-tide-setup ()
@@ -1372,7 +1372,7 @@ Host *
     (tide-hl-identifier-mode)))
 
 (defun my-copy-unfilled (start end)
-  "Copy region unfilled."
+  "Copy region defined by START END unfilled."
   (interactive "r")
   (let ((old-buffer (current-buffer)))
     (with-temp-buffer
@@ -1389,7 +1389,7 @@ https://lists.gnu.org/archive/html/help-gnu-emacs/2008-06/msg00087.html"
      (message "%.06f" (float-time (time-since time)))))
 
 (defun my-prog-auto-fill ()
-  "Auto fill only comments in prog-mode. Used as a hook."
+  "Auto fill only comments in `prog-mode'. Used as a hook."
   (setq-local comment-auto-fill-only-comments t)
   (auto-fill-mode))
 
