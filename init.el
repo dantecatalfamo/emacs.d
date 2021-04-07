@@ -924,8 +924,7 @@ Host *
 
 (use-package python
   :config
-  (setq python-indent-offset 4
-        python-indent 4))
+  (setq python-indent-offset 4))
 
 
 (use-package rainbow-delimiters
