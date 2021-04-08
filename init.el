@@ -641,7 +641,8 @@
 (use-package irony
   :ensure t
   :hook ((c-mode . irony-mode)
-         (c++-mode . irony-mode)))
+         (c++-mode . irony-mode)
+         (c++-mode . irony-cdb-autosetup-compile-options)))
 
 
 (use-package irony-eldoc
@@ -885,6 +886,11 @@ Host *
 (use-package pdf-tools
   :ensure t
   :hook ((after-init . pdf-loader-install)))
+
+
+(use-package platformio-mode
+  :ensure t
+  :hook ((c++-mode . platformio-conditionally-enable)))
 
 
 ;; (use-package persp-mode
