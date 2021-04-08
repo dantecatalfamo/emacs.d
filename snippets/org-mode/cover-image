@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: cover
+# key: cvr_
+# --
+#+ATTR_HTML: :title $1
+#+ATTR_HTML: :alt $1
+[[file:cover.png]]
