@@ -152,6 +152,10 @@
   (setq-default c-basic-offset 4))
 
 
+(use-package ccls
+  :ensure t)
+
+
 (use-package chess
   :ensure t
   :commands chess
@@ -192,18 +196,18 @@
   (global-company-mode))
 
 
-(use-package company-irony
-  :ensure t
-  :after (irony company)
-  :config
-  (add-to-list 'company-backends 'company-irony))
+;; (use-package company-irony
+;;   :ensure t
+;;   :after (irony company)
+;;   :config
+;;   (add-to-list 'company-backends 'company-irony))
 
 
-(use-package company-irony-c-headers
-  :ensure t
-  :after (irony company)
-  :config
-  (add-to-list 'company-backends 'company-irony-c-headers))
+;; (use-package company-irony-c-headers
+;;   :ensure t
+;;   :after (irony company)
+;;   :config
+;;   (add-to-list 'company-backends 'company-irony-c-headers))
 
 
 (use-package company-jedi
@@ -445,11 +449,11 @@
   (setq flycheck-mode-line-prefix "FC"))
 
 
-(use-package flycheck-irony
-  :ensure t
-  :after (flycheck irony)
-  :config
-  (add-to-list 'flycheck-checkers 'irony))
+;; (use-package flycheck-irony
+;;   :ensure t
+;;   :after (flycheck irony)
+;;   :config
+;;   (add-to-list 'flycheck-checkers 'irony))
 
 
 (use-package flycheck-package
@@ -634,20 +638,16 @@
   :load-path "~/.emacs.d/elisp")
 
 
-;; (use-package insert-shebang
-;;   :ensure t)
+;; (use-package irony
+;;   :ensure t
+;;   :hook ((c-mode . irony-mode)
+;;          (c++-mode . irony-mode)
+;;          (c++-mode . irony-cdb-autosetup-compile-options)))
 
 
-(use-package irony
-  :ensure t
-  :hook ((c-mode . irony-mode)
-         (c++-mode . irony-mode)
-         (c++-mode . irony-cdb-autosetup-compile-options)))
-
-
-(use-package irony-eldoc
-  :ensure t
-  :hook (irony-mode . irony-eldoc))
+;; (use-package irony-eldoc
+;;   :ensure t
+;;   :hook (irony-mode . irony-eldoc))
 
 
 (use-package js
