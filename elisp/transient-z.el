@@ -54,13 +54,25 @@
   ["Generic"
    [("a" "Align non-space" align-non-space)]])
 
+(transient-define-prefix transient-z-platformio ()
+  "Personal platformio transient map."
+  ["PlatformIO"
+   [("b" "Build Project" platformio-build)
+    ("u" "Upload Project" platformio-upload)
+    ("p" "Upload using External Programmer" platformio-programmer-upload)
+    ("s" "Upload SPIFFS" platformio-spiffs-upload)
+    ("c" "Clean Project" platformio-clean)
+    ("d" "Update Project Libraries" platformio-update)
+    ("i" "Update Project Workspace and Index" platformio-init-update-workspace)]])
+
 (transient-define-prefix transient-z ()
   "Personal transient keymap for `C-z'."
   ["Helpers"
    ("g" "Generic" transient-z-generic)
    ("h" "Hugo" transient-z-hugo)
    ("s" "Shopify" transient-z-shopify)
-   ("o" "Org" transient-z-org)])
+   ("o" "Org" transient-z-org)
+   ("p" "PlatformIO" transient-z-platformio)])
 
 (provide 'transient-z)
 ;;; transient-z.el ends here
