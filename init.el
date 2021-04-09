@@ -112,7 +112,8 @@
 
 
 (use-package all-the-icons
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package async
