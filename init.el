@@ -154,7 +154,8 @@
 
 
 (use-package ccls
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package chess
