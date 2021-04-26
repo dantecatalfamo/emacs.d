@@ -691,8 +691,9 @@
 (use-package lsp-mode
   :ensure t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-         ;; (c-mode . lsp-deferred)
-         ;; (c-mode . my-lsp-install-save-hooks))
+         (c-mode . lsp-deferred)
+         (c++-mode . lsp-deferred)
+         (c-mode . my-lsp-install-save-hooks)
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
@@ -911,9 +912,7 @@ Host *
   :hook ((prog-mode . display-line-numbers-mode)
          (prog-mode . my-add-whitespace-hook)
          (prog-mode . my-prog-auto-fill)
-         (emacs-lisp-mode . prettify-symbols-mode))
-  :config
-  (setq prettify-symbols-unprettify-at-point 'right-edge))
+         (emacs-lisp-mode . prettify-symbols-mode)))
 
 
 (use-package projectile
