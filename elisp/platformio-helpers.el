@@ -3,6 +3,7 @@
 ;; Copyright (C) 2021 Dante Catalfamo
 
 ;; Author: Dante Catalfamo
+;; Package-Requires: ((emacs "25.1") (async "1.9.0"))
 
 ;; This file is not part of GNU Emacs
 
@@ -63,9 +64,15 @@
                      (string-join (alist-get 'frameworks board) ", ")
                      (alist-get 'vendor board)
                      `("URL" action
-                       (lambda (_button) (browse-url-default-browser ,(alist-get 'url board))))
+                       (lambda (_button)
+                         (browse-url-default-browser ,(alist-get 'url board))))
                      `("Docs" action
-                       (lambda (_button) (browse-url-default-browser ,(string-join (list "https://docs.platformio.org/en/latest/boards/" (alist-get 'platform board) "/" (alist-get 'id board) ".html")))))))
+                       (lambda (_button)
+                         (browse-url-default-browser ,(string-join (list "https://docs.platformio.org/en/latest/boards/"
+                                                                         (alist-get 'platform board)
+                                                                         "/"
+                                                                         (alist-get 'id board)
+                                                                         ".html")))))))
               out))
       (json-read-from-string
        (shell-command-to-string "platformio boards --json-output")))
