@@ -198,20 +198,6 @@
   (global-company-mode))
 
 
-;; (use-package company-irony
-;;   :ensure t
-;;   :after (irony company)
-;;   :config
-;;   (add-to-list 'company-backends 'company-irony))
-
-
-;; (use-package company-irony-c-headers
-;;   :ensure t
-;;   :after (irony company)
-;;   :config
-;;   (add-to-list 'company-backends 'company-irony-c-headers))
-
-
 (use-package company-jedi
   :ensure t
   :after python-mode
@@ -451,13 +437,6 @@
   (setq flycheck-mode-line-prefix "FC"))
 
 
-;; (use-package flycheck-irony
-;;   :ensure t
-;;   :after (flycheck irony)
-;;   :config
-;;   (add-to-list 'flycheck-checkers 'irony))
-
-
 (use-package flycheck-package
   :ensure t
   :defer t)
@@ -638,18 +617,6 @@
 
 (use-package init-file     ; Custom elisp
   :load-path "~/.emacs.d/elisp")
-
-
-;; (use-package irony
-;;   :ensure t
-;;   :hook ((c-mode . irony-mode)
-;;          (c++-mode . irony-mode)
-;;          (c++-mode . irony-cdb-autosetup-compile-options)))
-
-
-;; (use-package irony-eldoc
-;;   :ensure t
-;;   :hook (irony-mode . irony-eldoc))
 
 
 (use-package js
