@@ -878,8 +878,7 @@ Host *
 (use-package prog-mode
   :hook ((prog-mode . display-line-numbers-mode)
          (prog-mode . my-add-whitespace-hook)
-         (prog-mode . my-prog-auto-fill)
-         (emacs-lisp-mode . prettify-symbols-mode)))
+         (prog-mode . my-prog-auto-fill)))
 
 
 (use-package projectile
