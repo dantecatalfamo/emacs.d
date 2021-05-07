@@ -58,6 +58,7 @@
   "Personal platformio transient map."
   ["PlatformIO"
    [("b" "Build Project" platformio-build)
+    ("l" "Board List" platformio-boards)
     ("u" "Upload Project" platformio-upload)
     ("p" "Upload using External Programmer" platformio-programmer-upload)
     ("s" "Upload SPIFFS" platformio-spiffs-upload)
