@@ -659,8 +659,8 @@
   :ensure t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
          (c-mode . lsp-deferred)
-         (c++-mode . lsp-deferred)
          (c-mode . my-lsp-install-save-hooks)
+         (c++-mode . lsp-deferred)
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
@@ -1408,7 +1408,7 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
 
 (defun my-lsp-install-save-hooks ()
   "Add hooks for lsp-mode."
-  (add-hook 'before-save-hook #'lsp-format-buffer nil t)
+  ;(add-hook 'before-save-hook #'lsp-format-buffer nil t)
   (add-hook 'before-save-hook #'lsp-organize-imports nil t))
 
 (defun my-add-whitespace-hook ()
