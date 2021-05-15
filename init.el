@@ -1204,13 +1204,6 @@ Host *
   (diminish 'whole-line-or-region-local-mode ""))
 
 
-;; (use-package workgroups2
-;;   :ensure t
-;;   :config
-;;   (setq wg-prefix-key (kbd "C-c z"))
-;;   (workgroups-mode 1))
-
-
 (use-package xclip
   :ensure t
   :config
