@@ -738,6 +738,12 @@
         mac-command-modifier 'meta))
 
 
+(use-package olivetti
+  :ensure t
+  :init
+  (setq olivetti-body-width 80))
+
+
 (use-package org
   :defer nil
   ;; :ensure org-plus-contrib
@@ -988,6 +994,7 @@ Host *
 
 (use-package spin
   :load-path "~/src/github.com/Shopify/spin.el"
+  :defer t
   :if darwin-p)
 
 
