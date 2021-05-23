@@ -36,7 +36,8 @@
   "Open faux ide mode."
   (interactive)
   (let ((buf (current-buffer))
-        (window-min-height 30))
+        (window-min-height 30)
+        (split-width-threshold nil))
     (vterm-toggle-cd-show)
     (shrink-window-if-larger-than-buffer)
     (imenu-list-show-noselect)
