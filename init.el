@@ -430,6 +430,11 @@
   :bind (("C-=" . er/expand-region)))
 
 
+(use-package faux-ide
+  :load-path "~/.emacs.d/elisp"  ; custom elisp
+  :bind (("<f7>" . faux-ide-toggle)))
+
+
 (use-package flycheck
   :ensure t
   :hook (prog-mode . flycheck-mode)
