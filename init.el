@@ -1037,6 +1037,12 @@ Host *
   :hook (after-init . global-so-long-mode))
 
 
+(use-package solaire-mode
+  :ensure t
+  :config
+  (solaire-global-mode))
+
+
 (use-package sudo-edit
   :ensure t
   :commands (sudo-edit))
