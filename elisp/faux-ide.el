@@ -38,7 +38,7 @@
   (let ((buf (current-buffer))
         (window-min-height 30)
         (split-width-threshold nil))
-    (vterm-toggle-cd-show)
+    (vterm-toggle-show t)
     (shrink-window-if-larger-than-buffer)
     (imenu-list-show-noselect)
     (treemacs-select-window)
