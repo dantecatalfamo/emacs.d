@@ -447,7 +447,7 @@
   :defer t)
 
 
-(use-package flycheck-perl6
+(use-package flycheck-raku
   :ensure t
   :defer t)
 
