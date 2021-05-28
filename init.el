@@ -1305,7 +1305,7 @@ Host *
 ;;   (setf (car global-mode-string) my-global-mode-string-line) ; Add bracket to beginning
 ;;   (add-to-list 'global-mode-string "]"  t)) ; Add closing bracket
 
-(setq frame-title-format '("%b@" (:eval (or (file-remote-p default-directory 'host) system-name))))
+(setq frame-title-format '("%b@" (:eval (or (file-remote-p default-directory 'host) system-name)) " — Emacs"))
 
 (setq-default mode-line-format '("%e"
                                  mode-line-front-space
