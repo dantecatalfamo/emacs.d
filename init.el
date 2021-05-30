@@ -1347,6 +1347,12 @@ Host *
 
 ;;; Functions
 
+(defun my-git-configure-user ()
+  "Configure the current git repository with my details."
+  (interactive)
+  (shell-command (concat "git config --local user.name dantecatalfamo && git config --local user.email " user-mail-address))
+  (message "Git configured with username dantecatalfamo and email %s" user-mail-address))
+
 (defun align-non-space (BEG END)
   "Align non-space columns in region BEG END."
   (interactive "r")
