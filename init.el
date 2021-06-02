@@ -18,6 +18,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(eval-and-compile
+  (setq use-package-compute-statistics t))
+
 ;; Load customizations
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (if (file-exists-p custom-file)
