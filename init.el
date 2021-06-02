@@ -769,6 +769,9 @@
   (setq org-log-done 'time)  ; Can be 'time or 'note
   (setq org-directory "~/Org")
   (setq org-default-notes-file "~/Org/Notes.org")
+  (setq org-capture-templates
+        '(("t" "Todo (Notes)" entry (file "") "* TODO %?\n  %i\n  %a")
+          ("n" "Note (Generic)" entry (file "") "* %?")))
   ;; (setq org-special-ctrl-a/e t)
   ;; (setq org-hide-leading-stars t)
   ;; (setq org-hide-emphasis-markers t)
