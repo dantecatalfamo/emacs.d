@@ -666,8 +666,7 @@
 (use-package lsp-mode
   :ensure t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-         (c-mode . lsp-deferred)
-         (c-mode . my-lsp-install-save-hooks)
+         (c-mode . my-lsp-conditionally-defer)
          (c++-mode . lsp-deferred)
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks))
@@ -1440,6 +1439,12 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
   "Add hooks for lsp-mode."
   ;(add-hook 'before-save-hook #'lsp-format-buffer nil t)
   (add-hook 'before-save-hook #'lsp-organize-imports nil t))
+
+(defun my-lsp-conditionally-defer ()
+    "Only run `lsp-deferred' if a buffer is local."
+    (when (null (file-remote-p default-directory))
+      (lsp-deferred)
+      (my-lsp-install-save-hooks)))
 
 (defun my-add-whitespace-hook ()
   "Add a hook to cleanup whitespace on save."
