@@ -1497,6 +1497,8 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
       (insert "'"))))
 
 (bind-key "C-c k" #'bury-buffer)
+(bind-key "<mouse-8>" #'previous-buffer)
+(bind-key "<mouse-9>" #'next-buffer)
 (bind-key "#" #'endless/sharp emacs-lisp-mode-map)
 (bind-key "#" #'endless/sharp lisp-mode-map)
 
