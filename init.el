@@ -435,7 +435,7 @@
 
 (use-package faux-ide
   :load-path "~/.emacs.d/elisp"  ; custom elisp
-  :bind (("<f7>" . faux-ide-toggle)))
+  :bind (("<f8>" . faux-ide-toggle)))
 
 
 (use-package flycheck
@@ -1126,7 +1126,7 @@ Host *
 
 (use-package treemacs
   :ensure t
-  :bind (("C-c n" . treemacs)))
+  :bind (("<f7>" . treemacs)))
 
 
 (use-package treemacs-projectile
