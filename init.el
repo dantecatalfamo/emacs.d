@@ -1126,7 +1126,8 @@ Host *
 
 (use-package treemacs
   :ensure t
-  :bind (("<f7>" . treemacs)))
+  :bind (("<f7>" . treemacs)
+         ("C-c n" . treemacs)))
 
 
 (use-package treemacs-projectile
