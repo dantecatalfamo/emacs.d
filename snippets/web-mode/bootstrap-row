@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: bootstrap row
+# key: bsr
+# --
+<div class="row">
+  $0
+</div>

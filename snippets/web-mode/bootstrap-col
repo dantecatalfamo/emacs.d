@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: bootstrap col
+# key: bsc
+# --
+<div class="col$1">
+  $0
+</div>
