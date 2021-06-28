@@ -239,6 +239,11 @@
   (ctrlf-mode +1))
 
 
+(use-package dap-mode
+  :ensure t
+  :defer t)
+
+
 (use-package decide
   :ensure t
   :bind-keymap ("C-c t" . decide-prefix-map))
@@ -317,7 +322,6 @@
   :after dired
   :bind (:map dired-mode-map
               ("TAB" . dired-subtree-toggle)))
-
 
 (use-package discover-my-major
   :ensure t
