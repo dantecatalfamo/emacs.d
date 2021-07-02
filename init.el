@@ -972,6 +972,7 @@ Host *
 
 (use-package ruby-frozen-string-literal ; custom elisp
   :load-path "~/.emacs.d/elisp"
+  :if darwin-p
   :hook enh-ruby-mode)
 
 
