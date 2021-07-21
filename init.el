@@ -366,7 +366,8 @@
 
 
 (use-package emoji-cheat-sheet-plus
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package hl-todo
@@ -981,8 +982,7 @@ Host *
 
 
 (use-package saveplace
-  :config
-  (save-place-mode))
+  :hook (after-init . save-place-mode))
 
 
 (use-package scroll-bar
@@ -1010,7 +1010,6 @@ Host *
   (column-number-mode)  ; Show column in modeline
   (setq eval-expression-print-length nil)  ; print entire expression in scratch
   (setq save-interprogram-paste-before-kill t))
-
 
 
 (use-package spin
