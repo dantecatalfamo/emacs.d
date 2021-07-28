@@ -921,6 +921,15 @@ Host *
   (projectile-mode-line-prefix " P"))
 
 
+(use-package projectile-rails
+  :ensure t
+  :after projectile
+  :defer t
+  :bind (("C-c w" . projectile-rails-command-map))
+  :config
+  (projectile-rails-global-mode))
+
+
 (use-package python
   :config
   (setq python-indent-offset 4))
@@ -1224,7 +1233,8 @@ Host *
   :diminish ;; " WK"
   :hook (after-init . which-key-mode)
   :init
-  (which-key-setup-side-window-right-bottom))
+  (which-key-setup-side-window-right-bottom)
+  (setq which-key-max-description-length 40))
 
 
 (use-package windmove
