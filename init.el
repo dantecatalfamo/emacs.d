@@ -38,6 +38,7 @@
 ;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
 
 ;; Macros to keep it clean
+
 (defmacro when-darwin (&rest body)
   "Evaluate BODY when the system is darwin."
   `(when (eq system-type 'darwin)
@@ -54,6 +55,7 @@
      ,@body))
 
 ;; Variables for the same thing
+
 (defvar darwin-p (eq system-type 'darwin)
   "Is this machine darwin?")
 
@@ -64,6 +66,7 @@
   "Is this machine windows?")
 
 ;; Custom and bad elisp getter
+
 (defun my-install-elisp (git-repo dir)
   "Clone from GIT-REPO into DIR inside of `user-emacs-directory'."
   (let ((elisp-dir (concat user-emacs-directory dir)))
