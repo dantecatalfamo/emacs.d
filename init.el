@@ -719,6 +719,12 @@
   :mode "\\.md\\'")
 
 
+(use-package mb-depth
+  :config
+  (setq enable-recursive-minibuffers t)
+  (minibuffer-depth-indicate-mode))
+
+
 (use-package menu-bar
   :config
   (menu-bar-mode (if darwin-p 1 -1))) ; Only show menu bar on MacOS
