@@ -1029,6 +1029,11 @@ Host *
   (setq save-interprogram-paste-before-kill t))
 
 
+(use-package skewer-mode
+  :ensure t
+  :hook (web-mode html-mode js-mode css-mode))
+
+
 (use-package spin
   :load-path "~/src/github.com/Shopify/spin.el"
   :defer t
