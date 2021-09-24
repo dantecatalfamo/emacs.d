@@ -48,13 +48,13 @@ Location will be the current header if nil.
 Insert link to NPC at point."
   (interactive "MName: ")
   (let ((current-location (org-get-heading 'no-tags 'no-todo 'no-prio 'no-comm)))
+    (insert "[[*" name "][" name "]]")
     (save-excursion
       (goto-char (point-min))
       (search-forward-regexp (rx bol "* " (literal org-dnd-npc-heading)) nil 'noerror)
       (forward-char)
       (insert "** " name "\n")
-      (insert "   Met at " (or location current-location) " on " (format-time-string "%c") "\n\n")))
-  (insert "[[*" name "][" name "]]"))
+      (insert "   Met at " (or location current-location) " on " (format-time-string "%c") "\n\n"))))
 
 (defun org-dnd-list-npcs ()
   "Return a list of all NPC names."
@@ -88,6 +88,7 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
   (interactive (list (read-from-minibuffer "Quest: ")
                      (completing-read "Quest giver: " (org-dnd-list-npcs))))
   (let ((location (org-get-heading 'no-tags 'no-todo 'no-pro 'no-comm)))
+    (insert "Got quest [[*" quest-name "][" quest-name "]]")
     (save-excursion
       (goto-char (point-min))
       (search-forward-regexp (rx bol "* " (literal org-dnd-quest-heading)) nil 'noerror)
@@ -97,8 +98,7 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
       (insert "   Given by ")
       (org-dnd-reference-npc npc-name location)
       (insert " at [[*" location "][" location "]]")
-      (insert " on " (format-time-string "%c"))))
-  (insert "Got quest [[*" quest-name "][" quest-name "]]"))
+      (insert " on " (format-time-string "%c") "\n"))))
 
 (defun org-dnd-list-quests ()
   "List all quests."
@@ -118,6 +118,18 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
   (goto-char (point-min))
   (org-link-search (concat "*" name))
   (org-show-context))
+
+(defun org-dnd-setup ()
+  "Setup the buffer to have the correct headings."
+  (interactive)
+  (save-excursion
+    (mapc
+     (lambda (heading)
+       (goto-char (point-min))
+       (unless (search-forward-regexp (concat "^\\* " heading) nil 'noerror)
+         (goto-char (point-max))
+         (insert "\n* " heading "\n")))
+     '("Locations" "Quests" "NPCs" "PCs"))))
 
 (provide 'org-dnd)
 ;;; org-dnd.el ends here
