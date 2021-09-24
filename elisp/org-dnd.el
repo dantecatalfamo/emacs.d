@@ -60,6 +60,20 @@
   (org-link-search (concat "*" headline))
   (org-show-entry))
 
+(defun org-dnd-setup ()
+  "Setup the buffer to have the correct headings."
+  (interactive)
+  (save-excursion
+    (mapc
+     (lambda (heading)
+       (goto-char (point-min))
+       (unless (search-forward-regexp (concat "^\\* " heading) nil 'noerror)
+         (goto-char (point-max))
+         (insert "\n* " heading "\n")))
+     '("Locations" "Quests" "NPCs" "PCs"))))
+
+
+
 (defun org-dnd-new-npc (name &optional specified-location)
   "Add a new NPC with NAME, met at SPECIFIED-LOCATION.
 Location will be the current header if nil.
@@ -91,6 +105,8 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
   (interactive (list (completing-read "NPC: " (org-dnd-list-npcs))))
   (org-dnd--jumo-to-heading name))
 
+
+
 (defun org-dnd-new-quest (quest-name npc-name)
   "Create a new quest called QUEST-NAME given by NPC-NAME."
   (interactive (list (read-from-minibuffer "Quest: ")
@@ -116,18 +132,6 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
   "Move cursor to NAME quest."
   (interactive (list (completing-read "Quest: " (org-dnd-list-quests))))
   (org-dnd--jumo-to-heading name))
-
-(defun org-dnd-setup ()
-  "Setup the buffer to have the correct headings."
-  (interactive)
-  (save-excursion
-    (mapc
-     (lambda (heading)
-       (goto-char (point-min))
-       (unless (search-forward-regexp (concat "^\\* " heading) nil 'noerror)
-         (goto-char (point-max))
-         (insert "\n* " heading "\n")))
-     '("Locations" "Quests" "NPCs" "PCs"))))
 
 (provide 'org-dnd)
 ;;; org-dnd.el ends here
