@@ -42,19 +42,19 @@
 (defconst org-dnd-quest-heading "Quests"
   "Title of the heading where quests are stored.")
 
-(defun org-dnd-new-npc (name &optional location)
-  "Add a new NPC with NAME, met at LOCATION.
+(defun org-dnd-new-npc (name &optional specified-location)
+  "Add a new NPC with NAME, met at SPECIFIED-LOCATION.
 Location will be the current header if nil.
 Insert link to NPC at point."
   (interactive "MName: ")
-  (let ((current-location (org-get-heading 'no-tags 'no-todo 'no-prio 'no-comm)))
+  (let ((location (or specified-location (org-get-heading 'no-tags 'no-todo 'no-prio 'no-comm))))
     (insert "[[*" name "][" name "]]")
     (save-excursion
       (goto-char (point-min))
       (search-forward-regexp (rx bol "* " (literal org-dnd-npc-heading)) nil 'noerror)
       (forward-char)
       (insert "** " name "\n")
-      (insert "   Met at " (or location current-location) " on " (format-time-string "%c") "\n\n"))))
+      (insert "   Met at [[*" location "][" location "]] on " (format-time-string "%c") "\n\n"))))
 
 (defun org-dnd-list-npcs ()
   "Return a list of all NPC names."
