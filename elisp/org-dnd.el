@@ -53,52 +53,71 @@ Insert link to NPC at point."
       (search-forward-regexp (rx bol "* " (literal org-dnd-npc-heading)) nil 'noerror)
       (forward-char)
       (insert "** " name "\n")
-      (insert "   Met at " (or location current-location) "\n\n")))
+      (insert "   Met at " (or location current-location) " on " (format-time-string "%c") "\n\n")))
   (insert "[[*" name "][" name "]]"))
 
-(defun org-dnd-npc-names ()
+(defun org-dnd-list-npcs ()
   "Return a list of all NPC names."
   (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
          (lambda (headline)
            (if (and (string= (org-element-property :title headline) org-dnd-npc-heading)
                     (eq (org-element-property :level headline) 1))
                (mapcar
-                (lambda (npc)
-                  (org-element-property :title npc))
+                (lambda (heading)
+                  (org-element-property :title heading))
                 (org-element-contents headline)))))))
 
 (defun org-dnd-reference-npc (name &optional location)
   "Insert a link to an existing NPC with NAME.
 Created NPC if referenced NPC does not exist, with LOCATION passed."
-  (interactive (list (completing-read "Name: " (org-dnd-npc-names) nil nil)))
-  (if (member name (org-dnd-npc-names))
+  (interactive (list (completing-read "Name: " (org-dnd-list-npcs) nil nil)))
+  (if (member name (org-dnd-list-npcs))
       (insert "[[*" name "][" name "]]")
     (org-dnd-new-npc name location)))
 
 (defun org-dnd-jump-to-npc (name)
   "Move cursor to NAME NPC's entry."
-  (interactive (list (completing-read "NPC: " (org-dnd-npc-names))))
+  (interactive (list (completing-read "NPC: " (org-dnd-list-npcs))))
   (push-mark)
   (goto-char (point-min))
-  (search-forward-regexp (concat "^** " name))
-  (org-show-context)
+  (org-link-search (concat "*" name))
   (org-show-entry))
 
 (defun org-dnd-new-quest (quest-name npc-name)
   "Create a new quest called QUEST-NAME given by NPC-NAME."
   (interactive (list (read-from-minibuffer "Quest: ")
-                     (completing-read "Quest giver: " (org-dnd-npc-names))))
+                     (completing-read "Quest giver: " (org-dnd-list-npcs))))
   (let ((location (org-get-heading 'no-tags 'no-todo 'no-pro 'no-comm)))
     (save-excursion
-    (goto-char (point-min))
-    (search-forward-regexp (rx bol "* " (literal org-dnd-quest-heading)) nil 'noerror)
-    (forward-char)
-    (org-insert-todo-subheading nil)
-    (insert quest-name "\n")
-    (insert "   Given by ")
-    (org-dnd-reference-npc npc-name location)
-    (insert " at [[*" location "][" location "]]")))
+      (goto-char (point-min))
+      (search-forward-regexp (rx bol "* " (literal org-dnd-quest-heading)) nil 'noerror)
+      (forward-char)
+      (org-insert-todo-subheading nil)
+      (insert quest-name "\n")
+      (insert "   Given by ")
+      (org-dnd-reference-npc npc-name location)
+      (insert " at [[*" location "][" location "]]")
+      (insert " on " (format-time-string "%c"))))
   (insert "Got quest [[*" quest-name "][" quest-name "]]"))
+
+(defun org-dnd-list-quests ()
+  "List all quests."
+  (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
+         (lambda (headline)
+           (if (and (string= (org-element-property :title headline) org-dnd-quest-heading)
+                    (eq (org-element-property :level headline) 1))
+               (mapcar
+                (lambda (heading)
+                  (org-element-property :title heading))
+                (org-element-contents headline)))))))
+
+(defun org-dnd-jump-to-quest (name)
+  "Move cursor to NAME quest."
+  (interactive (list (completing-read "Quest: " (org-dnd-list-quests))))
+  (push-mark)
+  (goto-char (point-min))
+  (org-link-search (concat "*" name))
+  (org-show-context))
 
 (provide 'org-dnd)
 ;;; org-dnd.el ends here
