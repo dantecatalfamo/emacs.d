@@ -42,6 +42,24 @@
 (defconst org-dnd-quest-heading "Quests"
   "Title of the heading where quests are stored.")
 
+(defun org-dnd--list-subheadings (heading-name)
+  "Return a list of the titles of the headings under first level HEADING-NAME."
+  (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
+         (lambda (headline)
+           (if (and (string= (org-element-property :title headline) heading-name)
+                    (eq (org-element-property :level headline) 1))
+               (mapcar
+                (lambda (heading)
+                  (org-element-property :title heading))
+                (org-element-contents headline)))))))
+
+(defun org-dnd--jumo-to-heading (headline)
+  "Move point to HEADLINE."
+  (push-mark)
+  (goto-char (point-min))
+  (org-link-search (concat "*" headline))
+  (org-show-entry))
+
 (defun org-dnd-new-npc (name &optional specified-location)
   "Add a new NPC with NAME, met at SPECIFIED-LOCATION.
 Location will be the current header if nil.
@@ -58,14 +76,7 @@ Insert link to NPC at point."
 
 (defun org-dnd-list-npcs ()
   "Return a list of all NPC names."
-  (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
-         (lambda (headline)
-           (if (and (string= (org-element-property :title headline) org-dnd-npc-heading)
-                    (eq (org-element-property :level headline) 1))
-               (mapcar
-                (lambda (heading)
-                  (org-element-property :title heading))
-                (org-element-contents headline)))))))
+  (org-dnd--list-subheadings org-dnd-npc-heading))
 
 (defun org-dnd-reference-npc (name &optional location)
   "Insert a link to an existing NPC with NAME.
@@ -78,17 +89,14 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
 (defun org-dnd-jump-to-npc (name)
   "Move cursor to NAME NPC's entry."
   (interactive (list (completing-read "NPC: " (org-dnd-list-npcs))))
-  (push-mark)
-  (goto-char (point-min))
-  (org-link-search (concat "*" name))
-  (org-show-entry))
+  (org-dnd--jumo-to-heading name))
 
 (defun org-dnd-new-quest (quest-name npc-name)
   "Create a new quest called QUEST-NAME given by NPC-NAME."
   (interactive (list (read-from-minibuffer "Quest: ")
                      (completing-read "Quest giver: " (org-dnd-list-npcs))))
   (let ((location (org-get-heading 'no-tags 'no-todo 'no-pro 'no-comm)))
-    (insert "Got quest [[*" quest-name "][" quest-name "]]")
+    (insert "[[*" quest-name "][" quest-name "]]")
     (save-excursion
       (goto-char (point-min))
       (search-forward-regexp (rx bol "* " (literal org-dnd-quest-heading)) nil 'noerror)
@@ -102,22 +110,12 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
 
 (defun org-dnd-list-quests ()
   "List all quests."
-  (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
-         (lambda (headline)
-           (if (and (string= (org-element-property :title headline) org-dnd-quest-heading)
-                    (eq (org-element-property :level headline) 1))
-               (mapcar
-                (lambda (heading)
-                  (org-element-property :title heading))
-                (org-element-contents headline)))))))
+  (org-dnd--list-subheadings org-dnd-quest-heading))
 
 (defun org-dnd-jump-to-quest (name)
   "Move cursor to NAME quest."
   (interactive (list (completing-read "Quest: " (org-dnd-list-quests))))
-  (push-mark)
-  (goto-char (point-min))
-  (org-link-search (concat "*" name))
-  (org-show-context))
+  (org-dnd--jumo-to-heading name))
 
 (defun org-dnd-setup ()
   "Setup the buffer to have the correct headings."
