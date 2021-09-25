@@ -809,6 +809,10 @@
   (setq org-imenu-depth 4))
 
 
+(use-package org-dnd
+  :load-path "~/.emacs.d/elisp")
+
+
 (use-package org-journal
   :ensure t
   :bind (:prefix "C-c j"
