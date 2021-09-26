@@ -53,7 +53,7 @@
                   (org-element-property :title heading))
                 (org-element-contents headline)))))))
 
-(defun org-dnd--jumo-to-heading (headline)
+(defun org-dnd--jump-to-heading (headline)
   "Move point to HEADLINE."
   (push-mark)
   (goto-char (point-min))
@@ -103,7 +103,7 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
 (defun org-dnd-jump-to-npc (name)
   "Move cursor to NAME NPC's entry."
   (interactive (list (completing-read "NPC: " (org-dnd-list-npcs))))
-  (org-dnd--jumo-to-heading name))
+  (org-dnd--jump-to-heading name))
 
 
 
@@ -131,7 +131,7 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
 (defun org-dnd-jump-to-quest (name)
   "Move cursor to NAME quest."
   (interactive (list (completing-read "Quest: " (org-dnd-list-quests))))
-  (org-dnd--jumo-to-heading name))
+  (org-dnd--jump-to-heading name))
 
 (provide 'org-dnd)
 ;;; org-dnd.el ends here
