@@ -42,16 +42,29 @@
 (defconst org-dnd-quest-heading "Quests"
   "Title of the heading where quests are stored.")
 
+(defconst org-dnd-location-heading "Locations"
+  "Title of the heading where locations are stored.")
+
 (defun org-dnd--list-subheadings (heading-name)
   "Return a list of the titles of the headings under first level HEADING-NAME."
   (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
          (lambda (headline)
-           (if (and (string= (org-element-property :title headline) heading-name)
-                    (eq (org-element-property :level headline) 1))
-               (mapcar
-                (lambda (heading)
-                  (org-element-property :title heading))
-                (org-element-contents headline)))))))
+           (when (and (string= (org-element-property :title headline) heading-name)
+                      (eq (org-element-property :level headline) 1))
+             (mapcar
+              (lambda (heading)
+                (org-element-property :title heading))
+              (org-element-contents headline)))))))
+
+(defun org-dnd--list-recursive-subheadings (heading-name)
+  "Return a list of the titles of the headings under first level HEADING-NAME, recursively."
+  (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
+     (lambda (headline)
+       (when (and (string= (org-element-property :title headline) heading-name)
+                  (eq (org-element-property :level headline) 1))
+         (org-element-map (cdr headline) '(headline)
+           (lambda (subhead)
+             (org-element-property :title subhead))))))))
 
 (defun org-dnd--jump-to-heading (headline)
   "Move point to HEADLINE."
@@ -132,6 +145,15 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
   "Move cursor to NAME quest."
   (interactive (list (completing-read "Quest: " (org-dnd-list-quests))))
   (org-dnd--jump-to-heading name))
+
+
+
+(defun org-dnd-reference-location (name)
+  "Insert a link to an existing location NAME."
+  (interactive (list (completing-read "Location: "
+                                      (org-dnd--list-recursive-subheadings org-dnd-location-heading)
+                                      nil t)))
+  (insert "[[*" name "][" name "]]"))
 
 (provide 'org-dnd)
 ;;; org-dnd.el ends here
