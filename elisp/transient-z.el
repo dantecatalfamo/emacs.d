@@ -66,9 +66,22 @@
     ("d" "Update Project Libraries" platformio-update)
     ("i" "Update Project Workspace and Index" platformio-init-update-workspace)]])
 
+(transient-define-prefix transient-z-org-dnd ()
+  "Personal org-dnd transient map."
+  ["Org D&D"
+   [("s" "Setup buffer" org-dnd-setup)
+    ("n" "Reference/New NPC" org-dnd-reference-npc)
+    ("q" "New Quest" org-dnd-new-quest)
+    ("w" "Referenc Quest" org-dnd-reference-quest)
+    ("l" "Reference Location" org-dnd-reference-location)]
+   [("jn" "Jump to NPC" org-dnd-jump-to-npc)
+    ("jq" "Jump to Quest" org-dnd-jump-to-quest)
+    ("jl" "Jump to Location" org-dnd-jump-to-location)]])
+
 (transient-define-prefix transient-z ()
   "Personal transient keymap for `C-z'."
   ["Helpers"
+   ("d" "Org D&D" transient-z-org-dnd)
    ("g" "Generic" transient-z-generic)
    ("h" "Hugo" transient-z-hugo)
    ("s" "Shopify" transient-z-shopify)
