@@ -45,6 +45,9 @@
 (defconst org-dnd-location-heading "Locations"
   "Title of the heading where locations are stored.")
 
+(defconst org-dnd-pc-heading "PCs"
+  "Title of the heading where PCs are stored.")
+
 (defun org-dnd--list-subheadings (heading-name)
   "Return a list of the titles of the headings under first level HEADING-NAME."
   (car (org-element-map (org-element-parse-buffer 'heading) '(headline)
@@ -85,7 +88,7 @@
          (insert "\n* " heading "\n")))
      '("Locations" "Quests" "NPCs" "PCs"))))
 
-
+;; Non-Player Characters
 
 (defun org-dnd-new-npc (name &optional specified-location)
   "Add a new NPC with NAME, met at SPECIFIED-LOCATION.
@@ -118,7 +121,7 @@ Creates NPC if referenced NPC does not exist, with LOCATION passed."
   (interactive (list (completing-read "NPC: " (org-dnd-list-npcs))))
   (org-dnd--jump-to-heading name))
 
-
+;; Quests
 
 (defun org-dnd-new-quest (quest-name npc-name)
   "Create a new quest called QUEST-NAME given by NPC-NAME."
@@ -151,8 +154,7 @@ Creates NPC if referenced NPC does not exist, with LOCATION passed."
   (interactive (list (completing-read "Quest: " (org-dnd-list-quests))))
   (org-dnd--jump-to-heading name))
 
-
-
+;; Locations
 
 (defun org-dnd-list-locations ()
   "Return a list of all locations."
@@ -165,8 +167,42 @@ Creates NPC if referenced NPC does not exist, with LOCATION passed."
 
 (defun org-dnd-jump-to-location (name)
   "Move cursor to NAME location entry."
-  (interactive (list (completing-read "NPC: " (org-dnd-list-locations))))
+  (interactive (list (completing-read "Location: " (org-dnd-list-locations))))
   (org-dnd--jump-to-heading name))
+
+
+;; Player Characters
+
+(defun org-dnd-list-pcs ()
+  "Return a list of all PCs."
+  (org-dnd--list-subheadings org-dnd-pc-heading))
+
+(defun org-dnd-reference-pc (name)
+  "Insert a link to an existing PC NAME."
+  (interactive (list (completing-read "Player Character: " (org-dnd-list-pcs) nil t)))
+  (insert "[[*" name "][" name "]]"))
+
+(defun org-dnd-jump-to-pc (name)
+  "Move cursor tp NAME PC entry."
+  (interactive (list (completing-read "Player Character: " (org-dnd-list-pcs))))
+  (org-dnd--jump-to-heading name))
+
+;; Transient map
+
+(transient-define-prefix org-dnd-transient-root ()
+  "Org-dnd transient map."
+  ["Org D&D"
+   [("s" "Setup buffer" org-dnd-setup)]
+   [("rn" "Reference NPC" org-dnd-reference-npc)
+    ("rq" "Reference Quest" org-dnd-reference-quest)
+    ("rl" "Reference Location" org-dnd-reference-location)
+    ("rp" "Reference Player Character" org-dnd-reference-pc)]
+   [("nn" "New NPC" org-dnd-new-npc)
+    ("nq" "New Quest" org-dnd-new-quest)]
+   [("jn" "Jump to NPC" org-dnd-jump-to-npc)
+    ("jq" "Jump to Quest" org-dnd-jump-to-quest)
+    ("jl" "Jump to Location" org-dnd-jump-to-location)
+    ("jp" "Jump to Player Character" org-dnd-jump-to-pc)]])
 
 (provide 'org-dnd)
 ;;; org-dnd.el ends here
