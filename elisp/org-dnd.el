@@ -107,7 +107,7 @@ Insert link to NPC at point."
 
 (defun org-dnd-reference-npc (name &optional location)
   "Insert a link to an existing NPC with NAME.
-Created NPC if referenced NPC does not exist, with LOCATION passed."
+Creates NPC if referenced NPC does not exist, with LOCATION passed."
   (interactive (list (completing-read "Name: " (org-dnd-list-npcs) nil nil)))
   (if (member name (org-dnd-list-npcs))
       (insert "[[*" name "][" name "]]")
@@ -141,6 +141,11 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
   "List all quests."
   (org-dnd--list-subheadings org-dnd-quest-heading))
 
+(defun org-dnd-reference-quest (quest-name)
+  "Insert a link to an existing quest QUEST-NAME."
+  (interactive (list (completing-read "Quest: " (org-dnd-list-quests) nil t)))
+  (insert "[[*" quest-name "][" quest-name "]]"))
+
 (defun org-dnd-jump-to-quest (name)
   "Move cursor to NAME quest."
   (interactive (list (completing-read "Quest: " (org-dnd-list-quests))))
@@ -148,12 +153,20 @@ Created NPC if referenced NPC does not exist, with LOCATION passed."
 
 
 
+
+(defun org-dnd-list-locations ()
+  "Return a list of all locations."
+  (org-dnd--list-recursive-subheadings org-dnd-location-heading))
+
 (defun org-dnd-reference-location (name)
   "Insert a link to an existing location NAME."
-  (interactive (list (completing-read "Location: "
-                                      (org-dnd--list-recursive-subheadings org-dnd-location-heading)
-                                      nil t)))
+  (interactive (list (completing-read "Location: " (org-dnd-list-locations) nil t)))
   (insert "[[*" name "][" name "]]"))
+
+(defun org-dnd-jump-to-location (name)
+  "Move cursor to NAME location entry."
+  (interactive (list (completing-read "NPC: " (org-dnd-list-locations))))
+  (org-dnd--jump-to-heading name))
 
 (provide 'org-dnd)
 ;;; org-dnd.el ends here
