@@ -27,6 +27,7 @@
 ;;; Code:
 
 (require 'transient)
+(require 'org-dnd)
 
 (transient-define-prefix transient-z-hugo ()
   "Personal Hugo transient map."
