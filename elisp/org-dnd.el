@@ -170,6 +170,25 @@ Creates NPC if referenced NPC does not exist, with LOCATION passed."
   (interactive (list (completing-read "Location: " (org-dnd-list-locations))))
   (org-dnd--jump-to-heading name))
 
+(defun org-dnd-new-location (parent-location &optional new-location)
+  "Create a new location NEW-LOCATION. Placed under optional PARENT-LOCATION.
+New location's name has parent location's name appended to the beginning.
+If parent location is nil or \"New\", new location is placed directly under the Locations heading."
+  (interactive (list
+                (completing-read "Parent location: " (cons "New" (org-dnd--list-recursive-subheadings org-dnd-location-heading)))
+                (read-from-minibuffer "New location: ")))
+  (if (or (null parent-location)
+          (string= parent-location "New"))
+      (progn
+        (org-dnd--jump-to-heading org-dnd-location-heading)
+        (org-forward-heading-same-level nil t)
+        (backward-char)
+        (insert "\n** " new-location "\n"))
+    (org-dnd--jump-to-heading parent-location)
+    (org-forward-heading-same-level nil t)
+    (backward-char)
+    (org-insert-subheading nil)
+    (insert parent-location " " new-location "\n")))
 
 ;; Player Characters
 
@@ -198,7 +217,8 @@ Creates NPC if referenced NPC does not exist, with LOCATION passed."
     ("rl" "Reference Location" org-dnd-reference-location)
     ("rp" "Reference Player Character" org-dnd-reference-pc)]
    [("nn" "New NPC" org-dnd-new-npc)
-    ("nq" "New Quest" org-dnd-new-quest)]
+    ("nq" "New Quest" org-dnd-new-quest)
+    ("nl" "New Location" org-dnd-new-location)]
    [("jn" "Jump to NPC" org-dnd-jump-to-npc)
     ("jq" "Jump to Quest" org-dnd-jump-to-quest)
     ("jl" "Jump to Location" org-dnd-jump-to-location)
