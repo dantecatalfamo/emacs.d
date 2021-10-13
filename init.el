@@ -1258,6 +1258,10 @@ Host *
   :hook (after-init . windmove-default-keybindings))
 
 
+(use-package winner
+  :hook (after-init . winner-mode))
+
+
 (use-package whole-line-or-region
   :ensure t
   :config
