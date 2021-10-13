@@ -800,7 +800,7 @@
   (setq org-src-tab-acts-natively nil)
   (setq org-edit-src-content-indentation 0)
   (setq org-confirm-babel-evaluate nil)
-  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t) (python . t)))
+  (setq org-babel-load-languages '((emacs-lisp . t) (shell . t) (python . t) (ruby . t)))
   (setq org-startup-folded t))
 
 
