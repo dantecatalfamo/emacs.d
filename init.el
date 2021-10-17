@@ -947,6 +947,11 @@ Host *
   (setq python-indent-offset 4))
 
 
+(use-package quickrun
+  :ensure t
+  :defer t)
+
+
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
