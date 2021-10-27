@@ -373,6 +373,10 @@
   :defer t)
 
 
+(use-package himalaya
+  :load-path "~/src/github.com/dantecatalfamo/himalaya-emacs")
+
+
 (use-package hl-todo
   :ensure t
   :config
