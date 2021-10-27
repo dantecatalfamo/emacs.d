@@ -35,6 +35,7 @@
 
 (require 'org)
 (require 'org-element)
+(require 'transient)
 
 (defconst org-dnd-npc-heading "NPCs"
   "Title of the heading where NPCs are stored.")
