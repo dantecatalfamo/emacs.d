@@ -368,6 +368,10 @@
   :ensure t)
 
 
+(use-package embark
+  :ensure t)
+
+
 (use-package emoji-cheat-sheet-plus
   :ensure t
   :defer t)
