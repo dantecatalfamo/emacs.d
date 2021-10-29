@@ -369,7 +369,8 @@
 
 
 (use-package embark
-  :ensure t)
+  :ensure t
+  :bind (("C-`" . embark-act)))
 
 
 (use-package emoji-cheat-sheet-plus
