@@ -1345,10 +1345,11 @@ Host *
 (setq word-wrap t) ; Word-wrap instead of wrapping in the middle of words
 
 
-;; MacOS titlebar
+;; MacOS titlebar and emojis
 (when-darwin
  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
- (setq ns-use-proxy-icon  nil))
+ (setq ns-use-proxy-icon  nil)
+ (set-fontset-font t '(#x1f000 . #x1faff) (font-spec :family "Apple Color Emoji")))
 ;; (setq frame-title-format nil)
 
 
