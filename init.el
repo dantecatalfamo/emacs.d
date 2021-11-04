@@ -1100,6 +1100,7 @@ Host *
 
 (use-package solaire-mode
   :ensure t
+  :after doom-themes
   :config
   (solaire-global-mode))
 
