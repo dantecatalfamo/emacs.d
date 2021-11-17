@@ -4,7 +4,7 @@
 
 ;; Raise GC limits during startup for speed increase, then reset it
 (setq gc-cons-threshold most-positive-fixnum)
-(add-hook 'after-init-hook (lambda() (setq gc-cons-threshold 800000)))
+(add-hook 'after-init-hook (lambda() (setq gc-cons-threshold 100000000)))
 
 (when (version< emacs-version "27")
   (package-initialize)) ; Called implicitly in Emacs 27+
@@ -686,10 +686,12 @@
          (c-mode . my-lsp-conditionally-defer)
          (c++-mode . lsp-deferred)
          (go-mode . lsp-deferred)
+         (zig-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
   :init
-  (setq lsp-keymap-prefix "C-c s"))
+  (setq lsp-keymap-prefix "C-c s")
+  (setq read-process-output-max (* 1024 1024)))
 
 
 (use-package lsp-ui
