@@ -1315,8 +1315,7 @@ Host *
 
 
 (use-package zig-mode
-  :ensure t
-  :hook (zig-mode . lsp-deferred))
+  :ensure t)
 
 
 (use-package znc   ; Custom elisp, patched fork
