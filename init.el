@@ -1315,7 +1315,8 @@ Host *
 
 
 (use-package zig-mode
-  :ensure t)
+  :ensure t
+  :hook (zig-mode . lsp-deferred))
 
 
 (use-package znc   ; Custom elisp, patched fork
@@ -1408,6 +1409,16 @@ Host *
 
 
 ;;; Functions
+
+(defun my-new-project (project-name)
+  "Create a new project folder called PROJECT-NAME."
+  (interactive "sProject name: ")
+  (let ((path (file-name-as-directory (expand-file-name project-name "~/src/github.com/dantecatalfamo"))))
+    (when (file-exists-p path)
+      (user-error "Project %s already exists" project-name))
+    (make-directory path t)
+    (find-file path)
+    (magit-init path)))
 
 (defun my-git-configure-user ()
   "Configure the current git repository with my details."
