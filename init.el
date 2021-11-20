@@ -130,6 +130,7 @@
 
 
 (use-package autorevert
+  :hook (after-init . global-auto-revert-mode)
   :custom
   (auto-revert-mode-text " ⟲"))
 
