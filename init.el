@@ -1316,7 +1316,9 @@ Host *
 
 
 (use-package zig-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq zig-format-on-save nil))
 
 
 (use-package znc   ; Custom elisp, patched fork
