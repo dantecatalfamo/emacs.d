@@ -135,6 +135,12 @@
   (auto-revert-mode-text " ⟲"))
 
 
+(use-package beacon
+  :ensure t
+  :config
+  (setq beacon-blink-when-focused t))
+
+
 (use-package bytes-constant             ; Custom elisp
   :load-path "~/.emacs.d/elisp/bytes-constant.el"
   :commands (bytes-constant byteconst))
