@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: bootstrap form field
+# key: bsff
+# --
+<div class="mb-3">
+  <%= form.label :$1, class: "form-label" %>
+  <%= form.$2_field :$1, class: "form-control" %>
+</div>
