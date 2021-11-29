@@ -137,6 +137,7 @@
 
 (use-package beacon
   :ensure t
+  :hook (after-init . beacon-mode)
   :config
   (setq beacon-blink-when-focused t))
 
