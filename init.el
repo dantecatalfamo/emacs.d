@@ -716,6 +716,8 @@
 (use-package macrostep
   :ensure t
   :bind (:map emacs-lisp-mode-map
+              ("C-c M-e" . macrostep-expand)
+              :map ielm-map
               ("C-c M-e" . macrostep-expand)))
 
 
