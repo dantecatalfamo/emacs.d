@@ -627,6 +627,12 @@
   :bind ("C-;" . iedit-mode))
 
 
+(use-package ielm
+  :bind
+  (:map ielm-map
+        ("C-c C-d" . helpful-at-point)))
+
+
 (use-package imenu
   :after treemacs
   :commands imenu
@@ -708,7 +714,9 @@
 
 
 (use-package macrostep
-  :ensure t)
+  :ensure t
+  :bind (:map emacs-lisp-mode-map
+              ("C-c M-e" . macrostep-expand)))
 
 
 (use-package magit
