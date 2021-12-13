@@ -387,6 +387,7 @@
 
 
 (use-package himalaya
+  :if (file-exists-p "~/src/github.com/dantecatalfamo/himalaya-emacs")
   :load-path "~/src/github.com/dantecatalfamo/himalaya-emacs")
 
 
