@@ -893,7 +893,8 @@ Host *
 
 (use-package package
   :init
-  (setq package-quickstart t))
+  ; (setq package-quickstart t)
+  )
 
 
 (use-package package-lint
