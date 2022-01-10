@@ -1,5 +1,6 @@
 ;;; init.el --- Emacs init file  -*- lexical-binding: t -*-
 ;;; Commentary:
+;; Remember to use `\\[set-selective-display]' (C-x $)
 ;;; Code:
 
 ;; Raise GC limits during startup for speed increase, then reset it
