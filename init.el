@@ -491,6 +491,14 @@
   :hook (text-mode . flyspell-mode))
 
 
+(use-package font-lock
+  :config
+  (set-face-attribute 'font-lock-comment-face nil
+                      :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil
+                      :slant 'italic))
+
+
 (use-package forge
   :ensure t
   :after magit)
