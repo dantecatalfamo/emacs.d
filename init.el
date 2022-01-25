@@ -1190,7 +1190,8 @@ Host *
 
 
 (use-package text-mode
-  :hook (text-mode . (lambda () (setq truncate-lines nil))))
+  :hook (text-mode . (lambda () (setq truncate-lines nil
+                                      word-wrap t))))
 
 
 (use-package tide
