@@ -1612,10 +1612,6 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
 ;; Removes *Completions* from buffer after you've opened a file.
 (add-hook 'minibuffer-exit-hook 'my-delete-completion-buffer)
 
-(unless darwin-p
-  (set-face-attribute
-   'default nil :inherit nil :height 92))
-
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
