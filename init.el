@@ -1095,6 +1095,7 @@ Host *
 (use-package spin
   :load-path "~/src/github.com/Shopify/spin.el"
   :defer t
+  :commands (spin-status)
   :if darwin-p)
 
 
