@@ -292,6 +292,14 @@
   :ensure t)
 
 
+(use-package dired-sidebar
+  :ensure t
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :commands (dired-sidebar-toggle-sidebar)
+  :config
+  (setq dired-sidebar-theme 'ascii))
+
+
 (use-package dockerfile-mode
   :ensure t
   :mode "Dockerfile\\'")
@@ -385,6 +393,12 @@
 (use-package emoji-cheat-sheet-plus
   :ensure t
   :defer t)
+
+
+(use-package hilit-chg
+  :if nil
+  :config
+  (add-hook 'after-save-hook #'highlight-changes-rotate-faces))
 
 
 (use-package himalaya
@@ -1093,10 +1107,10 @@ Host *
 
 
 (use-package spin
+  :if (file-exists-p "~/src/github.com/Shopify/spin.el")
   :load-path "~/src/github.com/Shopify/spin.el"
   :defer t
-  :commands (spin-status)
-  :if darwin-p)
+  :commands (spin-status))
 
 
 (use-package string-inflection
