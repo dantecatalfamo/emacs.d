@@ -406,6 +406,11 @@
   :load-path "~/src/github.com/dantecatalfamo/himalaya-emacs")
 
 
+(use-package hl-line
+  :config
+  (global-hl-line-mode))
+
+
 (use-package hl-todo
   :ensure t
   :config
