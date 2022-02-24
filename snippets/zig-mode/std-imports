@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: std imports
+# key: std
+# --
+const std = @import("std");
+const mem = std.mem;
+const debug = std.debug;
+const testing = std.testing;

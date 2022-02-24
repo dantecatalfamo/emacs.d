@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: string-equal
+# key: seq
+# --
+if (mem.eql(u8, $1, "$2")) {
+   $0
+}
