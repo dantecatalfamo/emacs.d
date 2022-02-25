@@ -767,7 +767,7 @@
   :ensure t
   :after magit
   :config
-  (setq magit-todos-exclude-globs '("*.js.map" "TAGS" "*.lock" "archive-contents" "elpa/"))
+  (setq magit-todos-exclude-globs '("*.js.map" "TAGS" "*.lock" "archive-contents" "elpa/" "node_modules/" "vendor/"))
   (setq magit-todos-keyword-suffix "\\(?:([^)]+)\\)?[: ]") ; make colon optional
   (magit-todos-mode))
 
