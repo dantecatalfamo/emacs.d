@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: copyright
+# key: copyright
+# --
+`(yas-trimmed-comment-start)` Copyright (c) `(format-time-string "%Y")` `user-full-name``(unless (eq (length comment-end) 0) (concat " " (yas-trimmed-comment-end)))`

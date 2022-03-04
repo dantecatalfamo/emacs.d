@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: spdx
+# key: spdx
+# `(yas-trimmed-comment-start)` SPDX-FileCopyrightText: `(format-time-string "%Y")` `user-full-name` <`user-mail-address`>`(unless (eq (length comment-end) 0) (concat " " (yas-trimmed-comment-end)))`
+# --
+
+`(yas-trimmed-comment-start)` SPDX-License-Identifier: ${1:$$(yas-choose-value '("GPL-3.0-or-later" "MIT"))}`(unless (eq (length comment-end) 0) (concat " " (yas-trimmed-comment-end)))`
