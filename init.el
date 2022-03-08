@@ -758,11 +758,6 @@
         magit-diff-refine-ignore-whitespace t))
 
 
-(use-package magit-gitflow
-  :ensure t
-  :hook (magit-mode . turn-on-magit-gitflow))
-
-
 (use-package magit-todos
   :ensure t
   :after magit
