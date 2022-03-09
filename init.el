@@ -964,6 +964,11 @@ Host *
   :hook ((c++-mode . platformio-conditionally-enable)))
 
 
+(use-package perspective
+  :ensure t
+  :hook (after-init . persp-mode))
+
+
 ;; (use-package persp-mode
 ;;   :ensure t
 ;;   :hook ((after-init . persp-mode))
