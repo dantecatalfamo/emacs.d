@@ -19,7 +19,7 @@ If the comment doesn't exist, insert it."
       (insert "# frozen_string_literal: true\n\n"))
     (goto-char (point-min))
     (unless (save-excursion
-              (re-search-forward (rx bol "# typed: false" eol) nil 'noerror))
+              (re-search-forward (rx bol "# typed: ") nil 'noerror))
       (insert "# typed: false\n"))))
 
 (provide 'ruby-frozen-string-literal)
