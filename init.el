@@ -969,6 +969,11 @@ Host *
   :hook (after-init . persp-mode))
 
 
+(use-package persp-projectile
+  :ensure t
+  :bind (:map projectile-mode-map
+         ("s-s" . projectile-persp-switch-project)))
+
 ;; (use-package persp-mode
 ;;   :ensure t
 ;;   :hook ((after-init . persp-mode))
