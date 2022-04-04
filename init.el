@@ -729,8 +729,12 @@
          (c-mode . my-lsp-conditionally-defer)
          (c++-mode . lsp-deferred)
          (go-mode . lsp-deferred)
+         (go-mode . my-lsp-install-save-hooks)
          (zig-mode . lsp-deferred)
-         (go-mode . my-lsp-install-save-hooks))
+         (web-mode . lsp-deferred)
+         (web-mode . my-lsp-install-save-hooks)
+         (typescript-mode . lsp-deferred)
+         (typescript-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
   :init
   (setq lsp-keymap-prefix "C-c s")
@@ -762,7 +766,7 @@
   :ensure t
   :after magit
   :config
-  (setq magit-todos-exclude-globs '("*.js.map" "TAGS" "*.lock" "archive-contents" "elpa/" "node_modules/" "vendor/"))
+  (setq magit-todos-exclude-globs '("*.js.map" "TAGS" "*.lock" "archive-contents" "elpa/" "node_modules/" "vendor/" ".ccls-cache/"))
   (setq magit-todos-keyword-suffix "\\(?:([^)]+)\\)?[: ]") ; make colon optional
   (magit-todos-mode))
 
@@ -1247,7 +1251,9 @@ Host *
 
 (use-package typescript-mode
   :ensure t
-  :defer t)
+  :defer t
+  :init
+  (setq typescript-indent-level 2))
 
 
 (use-package undo-tree
@@ -1306,8 +1312,10 @@ Host *
          "\\.djhtml\\'"
          "\\.html?\\'"
          "\\.tsx?\\'")
-  :hook ((web-mode . (lambda() (setq-local tab-width 2)))
-         (web-mode . my-web-mode-tide-setup))
+  :hook ((web-mode . (lambda() (setq-local tab-width 2
+                                           standard-indent 2)))
+         ;(web-mode . my-web-mode-tide-setup)
+         )
   :init
   (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-code-indent-offset 2)
@@ -1569,7 +1577,7 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
 
 (defun my-lsp-install-save-hooks ()
   "Add hooks for lsp-mode."
-  ;(add-hook 'before-save-hook #'lsp-format-buffer nil t)
+  ; (add-hook 'before-save-hook #'lsp-format-buffer nil t)
   (add-hook 'before-save-hook #'lsp-organize-imports nil t))
 
 (defun my-lsp-conditionally-defer ()
