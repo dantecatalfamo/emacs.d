@@ -1,5 +1,25 @@
 ;;; repo-helper -- heplers for managing project directories -*- lexical-binding: t; -*-
 
+;; Copyright (C) 2020-2022 Dante Catalfamo
+
+;; Author: Dante Catalfamo
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
 ;;; Commentary:
 
 ;; A few helpful functions for managing and navigating work and personal projects
@@ -16,6 +36,13 @@
 
 (defvar repo-projects-depth 3
   "Depth under the root that projects' root folders are located.")
+
+(defconst my-git-trim-regex
+  (rx (or (seq bol (or "ssh"
+                       (seq "http" (? "s")))
+               "://")
+          (seq ".git" eol)))
+  "Regex to remove unnecessary path elements from git url.")
 
 
 (defun repo--list-subdirs (directory &optional depth)
@@ -91,6 +118,15 @@ When run with ARG, open project with Dired instead of projectile"
         (dired project-root)
       (projectile-switch-project-by-name project-root)))
 
+
+(defun repo-clone (url)
+  "Clone a git repository at URL into the appropriate directory."
+  (interactive "sRepository URL: ")
+  (let* ((repo-path (replace-regexp-in-string my-git-trim-regex "" url))
+         (full-path (expand-file-name repo-path (expand-file-name "src" "~"))))
+    (message "Cloning...")
+    (async-start-process "git clone" "git" `(lambda (_proc) (message "Cloning complete: %s" ,full-path))
+                         "clone" "--recursive" url full-path)))
 
 ;;;###autoload
 (defun repo-open-pr ()
