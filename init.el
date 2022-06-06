@@ -1012,8 +1012,8 @@ Host *
 
 (use-package projectile-rails
   :ensure t
+  :defer nil
   :after projectile
-  :defer t
   :bind (("C-c w" . projectile-rails-command-map))
   :config
   (projectile-rails-global-mode))
