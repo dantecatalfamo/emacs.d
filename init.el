@@ -884,7 +884,8 @@
   :bind (:prefix "C-c j"
          :prefix-map my-org-journal-map
          ("j" . org-journal-new-entry)
-         ("c" . my-org-journal-covid))
+         ("c" . my-org-journal-covid)
+         ("s" . my-org-journal-shopify))
   :init
   (setq org-journal-dir "~/Org/Journal/")
   (setq org-journal-file-type 'monthly))
@@ -1596,6 +1597,14 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
   "Open org-journal with covid directory."
   (interactive)
   (let ((org-journal-dir "~/Org/COVID/"))
+    (org-journal-new-entry nil)
+    (org-journal-mode)
+    (org-cycle)))
+
+(defun my-org-journal-shopify ()
+  "Open org-journal with shopify directory."
+  (interactive)
+  (let ((org-journal-dir "~/Org/Shopify/Journal/"))
     (org-journal-new-entry nil)
     (org-journal-mode)
     (org-cycle)))
