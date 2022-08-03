@@ -731,8 +731,8 @@
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks)
          (zig-mode . lsp-deferred)
-         (web-mode . lsp-deferred)
-         (web-mode . my-lsp-install-save-hooks)
+         ; (web-mode . lsp-deferred)
+         ; (web-mode . my-lsp-install-save-hooks)
          (typescript-mode . lsp-deferred)
          (typescript-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
@@ -1060,12 +1060,12 @@ Host *
   :ensure t)
 
 
-(use-package robe
-  :ensure t
-  :after company
-  :hook (enh-ruby-mode . robe-mode)
-  :init
-  (add-to-list 'company-backends 'company-robe))
+;; (use-package robe
+;;   :ensure t
+;;   :after company
+;;   :hook (enh-ruby-mode . robe-mode)
+;;   :init
+;;   (add-to-list 'company-backends 'company-robe))
 
 
 (use-package rubocop
