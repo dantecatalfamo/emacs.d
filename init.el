@@ -1372,6 +1372,12 @@ Host *
   :ensure t)
 
 
+(use-package xref
+  :config
+  (when (version<= "28.1" emacs-version)
+    (setq xref-show-definitions-function #'xref-show-definitions-completing-read)))
+
+
 (use-package yaml-mode
   :ensure t
   :mode "\\.yml\\'")
