@@ -857,6 +857,7 @@
   (setq org-refile-targets '((nil :maxlevel . 9)
                              (org-agenda-files :maxlevel . 3)))
   (setq org-refile-use-outline-path 'file)
+  (setq org-adapt-indentation t)
   (setq org-outline-path-complete-in-steps nil)
   (setq org-refile-allow-creating-parent-nodes 'confirm)
   (setq org-src-tab-acts-natively nil)
@@ -1633,6 +1634,14 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
   (interactive)
   (setq erc-modified-channels-alist '())
   (setq erc-modified-channels-object nil))
+
+(defun my-ruby-generate-etags ()
+  "Populate an ETAGS file in the project root."
+  (interactive)
+  (shell-command "
+cd \"$(git rev-parse --show-toplevel)\" || exit 1
+find . $(bundle list --paths) -name '*.rb' -print | etags -")
+  (message "TAGS created"))
 
 ; Taken from https://endlessparentheses.com/get-in-the-habit-of-using-sharp-quote.html
 (defun endless/sharp ()
