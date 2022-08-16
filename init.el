@@ -347,6 +347,11 @@
   :ensure t
   :bind ("C-h C-m" . discover-my-major))
 
+(use-package dumb-jump
+  :ensure t
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+
 
 (use-package ejson-mode
   :ensure t
