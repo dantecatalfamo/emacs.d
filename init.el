@@ -882,6 +882,7 @@
 
 (use-package org-journal
   :ensure t
+  :defer nil
   :bind (:prefix "C-c j"
          :prefix-map my-org-journal-map
          ("j" . org-journal-new-entry)
