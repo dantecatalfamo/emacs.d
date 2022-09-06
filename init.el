@@ -894,6 +894,7 @@
          ("c" . my-org-journal-covid)
          ("s" . my-org-journal-shopify))
   :init
+  (defvar org-journal-dir nil)
   (setq org-journal-dir "~/Org/Journal/")
   (setq org-journal-file-type 'monthly))
 
