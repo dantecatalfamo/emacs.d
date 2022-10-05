@@ -607,7 +607,7 @@
 
 (use-package helm-ag
   :ensure t
-  :bind ("C-c g" . helm-projectile-ag))
+  :defer t)
 
 
 (use-package helm-atoms
@@ -627,6 +627,12 @@
 (use-package helm-projectile
   :after (helm projectile)
   :ensure t)
+
+
+(use-package helm-rg
+  :ensure t
+  :after (helm)
+  :bind ("C-c g" . helm-projectile-rg))
 
 
 (use-package helm-system-packages
