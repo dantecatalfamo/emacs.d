@@ -725,6 +725,11 @@
   :commands latex-preview-pane-mode)
 
 
+(use-package loaddefs
+  :init
+  (pixel-scroll-precision-mode))
+
+
 (use-package lorem-ipsum
   :ensure t)
 
