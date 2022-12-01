@@ -944,6 +944,7 @@
 Host *
   AddKeysToAgent yes
   UseKeychain yes
+  IdentityAgent ~/.1password/agent.sock
 "))
 
 
