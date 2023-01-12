@@ -668,6 +668,7 @@
 
 
 (use-package ielm
+  :defer nil
   :bind
   (:map ielm-map
         ("C-c C-d" . helpful-at-point)))
