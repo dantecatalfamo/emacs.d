@@ -743,8 +743,8 @@
 (use-package lsp-mode
   :ensure t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-         (c-mode . my-lsp-conditionally-defer)
-         (c++-mode . lsp-deferred)
+         ; (c-mode . my-lsp-conditionally-defer)
+         ; (c++-mode . lsp-deferred)
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks)
          (zig-mode . lsp-deferred)
