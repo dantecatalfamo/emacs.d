@@ -1103,6 +1103,10 @@ Host *
   :hook enh-ruby-mode)
 
 
+(use-package rust-mode
+  :ensure t)
+
+
 (use-package savehist
   :hook (after-init . savehist-mode))
 
