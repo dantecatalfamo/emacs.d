@@ -748,6 +748,7 @@
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks)
          (zig-mode . lsp-deferred)
+         (rust-mode . lsp-deferred)
          ; (web-mode . lsp-deferred)
          ; (web-mode . my-lsp-install-save-hooks)
          (typescript-mode . lsp-deferred)
