@@ -3,12 +3,9 @@
 ;; Remember to use `\\[set-selective-display]' (C-x $)
 ;;; Code:
 
-;; Raise GC limits during startup for speed increase, then reset it
-(setq gc-cons-threshold most-positive-fixnum)
-(add-hook 'after-init-hook (lambda() (setq gc-cons-threshold 100000000)))
-
 (when (version< emacs-version "27")
-  (package-initialize)) ; Called implicitly in Emacs 27+
+  (package-initialize)  ; Called implicitly in Emacs 27+
+  (load (concat user-emacs-directory "early-init.el")))
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -800,11 +797,6 @@
   (minibuffer-depth-indicate-mode))
 
 
-(use-package menu-bar
-  :config
-  (menu-bar-mode (if darwin-p 1 -1))) ; Only show menu bar on MacOS
-
-
 (use-package minitest
   :ensure t
   :diminish "MT"
@@ -994,7 +986,10 @@ Host *
 
 (use-package perspective
   :ensure t
-  :hook (after-init . persp-mode))
+  :hook (after-init . persp-mode)
+  :bind-keymap ("C-x p" . persp-mode-map)
+  :init
+  (setq persp-mode-prefix-key (kbd "C-x p")))
 
 
 (use-package persp-projectile
@@ -1115,11 +1110,6 @@ Host *
 
 (use-package saveplace
   :hook (after-init . save-place-mode))
-
-
-(use-package scroll-bar
-  :config
-  (scroll-bar-mode 0))
 
 
 (use-package shadowenv
@@ -1256,11 +1246,6 @@ Host *
   :ensure t
   :hook ((rjsx-mode . tide-setup)
          (rjsx-mode . tide-hl-identifier-mode)))
-
-
-(use-package tool-bar
-  :config
-  (tool-bar-mode 0))
 
 
 (use-package transient-z   ; custom elisp
