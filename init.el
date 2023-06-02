@@ -554,6 +554,11 @@
   :commands git-timemachine)
 
 
+(use-package gnu-elpa-keyring-update
+  :ensure t
+  :defer t)
+
+
 (use-package go
   :ensure t
   :commands go-play)
@@ -574,6 +579,11 @@
   :after markdown-mode
   :bind (:map markdown-mode-command-map
               ("g" . grip-mode)))
+
+
+(use-package flycheck-grammarly
+  :ensure t
+  :defer t)
 
 
 (use-package graphql-mode
@@ -740,14 +750,14 @@
 (use-package lsp-mode
   :ensure t
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-         ; (c-mode . my-lsp-conditionally-defer)
-         ; (c++-mode . lsp-deferred)
+       ; (c-mode . my-lsp-conditionally-defer)
+       ; (c++-mode . lsp-deferred)
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks)
          (zig-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
-         ; (web-mode . lsp-deferred)
-         ; (web-mode . my-lsp-install-save-hooks)
+       ; (web-mode . lsp-deferred)
+       ; (web-mode . my-lsp-install-save-hooks)
          (typescript-mode . lsp-deferred)
          (typescript-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
@@ -1146,6 +1156,12 @@ Host *
   :commands (spin-status))
 
 
+;; Required by magit until Emacs 29.1
+(use-package sqlite
+  :ensure t
+  :defer t)
+
+
 (use-package string-inflection
   :ensure t
   :defer t)
@@ -1283,7 +1299,8 @@ Host *
 
 (use-package unfill
   :ensure t
-  :defer t)
+  :defer t
+  :bind (("C-M-q" . unfill-paragraph)))
 
 
 (use-package visual-regexp
@@ -1403,6 +1420,11 @@ Host *
 (use-package yasnippet-snippets
   :after yasnippet
   :ensure t)
+
+
+(use-package zeal-at-point
+  :ensure t
+  :defer t)
 
 
 (use-package zig-mode
