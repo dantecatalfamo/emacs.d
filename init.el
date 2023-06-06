@@ -1157,7 +1157,7 @@ Host *
 
 
 ;; Required by magit until Emacs 29.1
-(use-package sqlite
+(use-package sqlite3
   :ensure t
   :defer t)
 
