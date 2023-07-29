@@ -3,6 +3,8 @@
 # key: std
 # --
 const std = @import("std");
-const mem = std.mem;
 const debug = std.debug;
+const fs = std.fs;
+const mem = std.mem;
+const os = std.os;
 const testing = std.testing;
