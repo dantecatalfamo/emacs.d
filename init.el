@@ -735,7 +735,7 @@
 
 (use-package loaddefs
   :init
-  (pixel-scroll-precision-mode))
+  (pixel-scroll-mode))
 
 
 (use-package lorem-ipsum
