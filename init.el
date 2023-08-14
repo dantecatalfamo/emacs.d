@@ -3,8 +3,10 @@
 ;; Remember to use `\\[set-selective-display]' (C-x $)
 ;;; Code:
 
+; (setq use-package-compute-statistics t)
+
 (when (version< emacs-version "27")
-  (package-initialize)  ; Called implicitly in Emacs 27+
+  (package-initialize)                ; Called implicitly in Emacs 27+
   (load (concat user-emacs-directory "early-init.el")))
 
 (require 'package)
@@ -26,6 +28,9 @@
 
 (setq user-full-name "Dante Catalfamo"
       user-mail-address "dante.catalfamo@gmail.com")
+
+(push (expand-file-name "~/.asdf/shims") exec-path)
+(push (expand-file-name "~/bin") exec-path)
 
 (message "Starting Emacs...")
 
@@ -161,7 +166,8 @@
 
 
 (use-package cc-mode
-  :init
+  :defer t
+  :config
   (setq-default c-basic-offset 4))
 
 
@@ -206,8 +212,10 @@
   (setq company-dabbrev-downcase nil)
   (setq company-transformers '(company-sort-by-occurrence
                                company-sort-by-backend-importance))
-  :config
-  (global-company-mode))
+  :hook (after-init . global-company-mode)
+  ; :config
+  ; (global-company-mode)
+  )
 
 
 (use-package company-jedi
@@ -279,10 +287,9 @@
 
 (use-package diff-hl
   :ensure t
-  :defer nil
-  :hook  (magit-post-refresh . diff-hl-magit-post-refresh)
-  :config
-  (global-diff-hl-mode))
+  :defer t
+  :hook  ((magit-post-refresh . diff-hl-magit-post-refresh)
+          (prog-mode . global-diff-hl-mode)))
 
 
 (use-package diminish
@@ -404,7 +411,7 @@
 
 
 (use-package himalaya
-  :if (file-exists-p "~/src/github.com/dantecatalfamo/himalaya-emacs")
+  :if nil ; (file-exists-p "~/src/github.com/dantecatalfamo/himalaya-emacs")
   :load-path "~/src/github.com/dantecatalfamo/himalaya-emacs")
 
 
@@ -438,8 +445,9 @@
 
 (use-package exec-path-from-shell
   :ensure t
-  :if (not (eq system-type 'windows-nt))
+  :if nil ; (not (eq system-type 'windows-nt))
   :config
+  (setq exec-path-from-shell-arguments '("-l"))
   (when-darwin
    (setq exec-path-from-shell-variables '("PATH"
                                           "MAN_PATH"
@@ -522,6 +530,7 @@
 
 (use-package forge
   :ensure t
+  :defer t
   :after magit)
 
 
@@ -598,7 +607,7 @@
 
 (use-package helm
   :ensure t
-  :defer nil
+  :defer t
   :diminish helm-mode
   :bind (("C-x c" . helm-command-prefix-key)
          ("C-c i" . helm-imenu)
@@ -623,6 +632,7 @@
 
 
 (use-package helm-descbinds
+  :defer t
   :ensure t)
 
 
@@ -707,6 +717,7 @@
 
 
 (use-package js
+  :defer t
   :config
   (setq js-indent-level 2))
 
@@ -843,7 +854,8 @@
 
 
 (use-package ob-http
-  :ensure t)
+  :ensure t
+  :defer t)
 
 
 (use-package olivetti
@@ -898,6 +910,7 @@
 
 
 (use-package org-dnd
+  :if nil
   :load-path "~/.emacs.d/elisp")
 
 
@@ -1049,6 +1062,7 @@ Host *
 
 
 (use-package python
+  :defer t
   :config
   (setq python-indent-offset 4))
 
@@ -1085,6 +1099,7 @@ Host *
 
 
 (use-package rmsbolt
+  :defer t
   :ensure t)
 
 
@@ -1312,6 +1327,7 @@ Host *
 
 (use-package vterm
   :ensure t
+  :defer t
   :config
   (setq vterm-max-scrollback 5000)
   (setq vterm-kill-buffer-on-exit t)
