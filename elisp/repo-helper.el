@@ -30,6 +30,7 @@
 (require 'dash)
 (require 'projectile)
 (require 'treemacs)
+(require 'helm)
 
 (defvar repo-projects-root "~/src"
   "Root directory under which all projects are located.")

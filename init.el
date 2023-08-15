@@ -277,6 +277,7 @@
 
 (use-package repo-helper       ; Custom elisp
   :load-path "~/.emacs.d/elisp"
+  :defer t
   :commands (repo-open-pr)
   :bind (("C-c e" . repo-change-project)))
 
@@ -1054,7 +1055,6 @@ Host *
 
 (use-package projectile-rails
   :ensure t
-  :defer nil
   :after projectile
   :bind (("C-c w" . projectile-rails-command-map))
   :config
