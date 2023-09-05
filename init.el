@@ -833,6 +833,13 @@
   )
 
 
+(use-package mouse
+  :config
+  (when (null (display-graphic-p))
+    (xterm-mouse-mode))
+  (context-menu-mode))
+
+
 (use-package multiple-cursors
   :ensure t
   :bind (("C-S-c C-S-c" . mc/edit-lines)
