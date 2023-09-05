@@ -1474,6 +1474,7 @@ Host *
 ;; (setq visible-bell t) ; disable computer beep
 (setq ring-bell-function 'ignore)
 (setq-default indent-tabs-mode nil)
+(setq-default show-trailing-whitespace t)
 (setq inhibit-splash-screen t)
 (setq-default tab-width 4)
 (setq require-final-newline t)
@@ -1486,6 +1487,7 @@ Host *
 (setq frame-resize-pixelwise t) ; Pixel perfect window resize
 (setq inhibit-x-resources t)  ; Fix emacsclient issues
 (setq initial-scratch-message nil) ; Start scratch buffer empty
+(setq switch-to-buffer-obey-display-actions t)   ; Make switching buffers more consistent
 (setq sentence-end-double-space nil) ; Only one space between senteces for auto-fill.
 (setq echo-keystrokes 0.1) ; Don't wait long before showing keystrokes
 (setq-default auto-hscroll-mode 'current-line) ; Only horizontally scroll the current line
