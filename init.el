@@ -848,6 +848,13 @@
          ("C-c C-<" . mc/mark-all-like-this)))
 
 
+(use-package mwheel
+  :config
+  ;; Enable horizontal scrolling
+  (setq mouse-wheel-tilt-scroll t)
+  (setq mouse-wheel-flip-direction t))
+
+
 (use-package nginx-mode
   :ensure t
   :defer t)
