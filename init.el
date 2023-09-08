@@ -297,12 +297,46 @@
   :ensure t)
 
 
+(use-package dired
+  :config
+  (setq dired-dwim-target t))
+
+
+(use-package dired-filter
+  :ensure t
+  :defer t
+  :init                                 ; maps are autoloaded
+  (define-key dired-mode-map (kbd "/") dired-filter-map)
+  (define-key dired-mode-map (kbd ",") dired-filter-mark-map))
+
+
+(use-package dired+
+  :load-path "~/.emacs.d/elisp"
+  :defer t)
+
+
+(use-package dired-ranger
+  :ensure t
+  :bind (:map dired-mode-map
+              ("C-c C-c" . dired-ranger-copy)
+              ("C-c C-p" . dired-ranger-paste)
+              ("C-c C-m" . dired-ranger-move)))
+
+
 (use-package dired-sidebar
   :ensure t
   :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
   :commands (dired-sidebar-toggle-sidebar)
   :config
   (setq dired-sidebar-theme 'ascii))
+
+
+(use-package dired-subtree
+  :ensure t
+  :after dired
+  :bind (:map dired-mode-map
+              ("TAB" . dired-subtree-toggle)))
+
 
 
 (use-package dockerfile-mode
@@ -320,33 +354,6 @@
   :config
   (load-theme 'doom-tomorrow-night t))
 
-
-(use-package dired
-  :config
-  (setq dired-dwim-target t))
-
-
-(use-package dired-filter
-  :ensure t
-  :defer t
-  :init ; maps are autoloaded
-  (define-key dired-mode-map (kbd "/") dired-filter-map)
-  (define-key dired-mode-map (kbd ",") dired-filter-mark-map))
-
-
-(use-package dired-ranger
-  :ensure t
-  :bind (:map dired-mode-map
-              ("C-c C-c" . dired-ranger-copy)
-              ("C-c C-p" . dired-ranger-paste)
-              ("C-c C-m" . dired-ranger-move)))
-
-
-(use-package dired-subtree
-  :ensure t
-  :after dired
-  :bind (:map dired-mode-map
-              ("TAB" . dired-subtree-toggle)))
 
 (use-package discover-my-major
   :ensure t
@@ -961,6 +968,13 @@
 (use-package org-tv     ; Custom elisp
   :load-path "~/.emacs.d/elisp"
   :after org)
+
+
+(use-package original-txt
+  :load-path "~/.emacs.d/elisp"
+  :defer t
+  :bind (:map dired-mode-map
+          ("C-c O" . original-txt-from-helm-kill)))
 
 
 (use-package ox-gfm
