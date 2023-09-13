@@ -311,6 +311,7 @@
 
 
 (use-package dired+
+  :if nil
   :load-path "~/.emacs.d/elisp"
   :defer t)
 
