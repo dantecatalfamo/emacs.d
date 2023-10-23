@@ -337,7 +337,6 @@
               ("TAB" . dired-subtree-toggle)))
 
 
-
 (use-package dockerfile-mode
   :ensure t
   :mode "Dockerfile\\'")
@@ -1118,6 +1117,12 @@ Host *
   :config
   (setq recentf-max-saved-items 200)
   (add-to-list 'midnight-hook #'recentf-save-list))
+
+
+(use-package rg
+  :ensure t
+  :defer t
+  :bind (("C-c s" . #'rg-menu)))
 
 
 (use-package rjsx-mode
