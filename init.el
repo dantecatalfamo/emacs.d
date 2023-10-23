@@ -3,8 +3,6 @@
 ;; Remember to use `\\[set-selective-display]' (C-x $)
 ;;; Code:
 
-; (setq use-package-compute-statistics t)
-
 (when (version< emacs-version "27")
   (package-initialize)                ; Called implicitly in Emacs 27+
   (load (concat user-emacs-directory "early-init.el")))
