@@ -29,6 +29,8 @@
 
 (push (expand-file-name "~/.asdf/shims") exec-path)
 (push (expand-file-name "~/bin") exec-path)
+(push (expand-file-name "~/go/bin") exec-path)
+
 
 (message "Starting Emacs...")
 
