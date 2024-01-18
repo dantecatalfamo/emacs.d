@@ -478,6 +478,11 @@
   (erc-hl-nicks-mode +1))
 
 
+(use-package eros
+  :ensure t
+  :defer t)
+
+
 (use-package eshell
   :hook ((eshell-mode . my-disable-tramp-company)
          (eshell-mode . my-disable-company))
@@ -1243,6 +1248,11 @@ Host *
 
 
 (use-package sly-macrostep
+  :ensure t
+  :after sly)
+
+
+(use-package sly-overlay
   :ensure t
   :after sly)
 
