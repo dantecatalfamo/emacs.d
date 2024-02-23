@@ -1171,14 +1171,6 @@ Host *
   :hook (after-init . save-place-mode))
 
 
-(use-package shadowenv
-  :ensure t
-  :if darwin-p
-  :hook (after-init . shadowenv-global-mode)
-  :custom
-  (shadowenv-lighter "S"))
-
-
 (use-package shopify-dev  ; custom elisp
   :load-path "~/.emacs.d/elisp"
   :commands (shopify-dev-up
