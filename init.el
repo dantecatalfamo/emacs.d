@@ -344,11 +344,6 @@
   :mode "Dockerfile\\'")
 
 
-(use-package docker-tramp
-  :ensure t
-  :defer t)
-
-
 (use-package doom-themes
   :ensure t
   :config
