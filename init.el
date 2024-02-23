@@ -545,7 +545,7 @@
 (use-package gcmh
   :ensure t
   :diminish
-  :init
+  :config
   (setq gcmh-high-cons-threshold (* 16 1024 1024)) ; 16mb
   (setq gcmh-idle-delay 5)
   (gcmh-mode))
@@ -881,6 +881,12 @@
   (setq olivetti-body-width 80))
 
 
+(defun my-add-whitespace-hook ()
+  "Add a hook to cleanup whitespace on save."
+                                        ; previously used write-contents-functions, interesting hook.
+  (add-hook 'before-save-hook #'delete-trailing-whitespace nil t))
+
+
 (use-package org
   :defer nil
   ;; :ensure org-plus-contrib
@@ -1055,6 +1061,10 @@ Host *
   :ensure t
   :hook (web-mode . prettier-js-mode))
 
+(defun my-prog-auto-fill ()
+  "Auto fill only comments in `prog-mode'. Used as a hook."
+  (setq-local comment-auto-fill-only-comments t)
+  (auto-fill-mode))
 
 (use-package prog-mode
   :hook ((prog-mode . display-line-numbers-mode)
@@ -1406,7 +1416,7 @@ Host *
   :ensure t
   :diminish ;; " WK"
   :hook (after-init . which-key-mode)
-  :init
+  :config
   (which-key-setup-side-window-right-bottom)
   (setq which-key-max-description-length 40))
 
@@ -1611,10 +1621,6 @@ https://lists.gnu.org/archive/html/help-gnu-emacs/2008-06/msg00087.html"
      ,@body
      (message "%.06f" (float-time (time-since time)))))
 
-(defun my-prog-auto-fill ()
-  "Auto fill only comments in `prog-mode'. Used as a hook."
-  (setq-local comment-auto-fill-only-comments t)
-  (auto-fill-mode))
 
 (defun my-vterm-toggle-or-cd ()
   "If vterm was just opened, call `vterm-toggle-insert-cd`, otherwise toggle."
@@ -1667,10 +1673,6 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
       (lsp-deferred)
       (my-lsp-install-save-hooks)))
 
-(defun my-add-whitespace-hook ()
-  "Add a hook to cleanup whitespace on save."
-  ; previously used write-contents-functions, interesting hook.
-  (add-hook 'before-save-hook #'delete-trailing-whitespace nil t))
 
 (defun my-org-journal-covid ()
   "Open org-journal with covid directory."
