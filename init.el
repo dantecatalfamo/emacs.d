@@ -823,6 +823,11 @@
   (minibuffer-depth-indicate-mode))
 
 
+(use-package mermaid-mode
+  :ensure t
+  :defer t)
+
+
 (use-package minitest
   :ensure t
   :diminish "MT"
@@ -873,6 +878,11 @@
 
 
 (use-package ob-http
+  :ensure t
+  :defer t)
+
+
+(use-package ob-mermaid
   :ensure t
   :defer t)
 
