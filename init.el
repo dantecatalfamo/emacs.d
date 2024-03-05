@@ -830,9 +830,9 @@
 (use-package midnight
   :config
   (add-to-list 'clean-buffer-list-kill-regexps "\\`\\*helpful ")
-  (add-to-list 'clean-buffer-list-kill-regexps "\\`\\*shadowenv output\\*")
-  ; (midnight-mode)
-  )
+  ; (add-to-list 'clean-buffer-list-kill-regexps "\\`\\*shadowenv output\\*")
+  (midnight-mode)
+  (add-hook 'midnight-hook #'recentf-save-list))
 
 
 (use-package mouse
