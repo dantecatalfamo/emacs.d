@@ -621,6 +621,8 @@
          ("M-x" . helm-M-x)
          ("M-y" . helm-show-kill-ring))
   :config
+  (setq helm-M-x-show-short-doc t)
+  (setq helm-move-to-line-cycle-in-source nil)
   (helm-mode t))
 
 
