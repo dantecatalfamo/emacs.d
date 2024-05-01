@@ -579,7 +579,8 @@
 (use-package go-mode
   :ensure t
   :mode "\\.go\\'"
-  :hook (go-mode-hook . (lambda() (setq-local tab-width 4))))
+  :hook ((go-mode . (lambda() (setq-local tab-width 4)))
+         (before-save . gofmt-before-save)))
 
 
 (use-package goto-addr
@@ -751,7 +752,8 @@
 
 (use-package loaddefs
   :init
-  (pixel-scroll-mode))
+  ;(pixel-scroll-mode)
+  )
 
 
 (use-package lorem-ipsum
@@ -778,6 +780,7 @@
          (typescript-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
   :init
+  (setq lsp-file-watch-threshold 5000)
   (setq lsp-keymap-prefix "C-c s")
   (setq read-process-output-max (* 1024 1024)))
 
@@ -1435,6 +1438,7 @@ Host *
   :hook (after-init . which-key-mode)
   :config
   (which-key-setup-side-window-right-bottom)
+  (setq which-key-idle-delay 2.0)
   (setq which-key-max-description-length 40))
 
 
