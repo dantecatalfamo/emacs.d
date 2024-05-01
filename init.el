@@ -1069,6 +1069,11 @@ Host *
 ;;   (persp-def-auto-persp "erc" :mode 'erc-mode :hooks '(after-switch-to-buffer-functions)))
 
 
+(use-package powershell
+  :ensure t
+  :defer t)
+
+
 (use-package prettier-js
   :ensure t
   :hook (web-mode . prettier-js-mode))
