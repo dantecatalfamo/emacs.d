@@ -1148,8 +1148,9 @@ Host *
 
 (use-package rg
   :ensure t
-  :defer t
-  :bind (("C-c s" . #'rg-menu)))
+  :bind (("C-c w" . #'rg-menu))
+  :config
+  (rg-enable-menu (kbd "C-c w")))
 
 
 (use-package rjsx-mode
