@@ -959,7 +959,8 @@
          :prefix-map my-org-journal-map
          ("j" . org-journal-new-entry)
          ("c" . my-org-journal-covid)
-         ("s" . my-org-journal-shopify))
+         ("s" . my-org-journal-shopify)
+         ("f" . my-org-journal-fleet))
   :init
   (defvar org-journal-dir nil)
   (setq org-journal-dir "~/Org/Journal/")
@@ -1712,6 +1713,14 @@ Taken from http://ergoemacs.org/emacs/elisp_datetime.html"
     (org-journal-mode)
     (org-cycle)))
 
+(defun my-org-journal-fleet ()
+  "Open org-journal with fleet directory."
+  (interactive)
+  (let ((org-journal-dir "~/Org/Fleet/Journal/"))
+    (org-journal-new-entry nil)
+    (org-journal-mode)
+    (org-cycle)))
+
 (defun my-diff-this-buffer-with-file ()
   "Diffs the current buffer with the saved file."
   (interactive)
@@ -1745,7 +1754,14 @@ cd \"$(git rev-parse --show-toplevel)\" || exit 1
 find . $(bundle list --paths) -name '*.rb' -print | etags -")
   (message "TAGS created"))
 
-; Taken from https://endlessparentheses.com/get-in-the-habit-of-using-sharp-quote.html
+(defun my-toggle-pair-face ()
+  "Toggle face to between normal and larger size for pairing."
+  (interactive)
+  (if (> (face-attribute 'default :height) 120)
+      (set-face-attribute 'default nil :height 120)
+    (set-face-attribute 'default nil :height 160)))
+
+                                        ; Taken from https://endlessparentheses.com/get-in-the-habit-of-using-sharp-quote.html
 (defun endless/sharp ()
   "Insert #' unless in a string or comment."
   (interactive)
