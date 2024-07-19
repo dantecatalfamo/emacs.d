@@ -877,6 +877,10 @@
   :defer t)
 
 
+(use-package now-playing
+  :load-path "~/.emacs.d/elisp")
+
+
 (use-package ns-win ;; Only available on MacOS builds
   :if darwin-p
   :config
