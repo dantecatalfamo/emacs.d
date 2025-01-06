@@ -138,13 +138,6 @@
   (auto-revert-mode-text " ⟲"))
 
 
-(use-package beacon
-  :ensure t
-  :hook (after-init . beacon-mode)
-  :config
-  (setq beacon-blink-when-focused t))
-
-
 (use-package bytes-constant             ; Custom elisp
   :load-path "~/.emacs.d/elisp/bytes-constant.el"
   :commands (bytes-constant byteconst))
@@ -169,19 +162,6 @@
   :defer t
   :config
   (setq-default c-basic-offset 4))
-
-
-(use-package ccls
-  :ensure t
-  :defer t)
-
-
-(use-package chess
-  :ensure t
-  :commands chess
-  :init
-  ;; (setq chess-default-display '(chess-ics1 chess-plain chess-images))
-  (defvar chess-images-default-size 72))
 
 
 (use-package com-css-sort
@@ -216,13 +196,6 @@
   ; :config
   ; (global-company-mode)
   )
-
-
-(use-package company-jedi
-  :ensure t
-  :after python-mode
-  :config
-  (add-to-list 'company-backends 'company-jedi))
 
 
 (use-package company-nginx
@@ -310,12 +283,6 @@
   (define-key dired-mode-map (kbd ",") dired-filter-mark-map))
 
 
-(use-package dired+
-  :if nil
-  :load-path "~/.emacs.d/elisp"
-  :defer t)
-
-
 (use-package dired-ranger
   :ensure t
   :bind (:map dired-mode-map
@@ -354,37 +321,15 @@
   :ensure t
   :bind ("C-h C-m" . discover-my-major))
 
+
 (use-package dumb-jump
   :ensure t
   :config
   (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 
-(use-package ejson-mode
-  :ensure t
-  :mode "\\.ejson\\'")
-
-
 (use-package eldoc
   :diminish)
-
-
-(use-package elfeed
-  :after elfeed-goodies
-  :ensure t
-  :commands elfeed
-  :config
-  (elfeed-goodies/setup)
-  (add-hook 'elfeed-show-mode-hook (lambda()
-                                     (setq-local shr-width 75)
-                                     (text-scale-set 2))))
-
-
-(use-package elfeed-goodies
-  :ensure t
-  :commands elfeed-goodies/setup
-  :init
-  (setq elfeed-goodies/entry-pane-position 'bottom))
 
 
 (use-package elpher
@@ -400,11 +345,6 @@
 (use-package embark
   :ensure t
   :bind (("C-`" . embark-act)))
-
-
-(use-package emoji-cheat-sheet-plus
-  :ensure t
-  :defer t)
 
 
 (use-package hilit-chg
