@@ -27,6 +27,7 @@
 ;;; Code:
 
 (require 'org)
+(require 'org-element)
 
 (defun org-wireguard-table-new-entry (name ip &optional public-addr public-port)
   "Insert a row into the wireguard table.
@@ -45,6 +46,44 @@ NAME and IP are required, PUBLIC-ADDR and PUBLIC-PORT are optional."
       (insert table-row)
       (org-table-align)
       (newline))))
+
+(defun org-wireguard-new-table ()
+  "Create a new org wireguard table."
+  (interactive)
+  (org-table-create "6x2")
+  (org-table-next-field)
+  (insert "Name")
+  (org-table-next-field)
+  (insert "Internal IP")
+  (org-table-next-field)
+  (insert "Public Address")
+  (org-table-next-field)
+  (insert "Public Port")
+  (org-table-next-field)
+  (insert "PublicKey")
+  (org-table-next-field)
+  (insert "PrivateKey")
+  (org-table-next-field))
+
+(defun org-wireguard-export-openbsd ()
+  "Export the wireguard table at point to OpenBSD's hostname.if format."
+  (interactive)
+  (let ((table (org-table-to-lisp)))
+    (apply #'concat
+           (mapcar
+            (lambda (row)
+              (let ((name (substring-no-properties (nth 0 row)))
+                    (ip (substring-no-properties (nth 1 row)))
+                    (pub-addr (substring-no-properties (nth 2 row)))
+                    (pub-port (substring-no-properties (nth 3 row)))
+                    (pubkey (substring-no-properties (nth 4 row)))
+                    (_privkey (substring-no-properties (nth 5 row))))
+                (concat
+                 (format "wgpeer %s wgaip %s" pubkey ip)
+                 (when (not (string-empty-p pub-addr))
+                   (format " wgendpoint %s %s" pub-addr pub-port))
+                 (format " # %s\n" name))))
+            (cddr table)))))
 
 (provide 'org-wireguard)
 ;;; org-wireguard.el ends here
