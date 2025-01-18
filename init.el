@@ -1058,6 +1058,7 @@ Host *
 
 (use-package projectile-rails
   :ensure t
+  :if nil
   :after projectile
   :bind (("C-c w" . projectile-rails-command-map))
   :config
@@ -1083,6 +1084,12 @@ Host *
 (use-package raku-mode
   :ensure t
   :defer t)
+
+
+(use-package ready-player
+  :ensure t
+  :config
+  (ready-player-mode))
 
 
 (use-package restclient

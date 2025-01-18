@@ -4,6 +4,7 @@
 # --
 const std = @import("std");
 const debug = std.debug;
+const fmt = std.fmt;
 const fs = std.fs;
 const mem = std.mem;
 const os = std.os;
