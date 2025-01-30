@@ -88,8 +88,7 @@ Number of elements specified by DEPTH, path is a string DIR-PATH."
   "Change dev projects, add the selected project.el.
 PROJECT-ROOT is the root directory of the project."
   (interactive (list
-                (repo-select-project repo-projects-root repo-projects-depth)
-                current-prefix-arg))
+                (repo-select-project repo-projects-root repo-projects-depth)))
 
   (dired project-root)
   (project-remember-project (project-current)))
