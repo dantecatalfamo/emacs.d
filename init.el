@@ -92,7 +92,7 @@
          ("C-c o" . #'consult-line))
   :config
   (add-to-list 'consult-buffer-filter "\\`\\*helpful.*\\*\\'" )
-  (consult-customize consult-buffer :preview-key 'nil))
+  (consult-customize consult-buffer :preview-key '(:debounce 1 any)))
 
 
 (use-package delsel
