@@ -46,6 +46,16 @@
   (shell-command (concat "git config --local user.name dantecatalfamo && git config --local user.email " user-mail-address))
   (message "Git configured with username dantecatalfamo and email %s" user-mail-address))
 
+(defun my-lsp-install-save-hooks ()
+  "Add hooks for lsp-mode."
+  ; (add-hook 'before-save-hook #'lsp-format-buffer nil t)
+  (add-hook 'before-save-hook #'lsp-organize-imports nil t))
+
+(defun my-lsp-conditionally-defer ()
+    "Only run `lsp-deferred' if a buffer is local."
+    (when (null (file-remote-p default-directory))
+      (lsp-deferred)
+      (my-lsp-install-save-hooks)))
 
 ;; Package configuration
 (use-package async
@@ -289,14 +299,14 @@
 
 (use-package lsp-mode
   :hook ((lsp-mode . lsp-enable-which-key-integration)
-       ; (c-mode . my-lsp-conditionally-defer)
-       ; (c++-mode . lsp-deferred)
+         ; (c-mode . my-lsp-conditionally-defer)
+         ; (c++-mode . lsp-deferred)
          (go-mode . lsp-deferred)
          (go-mode . my-lsp-install-save-hooks)
          (zig-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
-       ; (web-mode . lsp-deferred)
-       ; (web-mode . my-lsp-install-save-hooks)
+         (web-mode . lsp-deferred)
+         (web-mode . my-lsp-install-save-hooks)
          (typescript-mode . lsp-deferred)
          (typescript-mode . my-lsp-install-save-hooks))
   :commands (lsp lsp-deferred)
@@ -461,8 +471,8 @@ Host *
   :ensure nil
   :custom
   (recentf-max-saved-items 200)
+  :hook (after-init . recentf-mode)
   :init
-  (recentf-mode)
   (add-to-list 'midnight-hook #'recentf-save-list))
 
 
