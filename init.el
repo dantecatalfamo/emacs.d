@@ -84,6 +84,7 @@
                                company-sort-by-backend-importance))
   :hook (after-init . global-company-mode))
 
+
 (use-package consult
   :bind (("C-x b" . #'consult-buffer)
 	     ("M-y" . #'consult-yank-from-kill-ring)
@@ -92,7 +93,7 @@
          ("C-c o" . #'consult-line))
   :config
   (add-to-list 'consult-buffer-filter "\\`\\*helpful.*\\*\\'" )
-  (consult-customize consult-buffer :preview-key '(:debounce 1 any)))
+  (consult-customize consult-buffer :preview-key nil))
 
 
 (use-package delsel
@@ -467,7 +468,8 @@ Host *
 
 (use-package repo-helper
   :ensure nil
-  :load-path "~/.emacs.d/elisp")
+  :load-path "~/.emacs.d/elisp"
+  :bind (("C-c e" . repo-change-project)))
 
 
 (use-package rmsbolt
