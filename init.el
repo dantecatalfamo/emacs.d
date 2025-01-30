@@ -553,7 +553,7 @@ Host *
   (vertico-mouse-mode)
   (vertico-multiform-mode)
   :custom
-  (vertico-count 25)
+  (vertico-count 35)
   (vertico-cycle t))
 
 
