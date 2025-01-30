@@ -89,7 +89,9 @@
 	     ("M-y" . #'consult-yank-from-kill-ring)
          ("C-c g" . #'consult-ripgrep)
          ("C-c i" . #'consult-imenu)
-         ("C-c o" . #'consult-line)))
+         ("C-c o" . #'consult-line))
+  :config
+  (add-to-list 'consult-buffer-filter "\\`\\*helpful.*\\*\\'" ))
 
 
 (use-package delsel
@@ -566,7 +568,8 @@ Host *
   (vertico-multiform-mode)
   :custom
   (vertico-count 35)
-  (vertico-cycle t))
+  (vertico-cycle t)
+  (vertico-preselect 'prompt))
 
 
 (use-package web-mode
