@@ -91,7 +91,8 @@
          ("C-c i" . #'consult-imenu)
          ("C-c o" . #'consult-line))
   :config
-  (add-to-list 'consult-buffer-filter "\\`\\*helpful.*\\*\\'" ))
+  (add-to-list 'consult-buffer-filter "\\`\\*helpful.*\\*\\'" )
+  (consult-customize consult-buffer :preview-key 'nil))
 
 
 (use-package delsel
@@ -198,11 +199,6 @@
   :bind (("C-." . embark-act)))
 
 
-(use-package hl-line
-  :config
-  (global-hl-line-mode))
-
-
 (use-package expand-region
   :ensure t
   :bind (("C-=" . er/expand-region)))
@@ -253,6 +249,17 @@
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)
          ("C-c C-d" . helpful-at-point)))
+
+
+(use-package hl-line
+  :config
+  (global-hl-line-mode))
+
+
+
+(use-package holy-buffers
+  :load-path "~/.emacs.d/elisp"
+  :bind (("C-x k" . #'holy-buffers-kill-buffer)))
 
 
 (use-package iedit
@@ -568,8 +575,7 @@ Host *
   (vertico-multiform-mode)
   :custom
   (vertico-count 35)
-  (vertico-cycle t)
-  (vertico-preselect 'prompt))
+  (vertico-cycle t))
 
 
 (use-package web-mode
@@ -584,7 +590,6 @@ Host *
          "\\.tsx?\\'")
   :hook ((web-mode . (lambda() (setq-local tab-width 2
                                            standard-indent 2)))
-         ;(web-mode . my-web-mode-tide-setup)
          )
   :init
   (setq web-mode-enable-current-element-highlight t)
