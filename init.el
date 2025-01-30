@@ -257,6 +257,12 @@
   :bind ("C-;" . iedit-mode))
 
 
+(use-package isearch
+  :ensure nil
+  :custom
+  (isearch-wrap-pause 'no))
+
+
 (use-package imenu
   :ensure nil
   :commands imenu
