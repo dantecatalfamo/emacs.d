@@ -260,7 +260,8 @@
 (use-package isearch
   :ensure nil
   :custom
-  (isearch-wrap-pause 'no))
+  (isearch-wrap-pause 'no)
+  (isearch-lazy-count t))
 
 
 (use-package imenu
