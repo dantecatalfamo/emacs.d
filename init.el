@@ -456,6 +456,11 @@ Host *
   (add-to-list 'midnight-hook #'recentf-save-list))
 
 
+(use-package repo-helper
+  :ensure nil
+  :load-path "~/.emacs.d/elisp")
+
+
 (use-package rmsbolt
   :defer t)
 

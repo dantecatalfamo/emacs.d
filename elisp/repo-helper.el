@@ -28,9 +28,6 @@
 
 (require 'f)
 (require 'dash)
-(require 'projectile)
-(require 'treemacs)
-(require 'helm)
 
 (defvar repo-projects-root "~/src"
   "Root directory under which all projects are located.")
@@ -81,45 +78,24 @@ Number of elements specified by DEPTH, path is a string DIR-PATH."
       (push (repo--last-n-dirs dir depth) dir-paths))))
 
 
-(defun repo-add-project-projectile (project-root project-name)
-  "Add project to projectile.
-PROJECT-ROOT is the project's root directory, PROJECT-NAME is the name."
-  (unless (member project-root
-                  projectile-known-projects)
-    (projectile-add-known-project project-root)))
-
-
-(defun repo-add-project-treemacs (project-root project-name)
-  "Add project to treemacs.
-PROJECT-ROOT is the project's root directory, PROJECT-NAME is the name."
-  (treemacs-do-add-project-to-workspace project-root
-                                        project-name))
-
-
 (defun repo-select-project (root depth)
   "Interactively sekect a project directory starting at directory ROOT going to depth DEPTH."
   (f-join root (completing-read "Select Project: " (repo--list-last-dirs (repo--list-subdirs root depth) depth))))
 
 
-(defun repo-change-project (project-root &optional ARG)
-  "Change dev projects, add the selected project to projectile and treemacs.
-PROJECT-ROOT is the root directory of the project.
-When run with ARG, open project with Dired instead of projectile"
+;;;###autoload
+(defun repo-change-project (project-root)
+  "Change dev projects, add the selected project.el.
+PROJECT-ROOT is the root directory of the project."
   (interactive (list
                 (repo-select-project repo-projects-root repo-projects-depth)
                 current-prefix-arg))
 
-    (let ((project-name (file-name-nondirectory
-                         (directory-file-name project-root))))
-
-      (repo-add-project-projectile project-root project-name)
-      (repo-add-project-treemacs project-root project-name))
-
-    (if ARG
-        (dired project-root)
-      (projectile-switch-project-by-name project-root)))
+  (dired project-root)
+  (project-remember-project (project-current)))
 
 
+;;;###autoload
 (defun repo-clone (url)
   "Clone a git repository at URL into the appropriate directory."
   (interactive "sRepository URL: ")
