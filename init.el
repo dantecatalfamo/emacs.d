@@ -165,6 +165,7 @@
   (setq word-wrap t) ; Word-wrap instead of wrapping in the middle of words
   (setq user-full-name "Dante Catalfamo")
   (setq user-mail-address "dante.catalfamo@gmail.com")
+  (add-to-list 'default-frame-alist '(font . "MonoLisa-12"))
 
   ;; MacOS titlebar and emojis
   (when-darwin
