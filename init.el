@@ -221,6 +221,13 @@
   :hook (prog-mode . flycheck-mode))
 
 
+(use-package font-lock
+  :ensure nil
+  :defer t
+  :custom-face
+  (font-lock-comment-face ((t (:italic t)))))
+
+
 (use-package flyspell
   :ensure nil
   :hook (text-mode . flyspell-mode))
