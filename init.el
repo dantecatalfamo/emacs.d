@@ -76,8 +76,7 @@
 (use-package cc-mode
   :ensure nil
   :defer t
-  :config
-  (setq-default c-basic-offset 4))
+  :hook (c-mode . (lambda () (setq tab-width 8))))
 
 
 (use-package company
@@ -92,7 +91,9 @@
   (setq company-dabbrev-downcase nil)
   (setq company-transformers '(company-sort-by-occurrence
                                company-sort-by-backend-importance))
-  :hook (after-init . global-company-mode))
+  :hook
+  (after-init . global-company-mode)
+  (eshell-mode . (lambda () (company-mode -1))))
 
 
 (use-package consult
@@ -209,6 +210,11 @@
 
 (use-package embark
   :bind (("C-." . embark-act)))
+         ;; ("M-." . embark-dwim)))
+
+
+(use-package embark-consult
+  :defer t)
 
 
 (use-package expand-region
