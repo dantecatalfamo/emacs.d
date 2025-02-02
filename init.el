@@ -133,6 +133,12 @@
   (load-theme 'doom-tomorrow-night t))
 
 
+(use-package eat
+  :defer t
+  :hook ((eat-mode . (lambda () (setq show-trailing-whitespace nil)))
+         (eshell-mode . eat-eshell-mode)))
+
+
 (use-package eldoc
   :ensure nil
   :diminish)
