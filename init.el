@@ -180,6 +180,7 @@
    (setq ns-use-proxy-icon  nil)
    (set-fontset-font t '(#x1f000 . #x1faff) (font-spec :family "Apple Color Emoji")))
 
+  ;; The cursor can't go into prompt in the minibuffer
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
