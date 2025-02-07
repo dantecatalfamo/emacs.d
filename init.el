@@ -127,6 +127,10 @@
   (setq dired-dwim-target t))
 
 
+(use-package dockerfile-mode
+  :defer t)
+
+
 (use-package doom-themes
   :ensure t
   :config
