@@ -673,6 +673,10 @@ Host *
   :hook (after-init . yas-global-mode))
 
 
+(use-package yaml-mode
+  :defer t)
+
+
 (use-package zig-mode
   :ensure t
   :config
