@@ -292,6 +292,9 @@
   (global-hl-line-mode))
 
 
+(use-package hl-todo
+  :hook ((after-init . global-hl-line-mode)))
+
 
 (use-package holy-buffers
   :load-path "~/.emacs.d/elisp"
