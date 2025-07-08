@@ -155,7 +155,6 @@
   ;; (setq visible-bell t) ; disable computer beep
   (setq ring-bell-function 'ignore)
   (setq-default indent-tabs-mode nil)
-  (setq-default show-trailing-whitespace t)
   (setq inhibit-splash-screen t)
   (setq-default tab-width 4)
   (setq require-final-newline t)
@@ -480,7 +479,8 @@ Host *
   :ensure nil
   :hook ((prog-mode . display-line-numbers-mode)
          (prog-mode . my-add-whitespace-hook)
-         (prog-mode . my-prog-auto-fill)))
+         (prog-mode . my-prog-auto-fill)
+         (prog-mode . (lambda () (setq show-trailing-whitespace t)))))
 
 
 (use-package python
