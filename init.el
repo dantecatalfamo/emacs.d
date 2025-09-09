@@ -117,6 +117,7 @@ func main () {
   (corfu-cycle t)
   (corfu-auto t)
   ;; (corfu-quit-at-boundary t)
+  (corfu-quit-no-match t)
   (corfu-preview-current nil)
   (corfu-popupinfo-delay 0.5)
   :config
