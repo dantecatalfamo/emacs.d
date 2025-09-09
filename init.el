@@ -47,15 +47,31 @@
   (message "Git configured with username dantecatalfamo and email %s" user-mail-address))
 
 (defun my-lsp-install-save-hooks ()
-  "Add hooks for lsp-mode."
+  "Add hooks for lsp-mode.")
   ; (add-hook 'before-save-hook #'lsp-format-buffer nil t)
-  (add-hook 'before-save-hook #'lsp-organize-imports nil t))
+  ;; (add-hook 'before-save-hook #'lsp-organize-imports nil t))
 
 (defun my-lsp-conditionally-defer ()
     "Only run `lsp-deferred' if a buffer is local."
     (when (null (file-remote-p default-directory))
       (lsp-deferred)
       (my-lsp-install-save-hooks)))
+
+
+(defun my-go-playground ()
+  "Create a go playground buffer."
+  (interactive)
+  (let ((default-directory (car (process-lines "mktemp" "-d"))))
+    (find-file "playground.go")
+    (insert "package main
+
+import \"fmt\"
+
+func main () {
+    fmt.Println(\"hello\")
+}")
+    (lsp-workspace-folders-add ".")
+    (add-hook 'after-save-hook (lambda () (compile "go run playground.go")) 0 t)))
 
 ;; Package configuration
 (use-package async
@@ -73,27 +89,38 @@
   :commands browse-at-remote)
 
 
+(use-package cape
+  :ensure t
+  :bind ("C-c p" . cape-prefix-map)
+  :config
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-dict)
+  (add-hook 'completion-at-point-functions #'cape-emoji))
+
+
 (use-package cc-mode
   :ensure nil
   :defer t
   :hook (c-mode . (lambda () (setq tab-width 8))))
 
 
-(use-package company
+(use-package corfu
+  :ensure t
   :defer nil
-  :bind (("C-<tab>" . company-complete))
+  :bind
+  (:map corfu-map ("SPC" . #'corfu-insert-separator))
+  :init
+  (global-corfu-mode)
+  (corfu-popupinfo-mode)
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  ;; (corfu-quit-at-boundary t)
+  (corfu-preview-current nil)
+  (corfu-popupinfo-delay 0.5)
   :config
-  (setq company-idle-delay .15)
-  (setq company-echo-delay 0)
-  (setq company-show-quick-access t)
-  (setq company-selection-wrap-around t)
-  (setq company-minimum-prefix-length 2)
-  (setq company-dabbrev-downcase nil)
-  (setq company-transformers '(company-sort-by-occurrence
-                               company-sort-by-backend-importance))
-  :hook
-  (after-init . global-company-mode)
-  (eshell-mode . (lambda () (company-mode -1))))
+  (add-hook 'eshell-mode-hook (lambda () (setq-local corfu-auto nil))))
 
 
 (use-package consult
@@ -176,6 +203,7 @@
   (setq user-full-name "Dante Catalfamo")
   (setq user-mail-address "dante.catalfamo@gmail.com")
   (add-to-list 'default-frame-alist '(font . "MonoLisa-12"))
+  (setq tab-always-indent 'complete)
 
   ;; MacOS titlebar and emojis
   (when-darwin
@@ -237,6 +265,11 @@
   :hook (prog-mode . flycheck-mode))
 
 
+(use-package flyspell
+  :ensure nil
+  :hook (text-mode . flyspell-mode))
+
+
 (use-package font-lock
   :ensure nil
   :defer t
@@ -244,9 +277,8 @@
   (font-lock-comment-face ((t (:italic t)))))
 
 
-(use-package flyspell
-  :ensure nil
-  :hook (text-mode . flyspell-mode))
+(use-package forge
+  :after magit)
 
 
 (use-package frame
@@ -271,6 +303,7 @@
 (use-package go-mode
   :mode "\\.go\\'"
   :hook ((go-mode . (lambda() (setq-local tab-width 4)))
+         (go-mode . (lambda() (setq fill-column 100)))
          (before-save . gofmt-before-save)))
 
 
@@ -292,7 +325,8 @@
 
 
 (use-package hl-todo
-  :hook ((after-init . global-hl-line-mode)))
+  :config
+  (global-hl-todo-mode))
 
 
 (use-package holy-buffers
@@ -302,6 +336,10 @@
 
 (use-package iedit
   :bind ("C-;" . iedit-mode))
+
+
+(use-package inf-ruby
+  :defer t)
 
 
 (use-package isearch
@@ -316,6 +354,15 @@
   :commands imenu
   :init
   (setq imenu-auto-rescan t))
+
+
+(use-package kind-icon
+  :after corfu
+  :config
+  (setq kind-icon-use-icons t)
+  (setq kind-icon-blend-background t)
+  (setq kind-icon-default-face 'corfu-default)
+  (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter))
 
 
 (use-package kmacro
@@ -397,6 +444,10 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-defaults nil))
+
+
+(use-package ox-gfm
+  :after org)
 
 
 (use-package ox-ssh
@@ -592,6 +643,26 @@ Host *
   (setq TeX-auto-save t)
   (setq TeX-parse-self t)
   (setq-default TeX-master nil))
+
+
+(use-package tramp
+  :defer t
+  :config
+  ;; https://coredumped.dev/2025/06/18/making-tramp-go-brrrr./
+  (setq remote-file-name-inhibit-locks t)
+  (setq tramp-use-scp-direct-remote-copying t)
+  (setq remote-file-name-inhibit-auto-save-visited t)
+  (setq tramp-copy-size-limit (* 1024 1024)) ;; 1MB
+  (connection-local-set-profile-variables
+   'remote-direct-async-process
+   '((tramp-direct-async-process . t)))
+  (connection-local-set-profiles
+   '(:application tramp :protocol "scp")
+   'remote-direct-async-process)
+  (setq magit-tramp-pipe-stty-settings 'pty)
+  (with-eval-after-load 'tramp
+    (with-eval-after-load 'compile
+      (remove-hook 'compilation-mode-hook #'tramp-compile-disable-ssh-controlmaster-options))))
 
 
 (use-package undo-tree
