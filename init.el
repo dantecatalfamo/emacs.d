@@ -93,10 +93,7 @@ func main () {
   :ensure t
   :bind ("C-c p" . cape-prefix-map)
   :config
-  (add-hook 'completion-at-point-functions #'cape-dabbrev)
-  (add-hook 'completion-at-point-functions #'cape-file)
-  (add-hook 'completion-at-point-functions #'cape-dict)
-  (add-hook 'completion-at-point-functions #'cape-emoji))
+  (add-hook 'completion-at-point-functions (cape-capf-super #'cape-dabbrev #'cape-file #'cape-dict #'cape-emoji)))
 
 
 (use-package cc-mode
@@ -109,7 +106,7 @@ func main () {
   :ensure t
   :defer nil
   :bind
-  (:map corfu-map ("SPC" . #'corfu-insert-separator))
+  (:map corfu-map ("C-SPC" . #'corfu-insert-separator))
   :init
   (global-corfu-mode)
   (corfu-popupinfo-mode)
@@ -133,6 +130,11 @@ func main () {
   :config
   (add-to-list 'consult-buffer-filter "\\`\\*helpful.*\\*\\'" )
   (consult-customize consult-buffer :preview-key nil))
+
+
+(use-package consult-gh
+  :defer t
+  :after consult)
 
 
 (use-package delsel
@@ -163,6 +165,12 @@ func main () {
   :ensure t
   :config
   (load-theme 'doom-tomorrow-night t))
+
+
+(use-package dumb-jump
+  :defer t
+  :config
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
 
 
 (use-package eat
@@ -413,6 +421,9 @@ func main () {
   :config
   (add-to-list 'clean-buffer-list-kill-regexps "\\`\\*helpful ")
   (midnight-mode))
+
+
+(use-package mistty)
 
 
 (use-package mouse
