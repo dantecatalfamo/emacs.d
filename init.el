@@ -7,6 +7,9 @@
 (require 'use-package-ensure)
 (setq use-package-always-ensure t)
 
+;; Where my custom elisp lives
+(defconst my-elisp-dir (expand-file-name "elisp/" user-emacs-directory))
+
 ;; MELPA
 (use-package package
   :config
@@ -194,7 +197,7 @@ func main () {
   (setq inhibit-splash-screen t)
   (setq-default tab-width 4)
   (setq require-final-newline t)
-  (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+  (setq backup-directory-alist '(("." . (expand-file-name "backup" user-emacs-directory)))
 	    backup-by-copying t     ; Don't mess up hard links
 	    version-control t       ; Use version numbers on backups
 	    delete-old-versions t   ; Don't keep everything for all time
@@ -339,7 +342,7 @@ func main () {
 
 
 (use-package holy-buffers
-  :load-path "~/.emacs.d/elisp"
+  :load-path my-elisp-dir
   :bind (("C-x k" . #'holy-buffers-kill-buffer)))
 
 
@@ -569,7 +572,7 @@ Host *
 
 (use-package repo-helper
   :ensure nil
-  :load-path "~/.emacs.d/elisp"
+  :load-path my-elisp-dir
   :bind (("C-c e" . repo-change-project)))
 
 
@@ -683,7 +686,7 @@ Host *
   :init
   (setq undo-tree-visualizer-diff t)
   (setq undo-tree-auto-save-history t)
-  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree"))))
+  (setq undo-tree-history-directory-alist `(("." . ,(expand-file-name "undo-tree" user-emacs-directory)))))
 
 
 (use-package unfill
