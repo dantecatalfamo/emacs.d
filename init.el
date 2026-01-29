@@ -76,6 +76,14 @@ func main () {
     (lsp-workspace-folders-add ".")
     (add-hook 'after-save-hook (lambda () (compile "go run playground.go")) 0 t)))
 
+(defun my-diff-this-buffer-with-file ()
+  "Diffs the current buffer with the saved file."
+  (interactive)
+  (if (not buffer-file-name)
+      (message "Buffer has no file on disk.")
+    (diff-buffer-with-file (current-buffer))
+    (switch-to-buffer-other-frame "*Diff*")))
+
 ;; Package configuration
 (use-package async
   :init
@@ -149,6 +157,23 @@ func main () {
 (use-package descr-text
   :ensure nil
   :bind (("C-h T" . describe-char)))
+
+
+(use-package diff
+  :ensure nil
+  :bind ("C-c d" . my-diff-this-buffer-with-file))
+
+
+(use-package diff-hl
+  :defer t
+  :hook ((after-init . global-diff-hl-mode)
+         (diff-hl-mode . (lambda () (unless (window-system) diff-hl-margin-modex)))
+         (diff-hl-mode . diff-hl-flydiff-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh))
+  :config
+  (set-face-background 'diff-hl-insert nil)
+  (set-face-background 'diff-hl-change nil)
+  (set-face-background 'diff-hl-delete nil))
 
 
 (use-package diminish)
@@ -602,6 +627,9 @@ Host *
   (column-number-mode)  ; Show column in modeline
   (setq eval-expression-print-length nil)  ; print entire expression in scratch
   (setq save-interprogram-paste-before-kill t))
+  ; https://www.reddit.com/r/emacs/comments/2s0hiq/comment/cnl038k
+  ;; (advice-add #'backward-kill-word :around (lambda (orig-fun &rest args)
+                                             ;; (cl-flet a))))
 
 
 (use-package sly
@@ -639,6 +667,18 @@ Host *
   :after doom-themes
   :config
   (solaire-global-mode))
+
+
+(use-package sql
+  :defer t
+  :config
+  (push '((local-dev (sql-product 'mysql)
+                (sql-server "127.0.0.1")
+                (sql-user "fleet")
+                (sql-password "insecure")
+                (sql-database "fleet")
+                (sql-port 3306)))
+      sql-connection-alist))
 
 
 (use-package tab-bar
