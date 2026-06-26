@@ -84,7 +84,17 @@ func main () {
     (diff-buffer-with-file (current-buffer))
     (switch-to-buffer-other-frame "*Diff*")))
 
+(defun my-capitalize-first-char (&optional string)
+  "Capitalize only the first character of the input STRING."
+  (when (and string (> (length string) 0))
+    (let ((first-char (substring string nil 1))
+          (rest-str   (substring string 1)))
+      (concat (capitalize first-char) rest-str))))
+
 ;; Package configuration
+(use-package agent-shell)
+
+
 (use-package async
   :init
   (async-bytecomp-package-mode))
@@ -182,6 +192,7 @@ func main () {
 (use-package dired
   :ensure nil
   :config
+  ;; (setq dired-kill-when-opening-new-dired-buffer t)
   (setq dired-dwim-target t))
 
 
@@ -451,6 +462,12 @@ func main () {
   (midnight-mode))
 
 
+(use-package mise
+  :hook ((after-init . global-mise-mode))
+  :config
+  (setq mise-executable (expand-file-name "mise" "~/.local/bin")))
+
+
 (use-package mistty)
 
 
@@ -584,6 +601,10 @@ Host *
 (use-package rainbow-delimiters
   :ensure t
   :hook (prog-mode . rainbow-delimiters-mode))
+
+
+(use-package ready-player
+  :hook (after-init . ready-player-mode))
 
 
 (use-package recentf
@@ -732,6 +753,10 @@ Host *
 (use-package unfill
   :defer t
   :bind (("C-M-q" . unfill-paragraph)))
+
+
+(use-package uniline
+  :defer t)
 
 
 (use-package vertico
