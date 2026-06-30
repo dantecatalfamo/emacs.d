@@ -470,6 +470,7 @@ func main () {
 
 
 (use-package mise
+  :if (file-exists-p (expand-file-name "mise" "~/.local/bin"))
   :hook ((after-init . global-mise-mode))
   :config
   (setq mise-executable (expand-file-name "mise" "~/.local/bin")))
