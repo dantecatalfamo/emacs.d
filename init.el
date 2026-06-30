@@ -142,6 +142,13 @@ func main () {
   (add-hook 'eshell-mode-hook (lambda () (setq-local corfu-auto nil))))
 
 
+(use-package corfu-terminal
+  :after corfu
+  :config
+  (unless (display-graphic-p)
+    (corfu-terminal-mode +1)))
+
+
 (use-package consult
   :bind (("C-x b" . #'consult-buffer)
 	     ("M-y" . #'consult-yank-from-kill-ring)
@@ -177,7 +184,7 @@ func main () {
 (use-package diff-hl
   :defer t
   :hook ((after-init . global-diff-hl-mode)
-         (diff-hl-mode . (lambda () (unless (window-system) diff-hl-margin-modex)))
+         (diff-hl-mode . (lambda () (unless (display-graphic-p) diff-hl-margin-mode)))
          (diff-hl-mode . diff-hl-flydiff-mode)
          (magit-post-refresh . diff-hl-magit-post-refresh))
   :config
